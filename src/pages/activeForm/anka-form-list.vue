@@ -1,20 +1,20 @@
 <template>
     <div class='anka-form'  >
-        <div class="anka-form-part" v-for="(tab,index) in anka?anka.CaseCardTemplete.TabsList:[]" :key="'form'+index">
+        <div class="anka-form-part" v-for="(tab,index) in anka?anka.children:[]" :key="'form'+index">
             <div class="form-list-title"
                  @drop="dropedOnTitle(tab,index)"
                  @dragover.prevent.stop
                  @dblclick="titleDbClick(tab)"
-            >{{tab.TabsName}}</div>
+            >{{tab.child.title}}</div>
             <ul class="form-list-ul" >
                 <li class="form-list-item" :class="{'anka-form-active':currenTable===form}"
-                    @click="formClick(form,tab)" v-for="(form,index2) in tab.TableList"
+                    @click="formClick(form,tab)" v-for="(form,index2) in tab.child.containers"
                     :key="'form'+index+index2"
                     draggable="true"
                     @dblclick="itemDbClick(form)"
                     @dragstart="dragStart(tab,form,index,index2)"
                     @drop="dropedOnItem(tab,form,index,index2)" @dragover.prevent.stop
-                >{{form.TableName}}</li>
+                >{{form.text}}</li>
             </ul>
         </div>
     </div>
@@ -24,24 +24,6 @@ export default {
   props: {
     anka: { type: Object },
     currenTable: { type: Object }
-  },
-  data() {
-    return {
-      forms: [
-        {
-          title: "受理情况",
-          list: [{ text: "基本信息" }, { text: "侵犯知识产权情况" }]
-        },
-        {
-          title: "嫌疑人审结及变更情况",
-          list: [
-            { text: "审结情况" },
-            { text: "审结变更情况" },
-            { text: "羁押必要性审查" }
-          ]
-        }
-      ]
-    };
   },
   methods: {
     formClick(table, tab) {
@@ -68,6 +50,12 @@ export default {
       this.$emit("editName", { type: "table", table: form });
     }
   }
+  // mounted() {
+  //   console.log("anka");
+  //   console.log(this.anka);
+  //   console.log("currenTable");
+  //   console.log(this.currenTable);
+  // }
 };
 </script>
 <style lang="less">

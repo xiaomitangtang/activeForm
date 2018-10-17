@@ -16,6 +16,7 @@ import "element-ui/lib/theme-chalk/index.css";
 import "@/assets/scrollbar.less";
 import VueClipboard from "vue-clipboard2";
 import _ from "lodash";
+import "@/assets/font/iconfont.css";
 
 window._ = _;
 Vue.use(ElementUI, { size: "mini" });
@@ -76,6 +77,7 @@ router.beforeEach((to, from, next) => {
 //  如果在很多地方都想使用配置文件内容，也可以在相应的组件内 import config from '@/loadConfig.js'
 //  这是一个同步请求获取配置文件
 axios.get("/VueApp_config.json").then(res => {
+  // http://192.168.2.236:8080/swagger-ui.html#/case-card-controller/getLayoutUsingGET
   axios.defaults.baseURL = res.data.REMOTE_ADDR;
   new Vue({
     store,

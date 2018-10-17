@@ -1,6 +1,6 @@
 <template>
     <div class="imgbox" :class="{'img-disabled':disabled}">
-      <input ref="fileinput" type="file" accept="image/*"  @change="chooseimg" :disabled="disabled">
+      <input ref="fileinput" type="file" accept="image/*"  @change="chooseimg" :disabled="disabled || readonly">
       <div class="imgbody">
         <img class="userimg" v-show="imgsrcinner" :src="imgsrcinner" alt="">
         <span v-show="!imgsrcinner" class="el-icon-plus"></span>
@@ -19,6 +19,7 @@ export default {
   name: "userimg",
   props: {
     disabled: { type: Boolean, default: false },
+    readonly: { type: Boolean, default: false },
     imgsrc: {
       type: [String, File],
       default: ""

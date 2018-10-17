@@ -838,32 +838,34 @@ function isSettingVisible(setting, val) {
     (this.$store.state.formDesigner.allSettting || userableSetting[val])
   );
 } //此方法用于返回相对应的设置项是否展示出来给用户进行设置
-function translateFormItem(item, index, maxWidth, tabIndex, tableIndex) {
+function translateFormItem(item, tabIndex, tableIndex) {
   let tempItem = {
-    key: item.zdywmc,
-    elId: item.zdywmc,
-    label: item.zdzwmc || "",
-    span: 24 / this.$store.state.formDesigner.layout,
-    component: item.sjlx || "el-select",
+    key: item.id,
+    elId: item.id,
+    label: item.label || "",
+    span: item.span || 12,
+    component: item.controlType || "el-select",
     offset: 0,
     labelWidth: "",
     settings: {},
     tabIndex, //仅仅用于记录改字段属于第几个tablist
     tableIndex //仅仅用于记录改字段属于第几个table
   };
-  // let textW = tempItem.label.replace(/[\u4e00-\u9fa5]/g, "aa").length * 8 + 12;
-  // tempItem.labelWidth = textW === 12 ? 0 : Math.min(Math.max(textW, 120), 180);
-  tempItem.labelWidth = maxWidth;
+  let textW = tempItem.label.replace(/[\u4e00-\u9fa5]/g, "aa").length * 7 + 12;
+  tempItem.labelWidth = textW === 12 ? 0 : Math.min(Math.max(textW, 80), 250);
+  // tempItem.labelWidth = textW;
   tempItem.settings = getSettings(tempItem);
   tempItem.settings.disabled = false;
+  tempItem.settings.readonly = false;
   tempItem.isRequire = false;
   tempItem.init = true;
   // tempItem.settings.placeholder = item.mrz;
   tempItem.val = item.value;
-  if (item.sjygl) {
+
+  /*  if (item.sjygl) {
     tempItem.settings.remote = true;
     tempItem.settings.remoteUrl = "/getSJYByProcedure?P_LBBM=" + item.sjygl;
-  }
+  }*/
   return tempItem;
 } //此方法用于将原来案卡的数据，进行一次转换，转成本表单容器所能接受的形式
 export default {

@@ -1,25 +1,41 @@
 <template>
   <div class='target' @drop.stop.prevent="drop" @dragover.prevent.stop >
+    <mypagenation v-if="tableData.more"></mypagenation>
     <el-form ref="myform" :model="formModel" :rules="formRule" label-position="left">
-      <el-row class="myform-el-row" :gutter="5">
-        <template v-for="(item ,index) in formItemList">
-          <div style="clear: both" v-if="index%layout===0&&openLayout" :key="'formitemclear'+index"></div>
-          <el-col class="my-element"  :style="{width:item.settings.handleWidth}"
-                  :key="panelName+'col'+index" :span="item.span" :offset="item.offset"  :class="{editItem:edit}"
-                  @dragstart.native="formItemDragStart(item,$event)" @dragenter.native="dropToIndex=index"
-                  @dblclick.native="formItemClick({index,item})">
-            <el-button      v-if="edit" size="mini" type="text" icon="el-icon-circle-close"  class="close-item" @click.stop="delFormItem(index,item)"></el-button>
-            <el-form-item   v-if="showformItem" :label="item.label"  :id="item.elId" :label-width="item.labelWidth?(item.labelWidth+'px'):'1px'" :prop="item.key">
-              <myElement    :draggable="edit"   :formModel="formModel" :innerdata="item"></myElement>
-            </el-form-item>
-            <div class="resizeBar" v-if="edit" @click.stop.passive @mousedown.stop.prevent="myelformItemResize($event,item)"  ></div>
-      <!--      <div class="changeWidthbtns" v-if="edit" @click.stop.prevent>
-              <span @click="changeFormItemWidth(item,'del')" class="el-icon-remove"></span>
-              <span @click="changeFormItemWidth(item,'add')" class="el-icon-circle-plus"></span>
-            </div>-->
-          </el-col>
-        </template>
+      <el-row class="myform-el-row" :gutter="5" v-for="(row,rowIndex) in tableData.container.children" :key="'tablerow'+rowIndex">
+        <el-col class="my-element"
+                v-for="(item,colIndex) in row.children"
+                :key="'item'+rowIndex+colIndex" :span="item.span" :offset="item.offset"  :class="{editItem:edit}"
+                @dragstart.native="formItemDragStart(item,$event)" @dragenter.native="dropToIndex=index"
+                @dblclick.native="formItemClick({index,item})">
+          <!--<el-button      v-if="edit" size="mini" type="text" icon="el-icon-circle-close"  class="close-item" @click.stop="delFormItem(index,item)"></el-button>-->
+          <el-form-item   v-if="showformItem" :label="item.label"  :id="item.elId" :label-width="item.labelWidth?(item.labelWidth+'px'):'1px'"  :prop="item.key">
+            <myElement    :draggable="edit"   :formModel="formModel" :innerdata="item"></myElement>
+          </el-form-item>
+          <div class="resizeBar" v-if="edit" @click.stop.passive @mousedown.stop.prevent="myelformItemResize($event,item)"  ></div>
+          <!--      <div class="changeWidthbtns" v-if="edit" @click.stop.prevent>
+                  <span @click="changeFormItemWidth(item,'del')" class="el-icon-remove"></span>
+                  <span @click="changeFormItemWidth(item,'add')" class="el-icon-circle-plus"></span>
+                </div>-->
+        </el-col>
       </el-row>
+<!--      <template v-for="(item ,index) in tableData">
+        &lt;!&ndash;<div style="clear: both" v-if="index%layout===0&&openLayout" :key="'formitemclear'+index"></div>&ndash;&gt;
+        <el-col class="my-element"
+                :key="panelName+'col'+index" :span="item.span" :offset="item.offset"  :class="{editItem:edit}"
+                @dragstart.native="formItemDragStart(item,$event)" @dragenter.native="dropToIndex=index"
+                @dblclick.native="formItemClick({index,item})">
+          <el-button      v-if="edit" size="mini" type="text" icon="el-icon-circle-close"  class="close-item" @click.stop="delFormItem(index,item)"></el-button>
+          <el-form-item   v-if="showformItem" :label="item.label"  :id="item.elId" :label-width="item.labelWidth?(item.labelWidth+'px'):'1px'" :prop="item.key">
+            &lt;!&ndash;<myElement    :draggable="edit"   :formModel="formModel" :innerdata="item"></myElement>&ndash;&gt;
+          </el-form-item>
+          <div class="resizeBar" v-if="edit" @click.stop.passive @mousedown.stop.prevent="myelformItemResize($event,item)"  ></div>
+          &lt;!&ndash;      <div class="changeWidthbtns" v-if="edit" @click.stop.prevent>
+                  <span @click="changeFormItemWidth(item,'del')" class="el-icon-remove"></span>
+                  <span @click="changeFormItemWidth(item,'add')" class="el-icon-circle-plus"></span>
+                </div>&ndash;&gt;
+        </el-col>
+      </template>-->
     </el-form>
   </div>
 </template>
@@ -28,12 +44,17 @@ import formDesignerStatic from "./formDesignerStatic";
 export default {
   name: "formDesignerpane",
   props: {
-    formItemList: { type: Array, default: () => [] },
+    tableData: {
+      type: Object,
+      default: () => {
+        false;
+      }
+    },
     panelName: { type: String }
   },
   data() {
     return {
-      showformItem: true,
+      showformItem: false,
       formData: {},
       formModalData: { settings: {} },
       nowFormItem: null,
@@ -95,31 +116,31 @@ export default {
       this.dragedItem = item;
       this.$emit("setNowFormPaneAndnowFormPaneDragItem", this, this.dragedItem);
     },
-    delDragItem() {
-      let dragItemIndex = this.formItemList.indexOf(this.dragedItem);
-      this.formItemList.splice(dragItemIndex, 1);
+    /* delDragItem() {
+      let dragItemIndex = this.tableData.indexOf(this.dragedItem);
+      this.tableData.splice(dragItemIndex, 1);
       this.dragedItem = null;
-      this.dropToIndex = this.formItemList.length - 1;
+      this.dropToIndex = this.tableData.length - 1;
     },
     dropFromInner() {
       if (this.dragedItem.component === "el-textarea") {
-        this.dropToIndex = this.formItemList.length - 1;
+        this.dropToIndex = this.tableData.length - 1;
       }
       if (this.dragedItem.component === "el-upload") {
-        this.dropToIndex = this.findLastToIndex(this.formItemList.length - 1);
+        this.dropToIndex = this.findLastToIndex(this.tableData.length - 1);
       }
-      let dragItemIndex = this.formItemList.indexOf(this.dragedItem);
+      let dragItemIndex = this.tableData.indexOf(this.dragedItem);
       if (this.dropToIndex + 1 > 0) {
         if (dragItemIndex < this.dropToIndex) {
-          this.formItemList.splice(this.dropToIndex + 1, 0, this.dragedItem);
-          this.formItemList.splice(dragItemIndex, 1);
+          this.tableData.splice(this.dropToIndex + 1, 0, this.dragedItem);
+          this.tableData.splice(dragItemIndex, 1);
         } else if (dragItemIndex > this.dropToIndex) {
-          this.formItemList.splice(this.dropToIndex + 1, 0, this.dragedItem);
-          this.formItemList.splice(dragItemIndex + 1, 1);
+          this.tableData.splice(this.dropToIndex + 1, 0, this.dragedItem);
+          this.tableData.splice(dragItemIndex + 1, 1);
         }
       } else {
-        this.formItemList.splice(dragItemIndex, 1);
-        this.formItemList.push(this.dragedItem);
+        this.tableData.splice(dragItemIndex, 1);
+        this.tableData.push(this.dragedItem);
       }
       this.dragedItem = null;
     },
@@ -142,20 +163,20 @@ export default {
         tempcom.settings = { type: "textarea", rows: 5 };
       }
       if (com === "el-upload") {
-        this.dropToIndex = this.findLastToIndex(this.formItemList.length - 1);
+        this.dropToIndex = this.findLastToIndex(this.tableData.length - 1);
       }
       if (this.dropToIndex + 1 > 0) {
-        this.formItemList.splice(this.dropToIndex + 1, 0, tempcom);
+        this.tableData.splice(this.dropToIndex + 1, 0, tempcom);
       } else {
         if (
-          this.formItemList.length &&
+          this.tableData.length &&
           this.formItemSettingsValue.mustLastFormItem.indexOf(
-            this.formItemList[0].component
+            this.tableData[0].component
           ) + 1
         ) {
-          this.formItemList.splice(0, 0, tempcom);
+          this.tableData.splice(0, 0, tempcom);
         } else {
-          this.formItemList.push(tempcom);
+          this.tableData.push(tempcom);
         }
       }
     },
@@ -186,7 +207,7 @@ export default {
         }
         this.dropFromPane();
       }
-      this.dropToIndex = this.formItemList.length - 1;
+      this.dropToIndex = this.tableData.length - 1;
       this.$emit("setNowFormPaneAndnowFormPaneDragItem", null, null);
       this.activeFormDragSrc = null;
     }, // 拖拽放置目标元素内事件，用于处理表单
@@ -194,7 +215,7 @@ export default {
       if (
         toindex > -1 &&
         this.formItemSettingsValue.mustLastFormItem.indexOf(
-          this.formItemList[toindex].component
+          this.tableData[toindex].component
         ) + 1
       ) {
         return this.findLastToIndex(toindex - 1);
@@ -219,28 +240,32 @@ export default {
     myelformItemStopResize() {
       window.removeEventListener("mousemove", this.formItemMouseMove);
       window.removeEventListener("mouseup", this.myelformItemStopResize);
-    },
+    },*/
     validField() {
       let flag = false;
       this.$refs.myform.validate(valid => {
         flag = valid;
-        this.formItemList.forEach(item => {
-          item.val = this.formModel[item.key];
+        this.tableData.container.children.forEach(row => {
+          row.children.forEach(item => {
+            item.val = this.formModel[item.key];
+          });
         });
       });
       return flag;
     },
-    delFormItem(index) {
-      this.formItemList.splice(index, 1);
-      this.dropToIndex = this.formItemList.length - 1;
-    },
+    /*    delFormItem(index) {
+      this.tableData.splice(index, 1);
+      this.dropToIndex = this.tableData.length - 1;
+    },*/
     changemodel() {
       let tempmodel = {};
       let temprule = {};
       this.showformItem = false;
-      this.formItemList.forEach(item => {
-        tempmodel[item.key] = this.getDefauleVal(item);
-        temprule[item.key] = this.getDefaultRule(item, tempmodel[item.key]);
+      this.tableData.container.children.forEach(row => {
+        row.children.forEach(item => {
+          tempmodel[item.key] = this.getDefauleVal(item);
+          temprule[item.key] = this.getDefaultRule(item, tempmodel[item.key]);
+        });
       });
       this.formModel = tempmodel;
       this.formRule = temprule;
@@ -250,23 +275,13 @@ export default {
     }
   },
   components: {
-    myElement: () => import("./myElement.vue")
+    myElement: () => import("./myElement.vue"),
+    mypagenation: () => import("./components/activeFormPagenation.vue")
   },
   computed: {
     edit: {
       get() {
         return this.$store.state.formDesigner.edit;
-      }
-    },
-    layout: {
-      get() {
-        this.formItemList.forEach(item => {
-          if (item.component === "el-textarea") {
-            return;
-          }
-          item.span = 24 / this.$store.state.formDesigner.layout;
-        });
-        return this.$store.state.formDesigner.layout;
       }
     },
     openLayout: {
@@ -287,7 +302,7 @@ export default {
     this.$emit("panelUpdated");
   },
   watch: {
-    formItemList() {
+    tableData() {
       this.changemodel();
     }
   },
