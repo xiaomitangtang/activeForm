@@ -50,7 +50,8 @@ export default {
         false;
       }
     },
-    panelName: { type: String }
+    panelName: { type: String },
+    panelID: { type: String }
   },
   data() {
     return {
@@ -62,7 +63,8 @@ export default {
       dragedItem: null,
       dropToIndex: -1,
       formModel: {},
-      formRule: {}
+      formRule: {},
+      translatedTableDate: {}
     };
   },
   inject: ["formDedigner"],
@@ -243,11 +245,20 @@ export default {
     },*/
     validField() {
       let flag = false;
+      this.translatedTableDate = {};
       this.$refs.myform.validate(valid => {
         flag = valid;
+        if (!flag) return;
         this.tableData.container.children.forEach(row => {
           row.children.forEach(item => {
-            item.val = this.formModel[item.key];
+            if (item.component === "el-date-picker") {
+              item.val = window._.isDate(this.formModel[item.key])
+                ? "TypeIsDate=" + this.formModel[item.key].getTime()
+                : "TypeIsDate=" + this.formModel[item.key];
+            } else {
+              item.val = this.formModel[item.key];
+            }
+            this.translatedTableDate[item.key] = item.val;
           });
         });
       });

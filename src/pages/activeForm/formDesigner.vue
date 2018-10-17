@@ -6,14 +6,15 @@
       <el-row class="form-designer-main-header">
         <span class="form-designer-main-header-text">{{translatedAnKa.header.name}}</span>
       </el-row>
-      <div  v-for="(tab , tabindex) in  translatedAnKa.children  " ref="tab" :key="'ankatable'+tabindex">
+      <div class="form-designer-main-tabs"  v-for="(tab , tabindex) in  translatedAnKa.children  "  ref="tab" :key="'ankatable'+tabindex">
 
         <mypagenation v-if="tab.child.more" style="margin-top: 10px;"></mypagenation>
 
         <el-row class="form-designer-pane" >
           <formDesignerpane v-if="tab.child.containers.length===1"  class="form-designer-pain-main"
                              ref="mainpain"
-                             :panelName="tab.child.containers[0].text"
+                             :panelName="tab.child.title"
+                             :panelID="tab.child.id"
                              :tableData="tab.child.containers[0]"
                              @formDesignerpaneItemClick="formDesignerpaneItemClick"
                              @setNowFormPaneAndnowFormPaneDragItem="setNowFormPaneAndnowFormPaneDragItem"
@@ -31,6 +32,8 @@
                    >
                      <formDesignerpane     @formDesignerpaneItemClick="formDesignerpaneItemClick"
                                            :tableData="table"
+                                           :panelName="tab.child.title"
+                                           :panelID="tab.child.id"
                                            @setNowFormPaneAndnowFormPaneDragItem="setNowFormPaneAndnowFormPaneDragItem"
                                            @PanelMounted="PanelMounted" @PanelDestory="PanelDestory"
                                            @panelUpdated="panelUpdated"
@@ -60,7 +63,7 @@
         <!--<el-button   size="mini" v-if="edit" @click="addpane">添加/修改pane</el-button>-->
         <!--<el-button  size="mini" v-if="edit&&showtaps" @click="delpane">删除pane</el-button>-->
         <!--<el-button size="mini" @click="changemodel">{{editVal}}</el-button>-->
-        <el-button size="mini" @click="mysubmit" >查看/保存</el-button>
+        <el-button size="mini" @click="mysubmit" >保存</el-button>
       </el-button-group>
       <el-checkbox  style=" float: right;margin-right: 10px;"  v-if="edit" v-model="showallSetting">全配置</el-checkbox>
         <!--<el-checkbox  style=" float: right;margin-right: 10px;" v-if="edit" v-model="openLayout">限制</el-checkbox>
@@ -679,8 +682,8 @@ export default {
       return this.panels;
     }, //获取当前设计器中所有panel的方法
     mysubmit() {
-      // console.log(this.translatedAnKa);
-      // console.log(this.tableItems);
+      console.log("translatedAnKa");
+      console.log(this.translatedAnKa);
       this.$emit("clearErrors");
       let formValid = this.getAllPanes()
         .map(item => item.validField())
@@ -691,24 +694,32 @@ export default {
         type: formValid ? "success" : "error"
       });
       if (formValid) {
-        let temp = [];
-        this.getAllPanes().forEach(i => {
-          temp = temp.concat(
-            Object.keys(i.formModel).map(j => {
-              let value = window._.isDate(i.formModel[j])
-                ? "TypeIsDate=" + i.formModel[j].getTime()
-                : i.formModel[j];
-              return { field: j, value: value };
-            })
-          );
+        let temp = {};
+        // this.getAllTableItem().forEach(item => {
+        //   temp.push({ field: item.key, value: item.val });
+        // });
+        this.getAllPanes().forEach(panel => {
+          let panelData = {
+            name: panel.tableData.text,
+            panelID: panel.panelID,
+            panelName: panel.panelName,
+            model: panel.translatedTableDate
+          };
+          if (temp[panel.panelID]) {
+            temp[panel.panelID].push(panelData);
+          } else {
+            temp[panel.panelID] = [panelData];
+          }
         });
         if (this.hasFile) {
           let formdata = new FormData();
-          temp.forEach(filed => {
-            formdata.append(filed.field, filed.value);
+          temp.forEach(item => {
+            formdata.append(item.field, item.value);
           });
           temp = formdata;
         }
+        console.log(temp);
+
         this.$api.activeForm.saveAnKa(temp).then(
           res => {
             console.log(res);
@@ -777,7 +788,7 @@ export default {
       let scrollTop = e.target.scrollTop;
       let near = this.tablelistScrollList.map(i => Math.abs(i - scrollTop));
       let min = Math.min(...near);
-      if (min < 10) {
+      if (min < 20) {
         let tab = this.data.children[near.indexOf(min)];
         let currentTableName = this.translatedAnKa.children[near.indexOf(min)]
           .currentTableName;
@@ -801,29 +812,26 @@ export default {
       this.animateTo(target);
     }, //当currenttab改变时，将容器滚动到相应的位置
     animateToError(data) {
-      console.log(data);
-      // let errTab = this.translatedAnKa.CaseCardTemplete.TabsList[
-      //   data.item.tabIndex
-      // ];
-      // let errorTable = errTab.TableList[data.item.tableIndex];
-      // errTab.currentTableName = errorTable.TableName;
-      // this.$nextTick(() => {
-      //   let targetEl = document.getElementById(data.item.elId);
-      //   let tablistY =
-      //     targetEl.offsetParent.offsetParent.offsetParent.offsetParent
-      //       .offsetTop;
-      //   let tempElToTabList =
-      //     targetEl.offsetParent.offsetParent.offsetParent.offsetTop;
-      //   let errorTab = this.data.CaseCardTemplete.TabsList[data.item.tabIndex];
-      //   if (errorTab.TableList.length === 1) {
-      //     this.animateTo(tempElToTabList + tablistY);
-      //   } else if (errorTab.TableList.length > 1) {
-      //     tablistY =
-      //       targetEl.offsetParent.offsetParent.offsetParent.offsetParent
-      //         .offsetParent.offsetTop;
-      //     this.animateTo(tempElToTabList + tablistY);
-      //   }
-      // });
+      let errTab = this.translatedAnKa.children[data.item.tabIndex];
+      let errorTable = errTab.child.containers[data.item.tableIndex];
+      errTab.currentTableName = errorTable.text;
+      this.$nextTick(() => {
+        let targetEl = document.getElementById(data.item.elId);
+        let tablistY =
+          targetEl.offsetParent.offsetParent.offsetParent.offsetParent
+            .offsetTop;
+        let tempElToTabList =
+          targetEl.offsetParent.offsetParent.offsetParent.offsetTop;
+        let errorTab = this.data.children[data.item.tabIndex];
+        if (errorTab.child.containers.length === 1) {
+          this.animateTo(tempElToTabList + tablistY);
+        } else if (errorTab.child.containers.length > 1) {
+          tablistY =
+            targetEl.offsetParent.offsetParent.offsetParent.offsetParent
+              .offsetParent.offsetTop;
+          this.animateTo(tempElToTabList + tablistY);
+        }
+      });
     }, //当用户点击错误提示时，将容器滚动到相对应的错误位置
     animateTo(target) {
       this.changing = true;
@@ -988,8 +996,14 @@ export default {
       color: #134b89;
     }
   }
+  .form-designer-main-tabs {
+    margin: 20px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
   .form-desgner-tables {
     height: calc(100% - 30px);
+    /*height: 100%;*/
     overflow: auto;
   }
   .form-designer-setting {
@@ -1031,7 +1045,7 @@ export default {
   }
 }
 .form-tabs {
-  padding: 10px;
+  /*padding: 0 10px;*/
 }
 .target {
   position: relative;
@@ -1180,7 +1194,7 @@ export default {
   .el-form-item__label {
     max-height: 40px;
     margin-bottom: 0;
-    line-height: 20px;
+    line-height: 16px;
     font-size: 12px;
   }
   .changeWidthbtns,

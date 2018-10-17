@@ -106,6 +106,7 @@ export default {
       );
     },
     addError(data) {
+      console.log(data);
       this.errorsList.push(data);
     },
     removeError(data) {
@@ -201,6 +202,10 @@ export default {
           float: left;
           width: 300px;
           padding: 10px 0;
+          cursor: pointer;
+          div {
+            color: red;
+          }
         }
       }
     }

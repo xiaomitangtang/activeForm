@@ -616,17 +616,41 @@ function getDefauleVal(item) {
   }
 } //根据不同的表单元素进行判断并返回默认值
 function formValid(item, rule, value, callback) {
-  if (item.init) {
-    item.init = false;
-    return;
-  }
-  if (item.key === "TYYW_GG_AJJBXX--FZ") {
+  // console.log(
+  //   item.key +
+  //     "------------" +
+  //     item.component +
+  //     "------------" +
+  //     item.init +
+  //     "---------------" +
+  //     value
+  // );
+  // if (item.init) {
+  //   item.init = false;
+  //   callback();
+  //   return;
+  // }
+  if (item.key === "TYYW_GS_ESSS__DJRQ") {
     this.formDedigner.getAllTableItem().forEach(i => {
-      if (i.key === "TYYW_GG_AJJBXX--SFGZAJ") {
+      if (i.key === "TYYW_GS_ESSS__HJRQ") {
         i.settings.disabled = !value;
       }
     });
-
+    if (value) {
+      this.$emit("removeError", {
+        value,
+        item
+      });
+      callback();
+    } else {
+      this.$emit("addError", {
+        value,
+        item
+      });
+      // callback();
+      callback(new Error(""));
+    }
+  } else {
     if (value) {
       this.$emit("removeError", {
         value,
@@ -639,10 +663,9 @@ function formValid(item, rule, value, callback) {
         item
       });
       callback(new Error(""));
+      // callback();
     }
-    return;
   }
-  callback();
 } //自定义校验方法
 function getDefaultRule(item, val) {
   let tempRule = [{ validator: formValid.bind(this, item), trigger: "change" }];
@@ -851,21 +874,21 @@ function translateFormItem(item, tabIndex, tableIndex) {
     tabIndex, //仅仅用于记录改字段属于第几个tablist
     tableIndex //仅仅用于记录改字段属于第几个table
   };
-  let textW = tempItem.label.replace(/[\u4e00-\u9fa5]/g, "aa").length * 7 + 12;
-  tempItem.labelWidth = textW === 12 ? 0 : Math.min(Math.max(textW, 80), 250);
-  // tempItem.labelWidth = textW;
+  // let textW = tempItem.label.replace(/[\u4e00-\u9fa5]/g, "aa").length * 7 + 12;
+  // tempItem.labelWidth = textW === 12 ? 0 : Math.min(Math.max(textW, 80), 250);
+  tempItem.labelWidth = 120;
   tempItem.settings = getSettings(tempItem);
   tempItem.settings.disabled = false;
   tempItem.settings.readonly = false;
   tempItem.isRequire = false;
-  tempItem.init = true;
   // tempItem.settings.placeholder = item.mrz;
   tempItem.val = item.value;
+  tempItem.init = !tempItem.val;
 
   /*  if (item.sjygl) {
-    tempItem.settings.remote = true;
-    tempItem.settings.remoteUrl = "/getSJYByProcedure?P_LBBM=" + item.sjygl;
-  }*/
+      tempItem.settings.remote = true;
+      tempItem.settings.remoteUrl = "/getSJYByProcedure?P_LBBM=" + item.sjygl;
+    }*/
   return tempItem;
 } //此方法用于将原来案卡的数据，进行一次转换，转成本表单容器所能接受的形式
 export default {
