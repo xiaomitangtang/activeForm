@@ -86,7 +86,7 @@ export default {
                 }
               ]
             },
-            more: false
+            more: true
           },
           {
             text: "出席法庭情况",
@@ -351,7 +351,7 @@ export default {
             more: false
           }
         ],
-        more: false
+        more: true
       }
     },
     {

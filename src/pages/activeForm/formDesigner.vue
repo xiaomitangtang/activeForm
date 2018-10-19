@@ -3,42 +3,52 @@
     <div class="form-desgner-tables" ref="tablebox" id="tablebox" @scroll.passive="tableBoxScroll"
         @mousewheel="tableMouseWheel"
     >
-      <el-row class="form-designer-main-header">
+      <el-row class="form-designer-main-header" >
         <span class="form-designer-main-header-text">{{translatedAnKa.header.name}}</span>
       </el-row>
-      <div class="form-designer-main-tabs"  v-for="(tab , tabindex) in  translatedAnKa.children  "  ref="tab" :key="'ankatable'+tabindex">
-
-        <mypagenation v-if="tab.child.more" style="margin-top: 10px;"></mypagenation>
-
+      <div class="form-designer-main-tabs"  v-for="(tab , tabIndex) in  translatedAnKa.children  "  ref="tab" :key="'ankatable'+tabIndex">
+        <mypagenation v-if="tab.child.more" style="margin-top: 10px;"
+                      :elProps="{total:tab.pageData?tab.pageData.length : 1,'page-size':1,'current-page':tab.currentPage}"
+                      @menuClick="pageMenuClick({type:'tab',tab:tab,tabIndex,data:$event})"
+                      @pageChange="pageChange({type:'tab',tab:tab,tabIndex,data:$event})"
+        ></mypagenation>
         <el-row class="form-designer-pane" >
           <formDesignerpane v-if="tab.child.containers.length===1"  class="form-designer-pain-main"
                              ref="mainpain"
                              :panelName="tab.child.title"
                              :panelID="tab.child.id"
                              :tableData="tab.child.containers[0]"
+                            :totalPage="getPanelTotalPage(tab)"
+                            :currentPage="getPanelCurrentPage(tab)"
                              @formDesignerpaneItemClick="formDesignerpaneItemClick"
                              @setNowFormPaneAndnowFormPaneDragItem="setNowFormPaneAndnowFormPaneDragItem"
                              @PanelMounted="PanelMounted" @PanelDestory="PanelDestory"
                              @panelUpdated="panelUpdated"
                             @addError="addError"
                             @removeError="removeError"
+                            @menuClick="pageMenuClick({type:'table',tab:tab,tabIndex,tableIndex:0,data:$event})"
+                            @pageChange="pageChange({type:'table',tab:tab,tabIndex,tableIndex:0,data:$event})"
           ></formDesignerpane>
 
           <el-tabs v-else class="form-tabs"  type="card"
                           :editable="edit"   :value="tab.currentTableName" @input="tabsValueChange(tab,$event)"
-                          @tab-click="tabPanelClick(tabindex,$event)">
-                   <el-tab-pane v-for="table in tab.child.containers" :label="table.text" :name="table.text" :key="table.text"
+                          @tab-click="tabPanelClick(tabIndex,$event)">
+                   <el-tab-pane v-for="(table,tableIndex) in tab.child.containers" :label="table.text" :name="table.text" :key="table.text"
 
                    >
                      <formDesignerpane     @formDesignerpaneItemClick="formDesignerpaneItemClick"
                                            :tableData="table"
                                            :panelName="tab.child.title"
                                            :panelID="tab.child.id"
+                                           :totalPage="getPanelTotalPage(tab,tableIndex+1)"
+                                           :currentPage="getPanelCurrentPage(tab,tableIndex+1)"
                                            @setNowFormPaneAndnowFormPaneDragItem="setNowFormPaneAndnowFormPaneDragItem"
                                            @PanelMounted="PanelMounted" @PanelDestory="PanelDestory"
                                            @panelUpdated="panelUpdated"
                                            @addError="addError"
                                            @removeError="removeError"
+                                           @menuClick="pageMenuClick({type:'table',tab:tab,tabIndex,tableIndex,data:$event})"
+                                           @pageChange="pageChange({type:'table',tab:tab,tabIndex,tableIndex,data:$event})"
                      ></formDesignerpane>
                    </el-tab-pane>
                  </el-tabs>
@@ -648,7 +658,7 @@ export default {
       nowFormPaneDragItem: null,
       dropToIndex: -1,
       dialogFormVisible: false,
-      translatedAnKa: { header: { name: "demo" }, children: [] },
+      translatedAnKa: { header: { name: "" }, children: [] },
       panels: [],
       tableItems: [],
       scrollTimer: null,
@@ -681,13 +691,14 @@ export default {
     getAllPanes() {
       return this.panels;
     }, //获取当前设计器中所有panel的方法
-    mysubmit() {
-      console.log("translatedAnKa");
-      console.log(this.translatedAnKa);
+    validateAllPanels() {
       this.$emit("clearErrors");
-      let formValid = this.getAllPanes()
+      return this.getAllPanes()
         .map(item => item.validField())
         .every(i => i);
+    },
+    mysubmit() {
+      let formValid = this.validateAllPanels();
       this.$notify({
         title: "表单验证",
         message: formValid ? "通过" : "未通过",
@@ -718,7 +729,6 @@ export default {
           });
           temp = formdata;
         }
-        console.log(temp);
 
         this.$api.activeForm.saveAnKa(temp).then(
           res => {
@@ -730,13 +740,6 @@ export default {
         );
       }
     }, //点击保存按钮向后台提交数据的方法
-    changemodel() {
-      this.$store.commit("formDesigner/setEdit", !this.edit);
-      if (this.edit) {
-        return;
-      }
-      this.getAllPanes().forEach(item => item.changemodel());
-    }, //点击编辑或者关闭编辑，刷新一个所有panel，因为表单元素想el-form挂载是在mounted以及destory中进行操作，必须刷新一个才能有验证规则
     getAllTableItem() {
       return this.tableItems;
     }, //将当前设计器中所有的表中的数据，平铺为表单元素的数组，方便其他地方使用
@@ -749,7 +752,7 @@ export default {
         this.tablelistScrollList = this.$refs.tab.map(i => i.offsetTop);
       }, 200);
     }, //一个抽取的保存panel位置的方法，已经使用定时器进行了截流，不会立即保存，而是有延迟debounce效果
-    initTable(table, tabIndex, tableIndex) {
+    initTable(tab, table, tabIndex, tableIndex) {
       return {
         text: table.text,
         more: table.more,
@@ -868,13 +871,16 @@ export default {
         tempAnka.children = this.data.children.map((tab, tabIndex) => {
           return {
             currentTableName: tab.child.containers[0].text,
+            pageData: null,
+            currentPage: 1,
             child: {
               controlType: tab.child.controlType,
               id: tab.child.id,
               more: tab.child.more,
               title: tab.child.titlem,
+              currentPage: 1,
               containers: tab.child.containers.map((table, tableIndex) => {
-                return this.initTable(table, tabIndex, tableIndex);
+                return this.initTable(tab, table, tabIndex, tableIndex);
               })
             }
           };
@@ -924,6 +930,113 @@ export default {
     },
     removeError(data) {
       this.$emit("removeError", data);
+    },
+    getTableByTableData(table) {
+      return this.getAllPanes().filter(panel => {
+        return panel.tableData === table;
+      })[0];
+    },
+    setTableValue(table, data) {
+      let tempTableData = {};
+      table.container.children.forEach(row => {
+        row.children.forEach(item => {
+          tempTableData[item.key] = item.val;
+          if (!data) {
+            item.val = null;
+          } else {
+            item.val = data[item.key];
+          }
+        });
+      });
+      this.getTableByTableData(table).setFromModel();
+      return tempTableData;
+    },
+    setTabValue(tab, data) {
+      let pagedata = tab.child.containers.map((table, index) => {
+        let tempTableData = null;
+        if (data) {
+          tempTableData = this.setTableValue(
+            table,
+            data.tabPageData[index][data.currentTablePages[index] - 1]
+          );
+        } else {
+          tempTableData = this.setTableValue(table);
+        }
+        if (data) {
+          data.tabPageData[index].splice(
+            data.currentTablePages[index] - 1,
+            1,
+            tempTableData
+          );
+          return data.tabPageData[index];
+        } else {
+          return [tempTableData];
+        }
+      });
+      let currentTablePages = data
+        ? data.currentTablePages
+        : tab.child.containers.map(() => 1);
+      return { tabPageData: pagedata, currentTablePages };
+    },
+    saveTabValue(tab, pageIndex) {
+      tab.pageData[pageIndex] = this.setTabValue(tab, tab.pageData[pageIndex]);
+    },
+    pageMenuClick({ type, tab, tabIndex, tableIndex, data }) {
+      let formValid = this.validateAllPanels();
+      if (formValid) return;
+      if (type === "tab") {
+        if (data === "add") {
+          if (!tab.pageData) {
+            tab.pageData = [this.setTabValue(tab), this.setTabValue(tab)];
+          } else {
+            this.saveTabValue(tab, tab.currentPage - 1);
+            tab.pageData.push(this.setTabValue(tab));
+          }
+          tab.currentPage = tab.pageData.length;
+        }
+      } else if (type === "table") {
+        if (data.data === "add") {
+          console.log(type, tab, tabIndex, tableIndex, data);
+          let currentTable = tab.child.containers[tabIndex];
+          tab.pageData[tab.currentPage - 1].tabPageData[tableIndex].push(
+            this.setTableValue(currentTable)
+          );
+          tab.pageData[tab.currentPage - 1].currentTablePages[tableIndex] =
+            tab.pageData[tab.currentPage - 1].tabPageData[tableIndex].length;
+        }
+      }
+      this.$emit("clearErrors");
+    },
+    pageChange({ type, tab, tabIndex, tableIndex, data }) {
+      let formValid = this.validateAllPanels();
+      if (formValid) return;
+      if (type === "tab") {
+        this.saveTabValue(tab, tab.currentPage - 1);
+        this.setTabValue(tab, tab.pageData[data - 1]);
+        tab.currentPage = data;
+      } else if (type === "table") {
+        if (data.data === "add") {
+          console.log(type, tab, tabIndex, tableIndex, data);
+        }
+      }
+    },
+    getPanelTotalPage(tab, tableIndex) {
+      if (!tab.pageData) return 1;
+      if (!tableIndex) {
+        return tab.pageData[tab.currentPage - 1].tabPageData[0].length;
+      } else {
+        return tab.pageData[tab.currentPage - 1].tabPageData[tableIndex - 1]
+          .length;
+      }
+    },
+    getPanelCurrentPage(tab, tableIndex) {
+      if (!tab.pageData) return 1;
+      if (!tableIndex) {
+        return tab.pageData[tab.currentPage - 1].tabPageData[0].length;
+      } else {
+        return tab.pageData[tab.currentPage - 1].tabPageData[tableIndex - 1]
+          .length;
+      }
     }
   },
   components: {
@@ -985,14 +1098,15 @@ export default {
     height: 40px;
     line-height: 30px;
     padding-bottom: 10px;
+    text-align: center;
     border-bottom: 1px solid #d3d3d3;
     .form-designer-main-header-text {
       display: inline-block;
       height: 20px;
       line-height: 20px;
-      border-left: 3px solid #134b89;
+      /*border-left: 3px solid #134b89;*/
       padding-left: 10px;
-      font-size: 14px;
+      font-size: 24px;
       color: #134b89;
     }
   }

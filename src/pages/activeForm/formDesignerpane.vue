@@ -1,7 +1,11 @@
 <template>
   <div class='target' @drop.stop.prevent="drop" @dragover.prevent.stop >
-    <mypagenation v-if="tableData.more"></mypagenation>
-    <el-form ref="myform" :model="formModel" :rules="formRule" label-position="left">
+    <mypagenation v-if="tableData.more"
+                  :elProps="{total:totalPage,'page-size':1,'current-page':currentPage}"
+                  @menuClick="pageMenuClick({table:tableData,data:$event})"
+                  @pageChange="pageChange({table:tableData,page:$event})"
+    ></mypagenation>
+    <el-form ref="myform" v-if="showformItem" :model="formModel" :rules="formRule" label-position="left">
       <el-row class="myform-el-row" :gutter="5" v-for="(row,rowIndex) in tableData.container.children" :key="'tablerow'+rowIndex">
         <el-col class="my-element"
                 v-for="(item,colIndex) in row.children"
@@ -9,7 +13,7 @@
                 @dragstart.native="formItemDragStart(item,$event)" @dragenter.native="dropToIndex=index"
                 @dblclick.native="formItemClick({index,item})">
           <!--<el-button      v-if="edit" size="mini" type="text" icon="el-icon-circle-close"  class="close-item" @click.stop="delFormItem(index,item)"></el-button>-->
-          <el-form-item   v-if="showformItem" :label="item.label"  :id="item.elId" :label-width="item.labelWidth?(item.labelWidth+'px'):'1px'"  :prop="item.key">
+          <el-form-item    :label="item.label"  :id="item.elId" :label-width="item.labelWidth?(item.labelWidth+'px'):'1px'"  :prop="item.key">
             <myElement    :draggable="edit"   :formModel="formModel" :innerdata="item"></myElement>
           </el-form-item>
           <div class="resizeBar" v-if="edit" @click.stop.passive @mousedown.stop.prevent="myelformItemResize($event,item)"  ></div>
@@ -51,7 +55,9 @@ export default {
       }
     },
     panelName: { type: String },
-    panelID: { type: String }
+    panelID: { type: String },
+    totalPage: { default: 1 },
+    currentPage: { default: 1 }
   },
   data() {
     return {
@@ -248,17 +254,19 @@ export default {
       this.translatedTableDate = {};
       this.$refs.myform.validate(valid => {
         flag = valid;
-        if (!flag) return;
+        // if (!flag) return;
         this.tableData.container.children.forEach(row => {
           row.children.forEach(item => {
             if (item.component === "el-date-picker") {
-              item.val = window._.isDate(this.formModel[item.key])
+              this.translatedTableDate[item.key] = window._.isDate(
+                this.formModel[item.key]
+              )
                 ? "TypeIsDate=" + this.formModel[item.key].getTime()
                 : "TypeIsDate=" + this.formModel[item.key];
             } else {
-              item.val = this.formModel[item.key];
+              this.translatedTableDate[item.key] = this.formModel[item.key];
             }
-            this.translatedTableDate[item.key] = item.val;
+            item.val = this.formModel[item.key];
           });
         });
       });
@@ -283,6 +291,17 @@ export default {
       this.$nextTick(() => {
         this.showformItem = true;
       });
+    },
+    pageMenuClick(data) {
+      this.$emit("menuClick", data);
+    },
+    pageChange(data) {
+      this.$emit("pageChange", data);
+    },
+    setFromModel(model) {
+      if (!model) {
+        this.changemodel();
+      }
     }
   },
   components: {

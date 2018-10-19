@@ -1,6 +1,11 @@
 <template>
     <div class='active-form-pagenation'>
-        <swxpagenation style="float: left;" :elProps="elProps"></swxpagenation>
+        <swxpagenation style="float: left;" :elProps="elProps"
+                       @current-change="pageChange"
+                       @size-change="pageSizeChange"
+                       @prev-click="preClick"
+                       @next-click="nextClick"
+        ></swxpagenation>
         <extrabtn style="float: left;" @btnClick="btnClick" v-bind="extraBtns"></extrabtn>
         <div style="clear: both"></div>
     </div>
@@ -8,7 +13,7 @@
 <script>
 export default {
   props: {
-    elProps: { type: Object, default: () => ({ total: 5, "page-size": 1 }) },
+    elProps: { type: Object, default: () => ({ total: 2, "page-size": 1 }) },
     extraBtns: {
       type: Object,
       default: () => ({
@@ -23,9 +28,21 @@ export default {
     return {};
   },
   methods: {
-    btnClick: window._.debounce(type => {
-      console.log(type);
-    }, 1000)
+    btnClick(type) {
+      this.$emit("menuClick", type);
+    },
+    pageChange(page) {
+      this.$emit("pageChange", page);
+    },
+    preClick() {
+      // console.log(page);
+    },
+    nextClick() {
+      // console.log(page);
+    },
+    pageSizeChange() {
+      // console.log(size);
+    }
   },
   components: {
     swxpagenation: () => import("./swx-pagenation.vue"),

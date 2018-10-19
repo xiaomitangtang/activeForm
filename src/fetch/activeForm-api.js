@@ -1,4 +1,6 @@
 import BaseApiController from "@/config/api/baseapi";
+// import * as request from "@/config/api/api.conf";
+// import axios from "axios";
 
 /**
  * @class 演示业务功能
@@ -10,6 +12,7 @@ class DemoApiController extends BaseApiController {
     */
   demoData = params => {
     return this.get(this.activeForm.demo, params).then(res => res.data);
+    // return axios.get(request.activeForm.demo, params).then(res => res.data);
   };
   saveAnKa = params => {
     return this.post(this.activeForm.save, params).then(res => res.data);

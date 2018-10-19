@@ -878,7 +878,7 @@ function translateFormItem(item, tabIndex, tableIndex) {
   // tempItem.labelWidth = textW === 12 ? 0 : Math.min(Math.max(textW, 80), 250);
   tempItem.labelWidth = 120;
   tempItem.settings = getSettings(tempItem);
-  tempItem.settings.disabled = false;
+  tempItem.settings.disabled = item.disable;
   tempItem.settings.readonly = false;
   tempItem.isRequire = false;
   // tempItem.settings.placeholder = item.mrz;

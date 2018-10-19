@@ -83,6 +83,7 @@ export default {
         this.showLast = false;
       }
       this.$nextTick(() => {
+        this.totalPage = this.$refs.swxPagenation.internalPageCount;
         this.simplePages =
           this.totalPage <= this.$refs.swxPagenation.pagerCount ? true : false;
       });

@@ -1,8 +1,9 @@
 <template>
 
 <div class="active-form-page">
-  <el-row class="active-form-page-head"></el-row>
-  <el-row class="active-form-page-body" >
+    <loading v-if="loading"></loading>
+    <el-row class="active-form-page-head"></el-row>
+  <el-row  class="active-form-page-body" >
     <div class=" fullhight active-form-page-body-anka-main">
         <div class="active-form-page-body-anka-main-head">{{currentAnka?currentAnka.header.name:'案卡详情'}}</div>
         <div class="active-form-page-body-anka-main-body">
@@ -43,17 +44,18 @@ export default {
   name: "activeForm",
   data() {
     return {
+      // currentAnka: null,
       currentAnka: ankaStaticData,
       tableList: [],
       formListDragData: null,
       currenShowTable: null,
       currenShowTab: null,
-      errorsList: []
+      errorsList: [],
+      loading: false
     };
   },
   methods: {
     ankaTableClick({ table, tab }) {
-      tab.currentTableName = table.text;
       this.currenShowTab = tab;
       this.currenShowTable = table;
       this.$refs.formdesigner.setCurrentTable(table, tab);
@@ -106,7 +108,7 @@ export default {
       );
     },
     addError(data) {
-      console.log(data);
+      // console.log("addError", data);
       this.errorsList.push(data);
     },
     removeError(data) {
@@ -129,15 +131,17 @@ export default {
   },
   mounted() {
     this.currenShowTable = this.currentAnka.children[0].child.containers[0];
-    this.$api.activeForm
+    /*  this.$api.activeForm
       .demoData({
         params: {
           akmbbh: "100000231",
-          bmsah: "山东省院民（行）违监[2014]37000000003号"
+          bmsah: "山东省院上诉受[2014]37000000004号"
         }
       })
       .then(
         res => {
+          console.log("shoudao");
+          this.loading = false;
           this.currentAnka = res.data;
           // console.log(JSON.stringify(this.currentAnka));
           this.currenShowTable = this.currentAnka.children[0].child.containers[0];
@@ -145,13 +149,14 @@ export default {
         err => {
           console.log(err);
         }
-      );
+      );*/
   },
   components: {
     ankaList: () => import("./ankalist"),
     ankaformList: () => import("./anka-form-list.vue"),
     dragmenu: () => import("./dragMenu.vue"),
-    formDesigner: () => import("./formDesigner.vue")
+    formDesigner: () => import("./formDesigner.vue"),
+    loading: () => import("./components/loading.vue")
   }
 };
 </script>
@@ -203,6 +208,7 @@ export default {
           width: 300px;
           padding: 10px 0;
           cursor: pointer;
+          overflow: auto;
           div {
             color: red;
           }

@@ -17,8 +17,9 @@ import "@/assets/scrollbar.less";
 import VueClipboard from "vue-clipboard2";
 import _ from "lodash";
 import "@/assets/font/iconfont.css";
-
+// import immutable from "immutable";
 window._ = _;
+// window.immutable = immutable;
 Vue.use(ElementUI, { size: "mini" });
 // Vue.use(swxUi);
 Vue.use(VueClipboard);
@@ -43,7 +44,7 @@ Vue.config.devtools = true;
 Vue.config.debug = true;
 Vue.prototype.$http = axios;
 
-axios.defaults.timeout = 5000;
+axios.defaults.timeout = 50000;
 //response拦截器
 axios.interceptors.response.use(
   function(response) {

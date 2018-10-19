@@ -12,6 +12,7 @@
     "babel-polyfill": "^6.26.0",
     "element-ui": "^2.4.6",
     "eslint-friendly-formatter": "^4.0.1",
+    "immutable": "^3.8.2",
     "node-sass": "^4.9.3",
     "reset-css": "^4.0.1",
     "sass": "^1.11.0",
