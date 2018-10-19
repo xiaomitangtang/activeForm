@@ -981,6 +981,22 @@ export default {
     saveTabValue(tab, pageIndex) {
       tab.pageData[pageIndex] = this.setTabValue(tab, tab.pageData[pageIndex]);
     },
+    saveTableValue(tab, tableIndex, tabpage, data) {
+      let tempTableaData = this.setTableValue(
+        data.table,
+        tab.pageData[tabpage].tabPageData[tableIndex][
+          tab.pageData[tabpage].currentTablePages[tableIndex] - 1
+        ]
+      );
+      this.setTableValue(
+        data.table,
+        tab.pageData[tabpage].tabPageData[tableIndex][data.page - 1]
+      );
+      tab.pageData[tabpage].tabPageData[tableIndex][
+        tab.pageData[tabpage].currentTablePages[tableIndex] - 1
+      ] = tempTableaData;
+      console.log(tab);
+    },
     pageMenuClick({ type, tab, tabIndex, tableIndex, data }) {
       let formValid = this.validateAllPanels();
       if (formValid) return;
@@ -997,7 +1013,12 @@ export default {
       } else if (type === "table") {
         if (data.data === "add") {
           console.log(type, tab, tabIndex, tableIndex, data);
-          let currentTable = tab.child.containers[tabIndex];
+          let currentTable = tab.child.containers[tableIndex];
+          tab.pageData[tab.currentPage - 1].tabPageData[tableIndex].splice(
+            tab.pageData[tab.currentPage - 1].currentTablePages[tableIndex] - 1,
+            1,
+            this.setTableValue(currentTable)
+          );
           tab.pageData[tab.currentPage - 1].tabPageData[tableIndex].push(
             this.setTableValue(currentTable)
           );
@@ -1005,6 +1026,7 @@ export default {
             tab.pageData[tab.currentPage - 1].tabPageData[tableIndex].length;
         }
       }
+      console.log(tab);
       this.$emit("clearErrors");
     },
     pageChange({ type, tab, tabIndex, tableIndex, data }) {
@@ -1015,9 +1037,10 @@ export default {
         this.setTabValue(tab, tab.pageData[data - 1]);
         tab.currentPage = data;
       } else if (type === "table") {
-        if (data.data === "add") {
-          console.log(type, tab, tabIndex, tableIndex, data);
-        }
+        console.log(type, tab, tabIndex, tableIndex, data);
+        this.saveTableValue(tab, tableIndex, tab.currentPage - 1, data);
+        tab.pageData[tab.currentPage - 1].currentTablePages[tableIndex] =
+          data.page;
       }
     },
     getPanelTotalPage(tab, tableIndex) {
