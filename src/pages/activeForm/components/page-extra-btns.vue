@@ -28,35 +28,38 @@ export default {
 </script>
 <style lang="less">
 .active-form-pagenation-extra-btns {
-  margin-left: 30px;
+  /*margin-left: 5px;*/
 }
 .active-form-pagenation-extra-btn {
   float: left;
-  padding: 0 6px;
+  margin-left: 4px;
+  /*padding: 0 6px;*/
   font-size: 12px;
+  text-align: center;
   cursor: pointer;
   user-select: none;
-  color: #606266;
   font-weight: 700;
   height: 22px;
+  width: 22px;
   line-height: 22px;
-  background-color: #fff;
-  border: 1px solid #cccccc;
-  border-right: 0;
-  &:first-child {
+  background-color: #d9ebff;
+  border: 1px solid #adcae0;
+  color: #3a80c1;
+  /*border-right: 0;*/
+  /*  &:first-child {
     border-radius: 3px 0 0 3px;
   }
   &:last-child {
     border-radius: 0 3px 3px 0;
     border-right: 1px solid #cccccc;
-  }
+  }*/
   &:active {
-    background-color: #347ab6;
-    color: #ffffff;
+    background-color: #3a80c1;
+    color: #d8e6f3;
   }
   &.disable {
-    background-color: #fff;
-    color: #cccccc;
+    background-color: #eaeaea;
+    color: #b9b9b9;
     cursor: not-allowed;
   }
 }

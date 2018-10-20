@@ -18,7 +18,7 @@ export default {
                       id: "TYYW_GG_AJJBXX__BMSAH",
                       controlType: "el-input",
                       label: "部门受案号",
-                      value: null,
+                      value: 123123,
                       span: 24,
                       datasource: 0
                     }

@@ -60,14 +60,16 @@ export default {
 </script>
 <style lang="less">
 .anka-form {
-  padding: 20px 15px;
+  padding: 20px 0;
   height: 100%;
   overflow: auto;
+  background-color: #e3efff;
   .anka-form-part {
     .form-list-title {
-      color: #40638e;
+      padding-left: 12px;
+      font-size: 15px;
       font-weight: 600;
-      font-size: 14px;
+      color: #3c659a;
     }
     .form-list-ul {
       /*margin: 0;*/
@@ -75,34 +77,33 @@ export default {
       list-style: none;
       .form-list-item {
         position: relative;
-        border-bottom: 1px solid #d5e0ee;
+        border-bottom: 1px dashed #aac3e2;
         min-height: 40px;
         line-height: 40px;
         list-style: none;
         font-size: 13px;
-        color: #7b99b6;
+        color: #2589df;
         padding-left: 20px;
         cursor: pointer;
         &::before {
-          content: "";
-          position: absolute;
-          top: 50%;
-          left: 8px;
-          margin-top: -2px;
-          width: 4px;
-          height: 4px;
-          background-color: #abc1de;
-          border-radius: 50%;
+          margin-right: 10px;
+          font-family: "iconfont";
+          content: "\e6a3";
+          font-size: 16px;
+          font-style: normal;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          color: #62779d;
         }
         &:first-child {
-          border-top: 1px solid #d5e0ee;
+          border-top: 1px dashed #aac3e2;
         }
       }
       .anka-form-active {
-        background-color: #ddeeff;
-        color: #40638e;
+        background-color: #6b94c8;
+        color: #ffffff;
         &::before {
-          background-color: #40638e;
+          color: #ffffff;
         }
       }
     }

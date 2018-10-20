@@ -83,7 +83,6 @@ export default {
         this.showLast = false;
       }
       this.$nextTick(() => {
-        this.totalPage = this.$refs.swxPagenation.internalPageCount;
         this.simplePages =
           this.totalPage <= this.$refs.swxPagenation.pagerCount ? true : false;
       });
@@ -116,18 +115,18 @@ export default {
     float: left;
     padding: 0 13px;
     font-size: 14px;
-    border-radius: 2px;
+    border-radius: 3px;
     cursor: pointer;
     user-select: none;
-    color: #347ab7;
+    color: #606266;
     font-weight: 700;
     height: 28px;
     line-height: 28px;
-    background-color: #d9ebff;
-    border: 1px solid #adcae0;
+    background-color: #fff;
+    border: 1px solid #cccccc;
     &.disable {
-      background-color: #eaeaea;
-      color: #b9b9b9;
+      background-color: #fff;
+      color: #cccccc;
       cursor: not-allowed;
     }
     &.large {
@@ -141,11 +140,11 @@ export default {
   }
   &.simple-pagenation {
     .swx-pagenation-first {
-      border-radius: 2px 0 0 2px;
+      border-radius: 3px 0 0 3px;
     }
     .swx-pagenation-last {
       margin-left: -1px;
-      border-radius: 0 2px 2px 0;
+      border-radius: 0 3px 3px 0;
     }
     .swx-pagenation {
       padding: 0;
@@ -153,13 +152,11 @@ export default {
       .btn-next {
         margin: 0 0 0 -1px;
         border-radius: 0;
-        background-color: #fff;
       }
       .el-pager {
         .number {
           margin: 0 0 0 -1px;
           border-radius: 0;
-          background-color: #fff;
         }
       }
     }
@@ -196,42 +193,6 @@ export default {
         border-radius: 0 3px 3px 0;
       }
     }
-  }
-}
-
-.swx-pagenation.el-pagination.is-background {
-  display: inline-block;
-  .el-pager {
-    .number,
-    .more {
-      background-color: #fff;
-      border: 1px solid #cccccc;
-    }
-    .number.active {
-      background-color: #347ab6;
-    }
-  }
-  .btn-next,
-  .btn-prev {
-    background-color: #fff;
-    border: 1px solid #cccccc;
-  }
-}
-.swx-pagenation .btn-prev,
-.swx-pagenation .btn-next,
-.swx-pagenation .el-pager .number,
-.el-pager .more {
-  background-color: #d9ebff !important;
-  color: #548cc2 !important;
-  border: 1px solid #adcae0;
-  &.active {
-    background-color: #3a80c1 !important;
-    color: #ffffff !important;
-  }
-  &[disabled] {
-    background-color: #eaeaea !important;
-    color: #b9b9b9 !important;
-    border: 1px solid #cacaca !important;
   }
 }
 </style>

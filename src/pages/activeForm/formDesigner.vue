@@ -1,13 +1,14 @@
 <template>
   <div class='form-designer-main' @drop.stop.prevent @dragover.prevent>
+    <el-row class="form-designer-main-header" >
+      <span class="form-designer-main-header-text">{{translatedAnKa.header.name}}</span>
+    </el-row>
     <div class="form-desgner-tables" ref="tablebox" id="tablebox" @scroll.passive="tableBoxScroll"
         @mousewheel="tableMouseWheel"
     >
-      <el-row class="form-designer-main-header" >
-        <span class="form-designer-main-header-text">{{translatedAnKa.header.name}}</span>
-      </el-row>
+
       <div class="form-designer-main-tabs"  v-for="(tab , tabIndex) in  translatedAnKa.children  "  ref="tab" :key="'ankatable'+tabIndex">
-        <mypagenation v-if="tab.child.more" style="margin-top: 10px;"
+        <mypagenation v-if="tab.child.more" style="margin-bottom: 10px;margin-left: 10px;"
                       :elProps="{total:tab.pageData?tab.pageData.length : 1,'page-size':1,'current-page':tab.currentPage}"
                       @menuClick="pageMenuClick({type:'tab',tab:tab,tabIndex,data:$event})"
                       @pageChange="pageChange({type:'tab',tab:tab,tabIndex,data:$event})"
@@ -30,7 +31,8 @@
                             @pageChange="pageChange({type:'table',tab:tab,tabIndex,tableIndex:0,data:$event})"
           ></formDesignerpane>
 
-          <el-tabs v-else class="form-tabs"  type="card"
+          <el-tabs v-else   type="card"
+                          class= "form-tabs swx-tabs swx-tabs-card"
                           :editable="edit"   :value="tab.currentTableName" @input="tabsValueChange(tab,$event)"
                           @tab-click="tabPanelClick(tabIndex,$event)">
                    <el-tab-pane v-for="(table,tableIndex) in tab.child.containers" :label="table.text" :name="table.text" :key="table.text"
@@ -73,7 +75,7 @@
         <!--<el-button   size="mini" v-if="edit" @click="addpane">添加/修改pane</el-button>-->
         <!--<el-button  size="mini" v-if="edit&&showtaps" @click="delpane">删除pane</el-button>-->
         <!--<el-button size="mini" @click="changemodel">{{editVal}}</el-button>-->
-        <el-button size="mini" @click="mysubmit" >保存</el-button>
+        <el-button class="swx-btn-primary swx-btn-size-mini"  @click="mysubmit" >保存</el-button>
       </el-button-group>
       <el-checkbox  style=" float: right;margin-right: 10px;"  v-if="edit" v-model="showallSetting">全配置</el-checkbox>
         <!--<el-checkbox  style=" float: right;margin-right: 10px;" v-if="edit" v-model="openLayout">限制</el-checkbox>
@@ -704,41 +706,48 @@ export default {
         message: formValid ? "通过" : "未通过",
         type: formValid ? "success" : "error"
       });
-      if (formValid) {
-        let temp = {};
-        // this.getAllTableItem().forEach(item => {
-        //   temp.push({ field: item.key, value: item.val });
-        // });
-        this.getAllPanes().forEach(panel => {
-          let panelData = {
-            name: panel.tableData.text,
-            panelID: panel.panelID,
-            panelName: panel.panelName,
-            model: panel.translatedTableDate
-          };
-          if (temp[panel.panelID]) {
-            temp[panel.panelID].push(panelData);
-          } else {
-            temp[panel.panelID] = [panelData];
-          }
-        });
-        if (this.hasFile) {
-          let formdata = new FormData();
-          temp.forEach(item => {
-            formdata.append(item.field, item.value);
+      let Data = this.translatedAnKa.children.map(tab => {
+        this.saveTabValue(tab, tab.currentPage - 1);
+        this.setTabValue(tab, tab.currentPage - 1);
+        return tab.pageData;
+      });
+      console.log(Data);
+      console.log(JSON.stringify(Data));
+      /*if (formValid) {
+          let temp = {};
+          // this.getAllTableItem().forEach(item => {
+          //   temp.push({ field: item.key, value: item.val });
+          // });
+          this.getAllPanes().forEach(panel => {
+            let panelData = {
+              name: panel.tableData.text,
+              panelID: panel.panelID,
+              panelName: panel.panelName,
+              model: panel.translatedTableDate
+            };
+            if (temp[panel.panelID]) {
+              temp[panel.panelID].push(panelData);
+            } else {
+              temp[panel.panelID] = [panelData];
+            }
           });
-          temp = formdata;
-        }
-
-        this.$api.activeForm.saveAnKa(temp).then(
-          res => {
-            console.log(res);
-          },
-          err => {
-            console.log(err);
+          if (this.hasFile) {
+            let formdata = new FormData();
+            temp.forEach(item => {
+              formdata.append(item.field, item.value);
+            });
+            temp = formdata;
           }
-        );
-      }
+
+          this.$api.activeForm.saveAnKa(temp).then(
+            res => {
+              console.log(res);
+            },
+            err => {
+              console.log(err);
+            }
+          );
+        }*/
     }, //点击保存按钮向后台提交数据的方法
     getAllTableItem() {
       return this.tableItems;
@@ -887,7 +896,9 @@ export default {
         });
       }
       this.translatedAnKa = tempAnka;
+
       this.initPanelsFormModal();
+      this.initTabPageData();
     }, //将老版本的案卡系统的数据进行转化为本系统所需要的数据
     initPanelsFormModal() {
       clearInterval(this.initFormTimer);
@@ -995,7 +1006,18 @@ export default {
       tab.pageData[tabpage].tabPageData[tableIndex][
         tab.pageData[tabpage].currentTablePages[tableIndex] - 1
       ] = tempTableaData;
-      console.log(tab);
+      // console.log(tab);
+    },
+    initTabPageData() {
+      clearTimeout(this.iniTabPageDataTimer);
+      this.iniTabPageDataTimer = setTimeout(() => {
+        let tempTranslatedAnka = Object.assign({}, this.translatedAnKa);
+        tempTranslatedAnka.children.forEach(tab => {
+          tab.pageData = [this.setTabValue(tab)];
+          this.setTabValue(tab, tab.pageData[0]);
+        });
+        this.translatedAnKa = tempTranslatedAnka;
+      }, 300);
     },
     pageMenuClick({ type, tab, tabIndex, tableIndex, data }) {
       let formValid = this.validateAllPanels();
@@ -1026,7 +1048,7 @@ export default {
             tab.pageData[tab.currentPage - 1].tabPageData[tableIndex].length;
         }
       }
-      console.log(tab);
+      this.translatedAnKa = Object.assign({}, this.translatedAnKa);
       this.$emit("clearErrors");
     },
     pageChange({ type, tab, tabIndex, tableIndex, data }) {
@@ -1036,12 +1058,16 @@ export default {
         this.saveTabValue(tab, tab.currentPage - 1);
         this.setTabValue(tab, tab.pageData[data - 1]);
         tab.currentPage = data;
+        if (tabIndex) {
+          console.log("这句代码是为了让eslint通过,并不会执行");
+        }
       } else if (type === "table") {
-        console.log(type, tab, tabIndex, tableIndex, data);
+        // console.log(type, tab, tabIndex, tableIndex, data);
         this.saveTableValue(tab, tableIndex, tab.currentPage - 1, data);
         tab.pageData[tab.currentPage - 1].currentTablePages[tableIndex] =
           data.page;
       }
+      this.translatedAnKa = Object.assign({}, this.translatedAnKa);
     },
     getPanelTotalPage(tab, tableIndex) {
       if (!tab.pageData) return 1;
@@ -1121,7 +1147,7 @@ export default {
     height: 40px;
     line-height: 30px;
     padding-bottom: 10px;
-    text-align: center;
+    text-align: left;
     border-bottom: 1px solid #d3d3d3;
     .form-designer-main-header-text {
       display: inline-block;
@@ -1130,25 +1156,28 @@ export default {
       /*border-left: 3px solid #134b89;*/
       padding-left: 10px;
       font-size: 24px;
-      color: #134b89;
+      color: #333333;
     }
   }
   .form-designer-main-tabs {
-    margin: 20px;
+    margin: 10px 20px 0;
+    padding-top: 10px;
     border-radius: 6px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   }
   .form-desgner-tables {
-    height: calc(100% - 30px);
-    /*height: 100%;*/
+    height: calc(100% - 40px);
+    border: 1px solid #adc0e0;
+    padding-bottom: 40px;
     overflow: auto;
   }
   .form-designer-setting {
     position: absolute;
-    bottom: 0;
-    right: 20px;
+    bottom: 4px;
+    right: 0;
     width: 100%;
     height: 30px;
+    padding-right: 40px;
   }
 }
 

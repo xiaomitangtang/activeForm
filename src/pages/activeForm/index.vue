@@ -2,7 +2,7 @@
 
 <div class="active-form-page">
     <loading v-if="loading"></loading>
-    <el-row class="active-form-page-head"></el-row>
+    <!--<el-row class="active-form-page-head" style="border: 1px solid #000;"></el-row>-->
   <el-row  class="active-form-page-body" >
     <div class=" fullhight active-form-page-body-anka-main">
         <div class="active-form-page-body-anka-main-head">{{currentAnka?currentAnka.header.name:'案卡详情'}}</div>
@@ -164,13 +164,13 @@ export default {
 <style lang="less">
 .active-form-page {
   height: 100%;
-  .active-form-page-head {
-    height: 60px;
-    background-color: #c9e1f7;
-  }
+  /*.active-form-page-head {*/
+  /*height: 60px;*/
+  /*background-color: #c9e1f7;*/
+  /*}*/
   .active-form-page-body {
-    height: calc(100% - 60px);
-    padding: 10px;
+    height: 100%;
+    /*padding: 10px;*/
     .active-form-page-body-ankalist {
       float: left;
       width: 150px;
@@ -182,15 +182,16 @@ export default {
       /*border: 1px solid #abc1de;*/
       .active-form-page-body-anka-main-head {
         width: 100%;
-        height: 34px;
+        height: 36px;
         font-size: 14px;
-        line-height: 34px;
+        line-height: 36px;
         padding-left: 15px;
-        background-color: #d1e4f6;
-        border: 1px solid #abc1de;
+        background-color: #5580b7;
+        border: 1px solid #adc0e0;
+        color: #ffffff;
       }
       .active-form-page-body-anka-main-body {
-        height: calc(100% - 34px);
+        height: calc(100% - 36px);
         width: 100%;
         border: 1px solid #abc1de;
         .active-form-page-body-anka-main-body-formlist {
@@ -206,11 +207,15 @@ export default {
         .active-form-page-body-anka-main-body-errors {
           float: left;
           width: 300px;
-          padding: 10px 0;
+          padding: 30px 20px;
+          background-color: #f1f7ff;
+          border-left: 1px solid #d6dfef;
           cursor: pointer;
           overflow: auto;
           div {
-            color: red;
+            font-size: 12px;
+            line-height: 24px;
+            color: #c92b2b;
           }
         }
       }

@@ -299,9 +299,12 @@ export default {
       this.$emit("pageChange", data);
     },
     setFromModel(model) {
-      if (!model) {
-        this.changemodel();
-      }
+      clearTimeout(this.setFormModelTimer);
+      this.setFormModelTimer = setTimeout(() => {
+        if (!model) {
+          this.changemodel();
+        }
+      }, 100);
     }
   },
   components: {
