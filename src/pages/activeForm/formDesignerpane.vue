@@ -298,13 +298,14 @@ export default {
     pageChange(data) {
       this.$emit("pageChange", data);
     },
-    setFromModel(model) {
-      clearTimeout(this.setFormModelTimer);
-      this.setFormModelTimer = setTimeout(() => {
-        if (!model) {
-          this.changemodel();
-        }
-      }, 100);
+    setFromModel() {
+      // clearTimeout(this.setFormModelTimer);
+      // this.setFormModelTimer = setTimeout(() => {
+      //   if (!model) {
+      //     this.changemodel();
+      //   }
+      // }, 100);
+      this.changemodel();
     }
   },
   components: {

@@ -700,20 +700,25 @@ export default {
         .every(i => i);
     },
     mysubmit() {
+      let Data = this.translatedAnKa.children.map(tab => {
+        this.saveTabValue(tab, tab.currentPage - 1, "notClearValid");
+        console.log(tab);
+        this.setTabValue(
+          tab,
+          tab.pageData[tab.currentPage - 1],
+          "notClearValid"
+        );
+        return tab.pageData;
+      });
+      console.log(Data);
+      console.log(JSON.stringify(Data));
       let formValid = this.validateAllPanels();
       this.$notify({
         title: "表单验证",
         message: formValid ? "通过" : "未通过",
         type: formValid ? "success" : "error"
       });
-      let Data = this.translatedAnKa.children.map(tab => {
-        this.saveTabValue(tab, tab.currentPage - 1);
-        console.log(tab);
-        this.setTabValue(tab, tab.pageData[tab.currentPage - 1]);
-        return tab.pageData;
-      });
-      console.log(Data);
-      console.log(JSON.stringify(Data));
+
       /*if (formValid) {
           let temp = {};
           // this.getAllTableItem().forEach(item => {
@@ -948,7 +953,7 @@ export default {
         return panel.tableData === table;
       })[0];
     },
-    setTableValue(table, data) {
+    setTableValue(table, data, flag) {
       let tempTableData = {};
       table.container.children.forEach(row => {
         row.children.forEach(item => {
@@ -960,16 +965,19 @@ export default {
           }
         });
       });
-      this.getTableByTableData(table).setFromModel();
+      if (flag !== "notClearValid") {
+        this.getTableByTableData(table).setFromModel();
+      }
       return tempTableData;
     },
-    setTabValue(tab, data) {
+    setTabValue(tab, data, flag) {
       let pagedata = tab.child.containers.map((table, index) => {
         let tempTableData = null;
         if (data) {
           tempTableData = this.setTableValue(
             table,
-            data.tabPageData[index][data.currentTablePages[index] - 1]
+            data.tabPageData[index][data.currentTablePages[index] - 1],
+            flag
           );
         } else {
           tempTableData = this.setTableValue(table);
@@ -990,8 +998,12 @@ export default {
         : tab.child.containers.map(() => 1);
       return { tabPageData: pagedata, currentTablePages };
     },
-    saveTabValue(tab, pageIndex) {
-      tab.pageData[pageIndex] = this.setTabValue(tab, tab.pageData[pageIndex]);
+    saveTabValue(tab, pageIndex, flag) {
+      tab.pageData[pageIndex] = this.setTabValue(
+        tab,
+        tab.pageData[pageIndex],
+        flag
+      );
     },
     saveTableValue(tab, tableIndex, tabpage, data) {
       let tempTableaData = this.setTableValue(
@@ -1032,11 +1044,21 @@ export default {
             tab.pageData.push(this.setTabValue(tab));
           }
           tab.currentPage = tab.pageData.length;
+        } else if (data === "del") {
+          if (tab.pageData.length === 1) {
+            this.setTabValue(tab);
+            tab.pageData = [this.setTabValue(tab)];
+          } else {
+            this.setTabValue(tab);
+            tab.pageData.splice(tab.currentPage - 1, 1);
+            tab.currentPage = tab.currentPage > 1 ? tab.currentPage - 1 : 1;
+            this.setTabValue(tab, tab.pageData[tab.currentPage - 1]);
+          }
         }
       } else if (type === "table") {
+        let currentTable = tab.child.containers[tableIndex];
         if (data.data === "add") {
           console.log(type, tab, tabIndex, tableIndex, data);
-          let currentTable = tab.child.containers[tableIndex];
           tab.pageData[tab.currentPage - 1].tabPageData[tableIndex].splice(
             tab.pageData[tab.currentPage - 1].currentTablePages[tableIndex] - 1,
             1,
@@ -1047,6 +1069,35 @@ export default {
           );
           tab.pageData[tab.currentPage - 1].currentTablePages[tableIndex] =
             tab.pageData[tab.currentPage - 1].tabPageData[tableIndex].length;
+        } else if (data.data === "del") {
+          this.setTableValue(currentTable);
+          if (
+            tab.pageData[tab.currentPage - 1].tabPageData[tableIndex].length ===
+            1
+          ) {
+            tab.pageData[tab.currentPage - 1].tabPageData[tableIndex] = [
+              this.setTableValue(currentTable)
+            ];
+          } else {
+            tab.pageData[tab.currentPage - 1].tabPageData[tableIndex].splice(
+              tab.pageData[tab.currentPage - 1].currentTablePages[tableIndex] -
+                1,
+              1
+            );
+          }
+          let currentTablePages =
+            tab.pageData[tab.currentPage - 1].currentTablePages;
+          currentTablePages[tableIndex] =
+            currentTablePages[tableIndex] > 1
+              ? currentTablePages[tableIndex] - 1
+              : 1;
+
+          this.setTableValue(
+            currentTable,
+            tab.pageData[tab.currentPage - 1].tabPageData[tableIndex][
+              currentTablePages[tableIndex] - 1
+            ]
+          );
         }
       }
       this.translatedAnKa = Object.assign({}, this.translatedAnKa);
@@ -1069,6 +1120,7 @@ export default {
           data.page;
       }
       this.translatedAnKa = Object.assign({}, this.translatedAnKa);
+      this.$emit("clearErrors");
     },
     getPanelTotalPage(tab, tableIndex) {
       if (!tab.pageData) return 1;

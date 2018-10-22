@@ -82,10 +82,12 @@ export default {
         list-style: none;
         font-size: 13px;
         color: #2589df;
-        padding: 12px 10px 12px 20px;
+        padding: 12px 10px 12px 44px;
         cursor: pointer;
         &::before {
-          margin-right: 10px;
+          position: absolute;
+          left: 20px;
+          /*margin-right: 10px;*/
           font-family: "iconfont";
           content: "\e6a3";
           font-size: 16px;
