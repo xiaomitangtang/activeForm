@@ -78,12 +78,11 @@ export default {
       .form-list-item {
         position: relative;
         border-bottom: 1px dashed #aac3e2;
-        min-height: 40px;
-        line-height: 40px;
+        line-height: 20px;
         list-style: none;
         font-size: 13px;
         color: #2589df;
-        padding-left: 20px;
+        padding: 12px 10px 12px 20px;
         cursor: pointer;
         &::before {
           margin-right: 10px;

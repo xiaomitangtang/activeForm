@@ -708,7 +708,8 @@ export default {
       });
       let Data = this.translatedAnKa.children.map(tab => {
         this.saveTabValue(tab, tab.currentPage - 1);
-        this.setTabValue(tab, tab.currentPage - 1);
+        console.log(tab);
+        this.setTabValue(tab, tab.pageData[tab.currentPage - 1]);
         return tab.pageData;
       });
       console.log(Data);
