@@ -698,11 +698,16 @@ export default {
       return this.getAllPanes()
         .map(item => item.validField())
         .every(i => i);
-    },
+    }, //调用当前设计器中所有的table进行表单验证
     mysubmit() {
+      let formValid = this.validateAllPanels();
+      this.$notify({
+        title: "表单验证",
+        message: formValid ? "通过" : "未通过",
+        type: formValid ? "success" : "error"
+      });
       let Data = this.translatedAnKa.children.map(tab => {
         this.saveTabValue(tab, tab.currentPage - 1, "notClearValid");
-        console.log(tab);
         this.setTabValue(
           tab,
           tab.pageData[tab.currentPage - 1],
@@ -712,48 +717,44 @@ export default {
       });
       console.log(Data);
       console.log(JSON.stringify(Data));
-      let formValid = this.validateAllPanels();
-      this.$notify({
-        title: "表单验证",
-        message: formValid ? "通过" : "未通过",
-        type: formValid ? "success" : "error"
-      });
-
+      console.log("translatedAnka");
+      console.log(this.translatedAnKa);
+      console.log(JSON.stringify(this.translatedAnKa));
       /*if (formValid) {
-          let temp = {};
-          // this.getAllTableItem().forEach(item => {
-          //   temp.push({ field: item.key, value: item.val });
-          // });
-          this.getAllPanes().forEach(panel => {
-            let panelData = {
-              name: panel.tableData.text,
-              panelID: panel.panelID,
-              panelName: panel.panelName,
-              model: panel.translatedTableDate
-            };
-            if (temp[panel.panelID]) {
-              temp[panel.panelID].push(panelData);
-            } else {
-              temp[panel.panelID] = [panelData];
-            }
-          });
-          if (this.hasFile) {
-            let formdata = new FormData();
-            temp.forEach(item => {
-              formdata.append(item.field, item.value);
+            let temp = {};
+            // this.getAllTableItem().forEach(item => {
+            //   temp.push({ field: item.key, value: item.val });
+            // });
+            this.getAllPanes().forEach(panel => {
+              let panelData = {
+                name: panel.tableData.text,
+                panelID: panel.panelID,
+                panelName: panel.panelName,
+                model: panel.translatedTableDate
+              };
+              if (temp[panel.panelID]) {
+                temp[panel.panelID].push(panelData);
+              } else {
+                temp[panel.panelID] = [panelData];
+              }
             });
-            temp = formdata;
-          }
-
-          this.$api.activeForm.saveAnKa(temp).then(
-            res => {
-              console.log(res);
-            },
-            err => {
-              console.log(err);
+            if (this.hasFile) {
+              let formdata = new FormData();
+              temp.forEach(item => {
+                formdata.append(item.field, item.value);
+              });
+              temp = formdata;
             }
-          );
-        }*/
+
+            this.$api.activeForm.saveAnKa(temp).then(
+              res => {
+                console.log(res);
+              },
+              err => {
+                console.log(err);
+              }
+            );
+          }*/
     }, //点击保存按钮向后台提交数据的方法
     getAllTableItem() {
       return this.tableItems;
@@ -1019,7 +1020,6 @@ export default {
       tab.pageData[tabpage].tabPageData[tableIndex][
         tab.pageData[tabpage].currentTablePages[tableIndex] - 1
       ] = tempTableaData;
-      // console.log(tab);
     },
     initTabPageData() {
       clearTimeout(this.iniTabPageDataTimer);

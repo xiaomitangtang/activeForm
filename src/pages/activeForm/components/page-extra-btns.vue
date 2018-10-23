@@ -3,7 +3,7 @@
         <div :class="{'disable':!add}" @click="btnClick('add')" class="active-form-pagenation-extra-btn iconfont icon-tianjia1 "></div>
         <div :class="{'disable':!copy}" @click="btnClick('copy')" class="active-form-pagenation-extra-btn iconfont icon-fuzhi"></div>
         <div :class="{'disable':!del}" @click="btnClick('del')" class="active-form-pagenation-extra-btn iconfont icon-shanchu1"></div>
-        <div :class="{'disable':!save}" @click="btnClick('save')" class="active-form-pagenation-extra-btn iconfont icon-baocun"></div>
+        <!--<div :class="{'disable':!save}" @click="btnClick('save')" class="active-form-pagenation-extra-btn iconfont icon-baocun"></div>-->
     </div>
 </template>
 <script>
