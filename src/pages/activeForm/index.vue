@@ -108,19 +108,16 @@ export default {
       );
     },
     addError(data) {
-      // console.log("addError", data);
-      this.errorsList.push(data);
+      let errorsList = [...this.errorsList];
+      if (!errorsList.indexOf(data) + 1) {
+        errorsList.push(data);
+      }
+      this.errorsList = errorsList;
     },
     removeError(data) {
-      let tempIndex = -1;
-      this.errorsList.forEach((er, index) => {
-        if (er.item.elId === data.item.elId) {
-          tempIndex = index;
-        }
+      this.errorsList = this.errorsList.filter(er => {
+        return er.item.elId !== data.item.elId;
       });
-      if (tempIndex !== -1) {
-        this.errorsList.splice(tempIndex, 1);
-      }
     },
     clearErrors() {
       this.errorsList = [];
