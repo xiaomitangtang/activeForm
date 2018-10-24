@@ -11,7 +11,7 @@
                 v-for="(item,colIndex) in row.children"
                 :key="'item'+rowIndex+colIndex" :span="item.span" :offset="item.offset"  :class="{editItem:edit}"
                 @dragstart.native="formItemDragStart(item,$event)" @dragenter.native="dropToIndex=index"
-                @dblclick.native="formItemClick({index,item})">
+                @dblclick.native="formItemClick({item})">
           <!--<el-button      v-if="edit" size="mini" type="text" icon="el-icon-circle-close"  class="close-item" @click.stop="delFormItem(index,item)"></el-button>-->
           <el-form-item    :label="item.label"  :id="item.elId" :label-width="item.labelWidth?(item.labelWidth+'px'):'1px'"  :prop="item.key">
             <myElement    :draggable="edit"   :formModel="formModel" :innerdata="item"></myElement>

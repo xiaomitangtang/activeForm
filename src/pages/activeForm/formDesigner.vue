@@ -720,41 +720,6 @@ export default {
       console.log("translatedAnka");
       console.log(this.translatedAnKa);
       console.log(JSON.stringify(this.translatedAnKa));
-      /*if (formValid) {
-            let temp = {};
-            // this.getAllTableItem().forEach(item => {
-            //   temp.push({ field: item.key, value: item.val });
-            // });
-            this.getAllPanes().forEach(panel => {
-              let panelData = {
-                name: panel.tableData.text,
-                panelID: panel.panelID,
-                panelName: panel.panelName,
-                model: panel.translatedTableDate
-              };
-              if (temp[panel.panelID]) {
-                temp[panel.panelID].push(panelData);
-              } else {
-                temp[panel.panelID] = [panelData];
-              }
-            });
-            if (this.hasFile) {
-              let formdata = new FormData();
-              temp.forEach(item => {
-                formdata.append(item.field, item.value);
-              });
-              temp = formdata;
-            }
-
-            this.$api.activeForm.saveAnKa(temp).then(
-              res => {
-                console.log(res);
-              },
-              err => {
-                console.log(err);
-              }
-            );
-          }*/
     }, //点击保存按钮向后台提交数据的方法
     getAllTableItem() {
       return this.tableItems;
@@ -903,7 +868,6 @@ export default {
         });
       }
       this.translatedAnKa = tempAnka;
-
       this.initPanelsFormModal();
       this.initTabPageData();
     }, //将老版本的案卡系统的数据进行转化为本系统所需要的数据

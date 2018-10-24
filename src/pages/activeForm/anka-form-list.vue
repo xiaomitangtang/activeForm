@@ -30,24 +30,32 @@ export default {
       this.$emit("ankaTableClick", { table, tab });
     },
     dragStart(tab, item, index, index2) {
-      this.$emit("dragItem", { tab, item, tabIndex: index, itemIndex: index2 });
-    },
-    dropedOnTitle(tab, index) {
-      this.$emit("dropedOnTitle", { tab, tabIndex: index });
-    },
-    dropedOnItem(tab, item, index, index2) {
-      this.$emit("dropedOnItem", {
+      //
+      this.$emit("dragItem_", {
         tab,
         item,
         tabIndex: index,
         itemIndex: index2
       });
-    },
+    }, //这三个方法均为展示阶段是用不到的方法，所以注释，去掉_既可以使用
+    dropedOnTitle(tab, index) {
+      this.$emit("dropedOnTitle_", { tab, tabIndex: index });
+    }, //这三个方法均为展示阶段是用不到的方法，所以注释，去掉_既可以使用
+    dropedOnItem(tab, item, index, index2) {
+      this.$emit("dropedOnItem_", {
+        tab,
+        item,
+        tabIndex: index,
+        itemIndex: index2
+      });
+    }, //这三个方法均为展示阶段是用不到的方法，所以注释，去掉_既可以使用
     titleDbClick(tab) {
-      this.$emit("editName", { type: "tab", tab: tab });
+      //去掉后面的_就可以修改名字，展示阶段不需要此功能所以去掉
+      this.$emit("editName_", { type: "tab", tab: tab });
     },
     itemDbClick(form) {
-      this.$emit("editName", { type: "table", table: form });
+      //去掉后面的_就可以修改名字，展示阶段不需要此功能所以去掉
+      this.$emit("editName_", { type: "table", table: form });
     }
   }
   // mounted() {

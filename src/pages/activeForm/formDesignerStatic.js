@@ -631,6 +631,7 @@ function formValid(item, rule, value, callback) {
   //   return;
   // }
   if (item.key === "TYYW_GS_ESSS__DJRQ") {
+    console.log("TYYW_GS_ESSS__DJRQ------------验证");
     this.formDedigner.getAllTableItem().forEach(i => {
       if (i.key === "TYYW_GS_ESSS__HJRQ") {
         i.settings.disabled = !value;
