@@ -715,11 +715,12 @@ export default {
         );
         return tab.pageData;
       });
+      console.log(this.translatedAnKa);
+      console.log("DataData");
       console.log(Data);
       console.log(JSON.stringify(Data));
-      console.log("translatedAnka");
-      console.log(this.translatedAnKa);
-      console.log(JSON.stringify(this.translatedAnKa));
+
+      // console.log(JSON.stringify(this.translatedAnKa));
     }, //点击保存按钮向后台提交数据的方法
     getAllTableItem() {
       return this.tableItems;
@@ -923,6 +924,7 @@ export default {
       table.container.children.forEach(row => {
         row.children.forEach(item => {
           tempTableData[item.key] = item.val;
+          if (flag === "notClearValid") return;
           if (!data) {
             item.val = null;
           } else {

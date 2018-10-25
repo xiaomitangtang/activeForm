@@ -881,6 +881,7 @@ function translateFormItem(item, tabIndex, tableIndex) {
   tempItem.settings = getSettings(tempItem);
   tempItem.settings.disabled = item.disable;
   tempItem.settings.readonly = false;
+  tempItem.settings.multiple = item.multiple;
   tempItem.isRequire = false;
   // tempItem.settings.placeholder = item.mrz;
   tempItem.val = item.value;

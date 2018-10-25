@@ -96,3 +96,33 @@ axios.get("/VueApp_config.json").then(res => {
     router,
     render: h => h(App)
 }).$mount("#app");*/
+
+async function f() {
+  let resu1 = await new Promise(r => {
+    setTimeout(() => {
+      console.log("-----------async1111111111111");
+      r(1111111111111111111111);
+    }, 2000);
+  });
+  console.log("resu1======", resu1);
+  let resu2 = await new Promise(r => {
+    setTimeout(() => {
+      console.log("-----------async2222222222222222");
+      r(222222222222222222222);
+    }, 2000);
+  });
+  console.log("resu2======", resu2);
+  let resu3 = await new Promise(r => {
+    setTimeout(() => {
+      console.log("-----------async333333333333333");
+      r(333333333333333333);
+    }, 2000);
+  });
+  console.log("resu3======", resu3);
+  console.log("-------------after--async");
+  return "执行结果";
+}
+f().then(res => {
+  console.log("执行完了");
+  console.log("res--------------", res);
+});

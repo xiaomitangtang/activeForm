@@ -79,7 +79,7 @@ export default {
                       value: null,
                       span: 24,
                       datasource: 312,
-                      multiple: false,
+                      multiple: true,
                       options: null
                     }
                   ]
