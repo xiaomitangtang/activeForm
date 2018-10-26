@@ -126,7 +126,7 @@ export default {
   },
   mounted() {
     this.currenShowTable = this.currentAnka.children[0].child.containers[0];
-    /* this.$api.activeForm
+    /*   this.$api.activeForm
       .demoData({
         params: {
           akmbbh: "100000231",
