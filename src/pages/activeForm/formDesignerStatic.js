@@ -1,7 +1,7 @@
-import RuleParser from './rulesParser/rulesParser'
-import ruleData from './rulesParser/data.json'
-import ConditionMap from './rulesParser/conditionMap'
-import * as Const from "./rulesParser/parseConst"
+import RuleParser from "./rulesParser/rulesParser";
+import ruleData from "./rulesParser/data.json";
+import ConditionMap from "./rulesParser/conditionMap";
+import * as Const from "./rulesParser/parseConst";
 const userableSetting = {
   "active-text": false,
   "inactive-text": false,
@@ -620,70 +620,106 @@ function getDefauleVal(item) {
   }
 } //根据不同的表单元素进行判断并返回默认值
 function formValid(item, rule, value, callback) {
-  let formData = this.formDedigner.getAllTableItem()
-  let parser = new RuleParser(ruleData, formData)
-  let containers = this.formDedigner.getAllPanes()
-  let constanlyData = parser.getEntitys(containers)
-  let rules = parser.rules()
-  let isPerIsValid = true
-  let expression = rules.filter(r => r.condition.key === item.key)[0]
-  if(!expression) { callback();  return}
+  let formData = this.formDedigner.getAllTableItem();
+  let parser = new RuleParser(ruleData, formData);
+  let containers = this.formDedigner.getAllPanes();
+  let constanlyData = parser.getEntitys(containers);
+  let rules = parser.rules();
+  let isPerIsValid = true;
+  let expression = rules.filter(r => r.condition.key === item.key)[0];
+  if (!expression) {
+    callback();
+    return;
+  }
   switch (expression.condition.expression) {
-    case Const.NotIn: isPerIsValid = ConditionMap.get(expression.condition.expression)(constanlyData[item.key], expression.condition.other); break
+    case Const.NotIn:
+      isPerIsValid = ConditionMap.get(expression.condition.expression)(
+        constanlyData[item.key],
+        expression.condition.other
+      );
+      break;
     case Const.IsNotNull: {
-      isPerIsValid = ConditionMap.get(expression.condition.expression)(constanlyData[item.key], expression.condition.other);
-      if(isPerIsValid) {this.$emit("removeError", {value,item}); callback()}
-      else  {
-        item.errMsg = expression.msg
-        this.$emit("addError", {value,item}); callback(new Error(''))}
-      break
+      isPerIsValid = ConditionMap.get(expression.condition.expression)(
+        constanlyData[item.key],
+        expression.condition.other
+      );
+      if (isPerIsValid) {
+        this.$emit("removeError", { value, item });
+        callback();
+      } else {
+        item.errMsg = expression.msg;
+        this.$emit("addError", { value, item });
+        callback(new Error(""));
+      }
+      break;
     }
     case Const.GreaterAndEqual:
-    case Const.GreaterThan:
-    {
-      isPerIsValid = ConditionMap.get(expression.condition.expression)(constanlyData[item.key],/^[0-9]+\.?[0-9]*$/.test(expression.condition.other) ? expression.condition.other : constanlyData[expression.condition.other] ) 
-      if(isPerIsValid) {this.$emit("removeError", {value,item}); callback()}
-      else  {
-        item.errMsg = expression.msg
-        this.$emit("addError", {value, item});
-        callback(new Error(''))
+    case Const.GreaterThan: {
+      isPerIsValid = ConditionMap.get(expression.condition.expression)(
+        constanlyData[item.key],
+        /^[0-9]+\.?[0-9]*$/.test(expression.condition.other)
+          ? expression.condition.other
+          : constanlyData[expression.condition.other]
+      );
+      if (isPerIsValid) {
+        this.$emit("removeError", { value, item });
+        callback();
+      } else {
+        item.errMsg = expression.msg;
+        this.$emit("addError", { value, item });
+        callback(new Error(""));
       }
-      break
+      break;
     }
     default: {
-      isPerIsValid = ConditionMap.get(expression.condition.expression)(constanlyData[item.key]);
-       break
+      isPerIsValid = ConditionMap.get(expression.condition.expression)(
+        constanlyData[item.key]
+      );
+      break;
     }
   }
   expression.actions.forEach(a => {
-    switch(a.expression){
+    switch (a.expression) {
       case Const.Disabled:
       case Const.UnDisabled: {
-        ConditionMap.get(a.expression)(formData, a.key, isPerIsValid); callback();break}
+        ConditionMap.get(a.expression)(formData, a.key, isPerIsValid);
+        callback();
+        break;
+      }
       case Const.GreaterAndEqual:
       case Const.GreaterThan: {
-        let isvalid = ConditionMap.get(a.expression)(constanlyData[a.key],/^[0-9]+\.?[0-9]*$/.test(a.other) ? a.other : constanlyData[a.other])
-        if(isvalid) {this.$emit("removeError", {value,item}); callback()}
-        else  {
-          item.errMsg = expression.msg
-          this.$emit("addError", {value,item}); callback(new Error(''))
+        let isvalid = ConditionMap.get(a.expression)(
+          constanlyData[a.key],
+          /^[0-9]+\.?[0-9]*$/.test(a.other) ? a.other : constanlyData[a.other]
+        );
+        if (isvalid) {
+          this.$emit("removeError", { value, item });
+          callback();
+        } else {
+          item.errMsg = expression.msg;
+          this.$emit("addError", { value, item });
+          callback(new Error(""));
         }
-        break
+        break;
       }
       case Const.Clear:
-        ConditionMap.get(a.expression)(containers, a.key); callback()
-        break
-      default:{
-        let isvalid = ConditionMap.get(a.expression)(constanlyData[a.key])
-        if(isvalid) {
-        this.$emit("removeError", {value,item}); callback()}
-        else  {
-          item.errMsg = expression.msg
-          this.$emit("addError", {value,item}); callback(new Error(''))}
-        break
+        ConditionMap.get(a.expression)(containers, a.key);
+        callback();
+        break;
+      default: {
+        let isvalid = ConditionMap.get(a.expression)(constanlyData[a.key]);
+        if (isvalid) {
+          this.$emit("removeError", { value, item });
+          callback();
+        } else {
+          item.errMsg = expression.msg;
+          this.$emit("addError", { value, item });
+          callback(new Error(""));
+        }
+        break;
       }
-    } 
-  })
+    }
+  });
   callback();
 } //自定义校验方法
 function getDefaultRule(item, val) {

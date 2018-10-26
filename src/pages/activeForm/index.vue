@@ -24,9 +24,7 @@
                ></formDesigner>
             </div>
             <div class="fullhight active-form-page-body-anka-main-body-errors">
-                <div v-for="(error,index) in errorsList" :key="index">
-                    <div @click="errorClick(error)">{{error.item.label}}</div>
-                </div>
+                <errorsList :errors="errorsList" @errorClick="errorClick"></errorsList>
             </div>
         </div>
 <!--      <el-col class="fullhight" :span="4" ><dragmenu></dragmenu></el-col>
@@ -153,7 +151,8 @@ export default {
     ankaformList: () => import("./anka-form-list.vue"),
     dragmenu: () => import("./dragMenu.vue"),
     formDesigner: () => import("./formDesigner.vue"),
-    loading: () => import("./components/loading.vue")
+    loading: () => import("./components/loading.vue"),
+    errorsList: () => import("./error-list.vue")
   }
 };
 </script>
@@ -209,7 +208,7 @@ export default {
           border-left: 1px solid #d6dfef;
           cursor: pointer;
           overflow: auto;
-          div {
+          .error-item {
             font-size: 12px;
             line-height: 24px;
             color: #c92b2b;

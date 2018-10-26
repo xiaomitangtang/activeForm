@@ -642,7 +642,7 @@
 </template>
 <script>
 import formDesignerStatic from "./formDesignerStatic";
-
+let justSave = "justSave";
 export default {
   name: "formDesigner",
   props: {
@@ -707,20 +707,13 @@ export default {
         type: formValid ? "success" : "error"
       });
       let Data = this.translatedAnKa.children.map(tab => {
-        this.saveTabValue(tab, tab.currentPage - 1, "notClearValid");
-        this.setTabValue(
-          tab,
-          tab.pageData[tab.currentPage - 1],
-          "notClearValid"
-        );
+        this.saveTabValue(tab, tab.currentPage - 1, justSave);
         return tab.pageData;
       });
       console.log(this.translatedAnKa);
       console.log("DataData");
       console.log(Data);
       console.log(JSON.stringify(Data));
-
-      // console.log(JSON.stringify(this.translatedAnKa));
     }, //点击保存按钮向后台提交数据的方法
     getAllTableItem() {
       return this.tableItems;
@@ -924,7 +917,7 @@ export default {
       table.container.children.forEach(row => {
         row.children.forEach(item => {
           tempTableData[item.key] = item.val;
-          if (flag === "notClearValid") return;
+          if (flag === justSave) return;
           if (!data) {
             item.val = null;
           } else {
@@ -932,7 +925,7 @@ export default {
           }
         });
       });
-      if (flag !== "notClearValid") {
+      if (flag !== justSave) {
         this.getTableByTableData(table).setFromModel();
       }
       return tempTableData;
@@ -1080,7 +1073,6 @@ export default {
           console.log("这句代码是为了让eslint通过,并不会执行");
         }
       } else if (type === "table") {
-        // console.log(type, tab, tabIndex, tableIndex, data);
         this.saveTableValue(tab, tableIndex, tab.currentPage - 1, data);
         tab.pageData[tab.currentPage - 1].currentTablePages[tableIndex] =
           data.page;
