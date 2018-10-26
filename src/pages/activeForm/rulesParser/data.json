@@ -1,0 +1,22 @@
+[
+    {
+        "expression": "TYYW_GS_XYRQK__ESMSJE=@GreaterThan{0} ",
+        "actions": "TYYW_GS_XYRQK__ESCPJG_DM=@MustBe{@IsNotNull{}} ",
+        "errormsg": "当“二审没收金额”大于0时，“二审裁判结果”应当填录。"
+    },
+    {
+        "expression": "TYYW_GS_ESSS__CTRQ=@IsNotNull{} ",
+        "actions": "TYYW_GS_ESSS__CTZZRYLX=@MustBe{@Show{}} ",
+        "errormsg": "当“出庭日期”不为空时，“出庭人员作证类型”显示。"
+    },
+    {
+        "expression": "TYYW_GS_XYRQK__ESXGX=@ValueNotIs{0333334400801,0333334400802}",
+        "actions": "TYYW_GS_XYRQK__ESFJXJTQK=@MustBe{@Hide{}} TYYW_GS_ESSS__HJRQ=@MustBe{@Hide{}} TYYW_GS_XYRQK__FYJDZZSLRQ=@MustBe{@Hide{}} TYYW_GS_ESSS__DJRQ=@MustBe{@Hide{}} TYYW_GS_XYRQK__ESPJQTZM=@MustBe{@Hide{}}",
+        "errormsg": "当“二审裁判日期”填录且“二审宣告刑”填录不为无罪类型时，“二审判决罪名”应当填录。"
+    },
+    {
+        "expression": "TYYW_GS_ESSS__CTRQ=@IsNull{} ",
+        "actions": "TYYW_GS_ESSS__CTZZRYLX=@MustBe{@ClearIt{}} TYYW_GS_ESSS__CTZZRYLX=@MustBe{@Hide{}} ",
+        "errormsg": "当“出庭日期”为空时，“出庭人员作证类型”清空、禁填。"
+    }
+]

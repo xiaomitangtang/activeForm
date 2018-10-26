@@ -1,3 +1,7 @@
+import RuleParser from './rulesParser/rulesParser'
+import ruleData from './rulesParser/data.json'
+import ConditionMap from './rulesParser/conditionMap'
+import * as Const from "./rulesParser/parseConst"
 const userableSetting = {
   "active-text": false,
   "inactive-text": false,
@@ -616,57 +620,71 @@ function getDefauleVal(item) {
   }
 } //根据不同的表单元素进行判断并返回默认值
 function formValid(item, rule, value, callback) {
-  // console.log(
-  //   item.key +
-  //     "------------" +
-  //     item.component +
-  //     "------------" +
-  //     item.init +
-  //     "---------------" +
-  //     value
-  // );
-  // if (item.init) {
-  //   item.init = false;
-  //   callback();
-  //   return;
-  // }
-  if (item.key === "TYYW_GS_ESSS__DJRQ") {
-    console.log("TYYW_GS_ESSS__DJRQ------------验证");
-    this.formDedigner.getAllTableItem().forEach(i => {
-      if (i.key === "TYYW_GS_ESSS__HJRQ") {
-        i.settings.disabled = !value;
-      }
-    });
-    if (value) {
-      this.$emit("removeError", {
-        value,
-        item
-      });
-      callback();
-    } else {
-      this.$emit("addError", {
-        value,
-        item
-      });
-      // callback();
-      callback(new Error(""));
+  let formData = this.formDedigner.getAllTableItem()
+  let parser = new RuleParser(ruleData, formData)
+  let containers = this.formDedigner.getAllPanes()
+  let constanlyData = parser.getEntitys(containers)
+  let rules = parser.rules()
+  let isPerIsValid = true
+  let expression = rules.filter(r => r.condition.key === item.key)[0]
+  if(!expression) { callback();  return}
+  switch (expression.condition.expression) {
+    case Const.NotIn: isPerIsValid = ConditionMap.get(expression.condition.expression)(constanlyData[item.key], expression.condition.other); break
+    case Const.IsNotNull: {
+      isPerIsValid = ConditionMap.get(expression.condition.expression)(constanlyData[item.key], expression.condition.other);
+      if(isPerIsValid) {this.$emit("removeError", {value,item}); callback()}
+      else  {
+        item.errMsg = expression.msg
+        this.$emit("addError", {value,item}); callback(new Error(''))}
+      break
     }
-  } else {
-    if (value) {
-      this.$emit("removeError", {
-        value,
-        item
-      });
-      callback();
-    } else {
-      this.$emit("addError", {
-        value,
-        item
-      });
-      callback(new Error(""));
-      // callback();
+    case Const.GreaterAndEqual:
+    case Const.GreaterThan:
+    {
+      isPerIsValid = ConditionMap.get(expression.condition.expression)(constanlyData[item.key],/^[0-9]+\.?[0-9]*$/.test(expression.condition.other) ? expression.condition.other : constanlyData[expression.condition.other] ) 
+      if(isPerIsValid) {this.$emit("removeError", {value,item}); callback()}
+      else  {
+        item.errMsg = expression.msg
+        this.$emit("addError", {value, item});
+        callback(new Error(''))
+      }
+      break
+    }
+    default: {
+      isPerIsValid = ConditionMap.get(expression.condition.expression)(constanlyData[item.key]);
+       break
     }
   }
+  expression.actions.forEach(a => {
+    switch(a.expression){
+      case Const.Disabled:
+      case Const.UnDisabled: {
+        ConditionMap.get(a.expression)(formData, a.key, isPerIsValid); callback();break}
+      case Const.GreaterAndEqual:
+      case Const.GreaterThan: {
+        let isvalid = ConditionMap.get(a.expression)(constanlyData[a.key],/^[0-9]+\.?[0-9]*$/.test(a.other) ? a.other : constanlyData[a.other])
+        if(isvalid) {this.$emit("removeError", {value,item}); callback()}
+        else  {
+          item.errMsg = expression.msg
+          this.$emit("addError", {value,item}); callback(new Error(''))
+        }
+        break
+      }
+      case Const.Clear:
+        ConditionMap.get(a.expression)(containers, a.key); callback()
+        break
+      default:{
+        let isvalid = ConditionMap.get(a.expression)(constanlyData[a.key])
+        if(isvalid) {
+        this.$emit("removeError", {value,item}); callback()}
+        else  {
+          item.errMsg = expression.msg
+          this.$emit("addError", {value,item}); callback(new Error(''))}
+        break
+      }
+    } 
+  })
+  callback();
 } //自定义校验方法
 function getDefaultRule(item, val) {
   let tempRule = [{ validator: formValid.bind(this, item), trigger: "change" }];

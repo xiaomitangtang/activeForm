@@ -1,0 +1,7 @@
+[
+    {
+        "expression": "TYYW_GS_XYRQK__ESXGX=@ValueNotIs{是,0333334400802}",
+        "actions": "TYYW_GS_XYRQK__ESPJZM=@MustBe{@Hide{}} TYYW_GS_XYRQK__ESPJZM=@MustBe{@IsNotNull{}} TYYW_GS_XYRQK__ESXGXXQ=@MustBe{@Show{}} TYYW_GS_XYRQK__ESHXKYQ=@MustBe{@Show{}} TYYW_GS_XYRQK__ESFJXQK=@MustBe{@Show{}} ",
+        "errormsg": "当“二审裁判日期”填录且“二审宣告刑”填录不为无罪类型时，“二审判决罪名”应当填录。"
+    }
+]

@@ -1,12 +1,13 @@
 import ConditionMap from './conditionMap'
-
 export default class RuleBuilder {
   /**
-     * @param {案卡标识} cardId
+     * @param {案卡表单集合} form
      */
-  constructor (cardId) {
+  constructor (form, item, callback) {
+    this.value = item.key
+    this.form = form
+    this.callback = callback
     this.rules = {}
-    this.cardId = cardId
   }
   /**
      * 注册规则
@@ -19,8 +20,9 @@ export default class RuleBuilder {
       arranges.forEach(arrange => {
         pattren.test(arrange)
         Reflect.set(this.rules, RegExp.$1, [])
-        let validator = this.generateValidator(RegExp.$2, rule.actions, rule.errormsg)
-        this.rules[RegExp.$1].push({ validator: validator, trigger: 'change' })
+        debugger
+        this.generateValidator(this.form, RegExp.$2, rule.actions, rule.errormsg, this.value, this.callback)
+        // this.rules[RegExp.$1].push({ validator: validator, trigger: 'change' })
       })
     })
     return this.rules
@@ -32,20 +34,23 @@ export default class RuleBuilder {
      * @param {副作用} actions
      * @param {错误提示} errormsg
      */
-  generateValidator (condition, actions, errormsg) {
-    let validator = (rule, value, callback) => {
-      let preCondition = ConditionMap.get(condition)(value)
-      let isValid = this.peggingAction(actions, preCondition)
-      isValid ? callback() : callback(new Error(errormsg))
-    }
-    return validator
+  generateValidator (form, condition, actions, errormsg, value, callback) {
+    // let validator = (rule, value, callback) => {
+    //   let preCondition = ConditionMap.get(condition)(value)
+    //   let isValid = this.peggingAction(form, actions, preCondition)
+    //   isValid ? callback() : callback(new Error(errormsg))
+    // }
+    let preCondition = ConditionMap.get(condition)(value)
+    let isValid = this.peggingAction(form, actions, preCondition)
+    isValid ? callback() : callback(new Error(errormsg))
+    // return validator
   }
 
   /**
      * 行为溯源
      * @param {行为表达式} actionExpressions
      */
-  peggingAction (actionExpressions, preCondition) {
+  peggingAction (form,actionExpressions, preCondition) {
     let pattrens = [
       [/(.+)=@MustBe{@(.+){}}/, 2],
       [/(.+)=@MustBe{@([a-zA-Z]+){&(.+)}}/, 3]
@@ -56,7 +61,6 @@ export default class RuleBuilder {
       let actions = actionExpressions.split(' ')
       actions.forEach(actionExpression => {
         let match = p[0].test(actionExpression)
-        let form = JSON.parse(localStorage.getItem(this.cardId))
         if (match) {
           if (p[1] === 2) { // 二元表达式
             ConditionMap.get(RegExp.$2)(RegExp.$1, preCondition)
