@@ -1,5 +1,5 @@
 export default {
-  install(Vue, options) {
+  install(Vue) {
     /**
      * @directive 图片未加载前显示随机背景
      */

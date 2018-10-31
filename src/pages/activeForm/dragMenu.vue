@@ -1,6 +1,6 @@
 <template>
     <el-row>
-      <div v-for="item in dragComponents " class="menu-item" draggable="true" @dragstart="dragComponent(item)">
+      <div v-for="item in dragComponents" :key="item.name" class="menu-item" draggable="true" @dragstart="dragComponent(item)">
         <!--<div class="menu-item-text">{{item.name}}</div>-->
         <div class="menu-item-text">{{item.name}}</div>
         <div class="menu-item-drag"><el-button class="menu-item-drag-btn" size="mini" type="info" icon="el-icon-rank">拖动</el-button></div>
