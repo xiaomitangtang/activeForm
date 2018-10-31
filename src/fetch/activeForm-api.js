@@ -11,7 +11,7 @@ class DemoApiController extends BaseApiController {
     * @description 假设这里有很复杂的前端逻辑
     */
   demoData = params => {
-    return this.get(this.activeForm.demo2, params).then(res => res.data);
+    return this.get(this.activeForm.demo, params).then(res => res.data);
     // return axios.get(request.activeForm.demo, params).then(res => res.data);
   };
   saveAnKa = params => {

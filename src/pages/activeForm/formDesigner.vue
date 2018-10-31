@@ -846,7 +846,7 @@ export default {
         tempAnka.children = this.data.children.map((tab, tabIndex) => {
           return {
             currentTableName: tab.child.containers[0].text,
-            pageData: null,
+            pageData: tab.pageData || null,
             currentPage: 1,
             child: {
               controlType: tab.child.controlType,
@@ -862,7 +862,7 @@ export default {
         });
       }
       this.translatedAnKa = tempAnka;
-      this.initPanelsFormModal();
+      // this.initPanelsFormModal();
       this.initTabPageData();
     }, //将老版本的案卡系统的数据进行转化为本系统所需要的数据
     initPanelsFormModal() {
@@ -883,6 +883,13 @@ export default {
         }
       }, 100);
     }, //刷新panel的方法
+    isAllPanelMounted() {
+      let tableNum = 0;
+      this.translatedAnKa.children.forEach(tab => {
+        tableNum += tab.child.containers.length;
+      });
+      return this.getAllPanes().length === tableNum;
+    },
     setCurrentTable(table, tab) {
       this.translatedAnKa.children[
         this.data.children.indexOf(tab)
@@ -982,10 +989,12 @@ export default {
     },
     initTabPageData() {
       clearTimeout(this.iniTabPageDataTimer);
-      this.iniTabPageDataTimer = setTimeout(() => {
+      this.iniTabPageDataTimer = setInterval(() => {
+        if (!this.isAllPanelMounted()) return;
+        clearTimeout(this.iniTabPageDataTimer);
         let tempTranslatedAnka = Object.assign({}, this.translatedAnKa);
         tempTranslatedAnka.children.forEach(tab => {
-          tab.pageData = [this.setTabValue(tab)];
+          tab.pageData = tab.pageData ? tab.pageData : [this.setTabValue(tab)];
           this.setTabValue(tab, tab.pageData[0]);
         });
         this.translatedAnKa = tempTranslatedAnka;

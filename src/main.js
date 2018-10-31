@@ -97,7 +97,7 @@ axios.get("/VueApp_config.json").then(res => {
     render: h => h(App)
 }).$mount("#app");*/
 
-async function f() {
+/*async function f() {
   let resu1 = await new Promise(r => {
     setTimeout(() => {
       console.log("-----------async1111111111111");
@@ -125,4 +125,4 @@ async function f() {
 f().then(res => {
   console.log("执行完了");
   console.log("res--------------", res);
-});
+});*/

@@ -126,7 +126,7 @@ export default {
   },
   mounted() {
     this.currenShowTable = this.currentAnka.children[0].child.containers[0];
-    /*   this.$api.activeForm
+    this.$api.activeForm
       .demoData({
         params: {
           akmbbh: "100000231",
@@ -136,15 +136,20 @@ export default {
       .then(
         res => {
           console.log("shoudao");
+          console.log(res);
           this.loading = false;
-          this.currentAnka = res.data;
+          let tempCurrentAnka = res.data.child;
+          tempCurrentAnka.children.forEach((item, i) => {
+            item.pageData = res.data.pageData[i];
+          });
+          this.currentAnka = tempCurrentAnka;
           // console.log(JSON.stringify(this.currentAnka));
           this.currenShowTable = this.currentAnka.children[0].child.containers[0];
         },
         err => {
           console.log(err);
         }
-      );*/
+      );
   },
   components: {
     ankaList: () => import("./ankalist"),
