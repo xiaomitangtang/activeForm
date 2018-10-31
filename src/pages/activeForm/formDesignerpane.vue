@@ -2,13 +2,14 @@
   <div class='target' @drop.stop.prevent="drop" @dragover.prevent.stop >
     <mypagenation v-if="tableData.more"
                   :elProps="{total:totalPage,'page-size':1,'current-page':currentPage}"
+                  style="margin-left: 10px;"
                   @menuClick="pageMenuClick({table:tableData,data:$event})"
                   @pageChange="pageChange({table:tableData,page:$event})"
     ></mypagenation>
     <el-form ref="myform" v-if="showformItem" :model="formModel" :rules="formRule" label-position="left">
       <el-row class="myform-el-row" :gutter="5" v-for="(row,rowIndex) in tableData.container.children" :key="'tablerow'+rowIndex">
         <el-col class="my-element"
-                v-for="(item,colIndex) in row.children"
+                v-for="(item,colIndex) in row.children" v-if="item.exist"
                 :key="'item'+rowIndex+colIndex" :span="item.span" :offset="item.offset"  :class="{editItem:edit}"
                 @dragstart.native="formItemDragStart(item,$event)" @dragenter.native="dropToIndex=index"
                 @dblclick.native="formItemClick({item})">
