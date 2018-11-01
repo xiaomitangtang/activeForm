@@ -364,6 +364,31 @@ function getSettings(item) {
         "select-data": [{ dm: "Y", mc: "是" }, { dm: "N", mc: "否" }]
       };
       break;
+    case "el-search-tree":
+      settings = {
+        remote: false,
+        remoteUrl: "",
+        disabled: false,
+        clearable: true,
+        closeOnClickTree: false,
+        readonly: false,
+        inputBind: {
+          minlength: 1,
+          maxlength: 18,
+          type: "text",
+          size: "",
+          rows: 2,
+          disabled: false,
+          placeholder: "",
+          "prefix-icon": "",
+          "suffix-icon": "",
+          "auto-complete": "off",
+          autofocus: false,
+          tabindex: "",
+          clearable: true
+        }
+      };
+      break;
     case " el-option":
       settings = { value: "", label: "", disabled: false };
       break;
