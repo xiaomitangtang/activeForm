@@ -1,8 +1,9 @@
 <template>
     <div class='swx-search-tree'>
+
         <el-input size="mini" :value="inputText" @input="selfInput"
-                  :readOnly="readOnly"
-                  class="swx-input swx-input-mini" @click.native.stop="showtree=true" :clearable="true" @clear="clear" v-bind="inputBind"></el-input>
+                  :readOnly="readonly"
+                  class="swx-input swx-input-mini" @click.native.stop="searchTreeInputClick" :clearable="true" @clear="clear" v-bind="inputBind"></el-input>
         <transition name="searchTreeFade">
             <div class="swx-search-tree-treebox"  v-if="showtree" @click.stop>
                 <el-tree
@@ -23,11 +24,13 @@
     </div>
 </template>
 <script>
+// import Popper from "element-ui/src/utils/vue-popper";
 export default {
   name: "swx-search-tree",
+  // mixins: [Popper],
   props: {
     value: {
-      type: String,
+      type: [String, Array, Number],
       default: ""
     },
     treeData: { type: Array },
@@ -45,7 +48,7 @@ export default {
     },
     inputBind: { type: Object },
     closeOnClickTree: { type: Boolean, default: false },
-    readOnly: { type: Boolean, default: false },
+    readonly: { type: Boolean, default: false },
     filterNode: {
       type: Function,
       default: function(value, data) {
@@ -68,20 +71,20 @@ export default {
     closeResize(e) {
       console.log("closeResize", e);
     },*/
+    searchTreeInputClick() {
+      this.showtree = true;
+    },
     clear() {
       this.inputText = "";
       this.filterText = "";
-      this.$emit("input", "");
     },
     selfInput(val) {
       this.inputText = val;
       this.filterText = val;
-      this.$emit("input", val);
     },
     nodeClick(data, node, com) {
       this.inputText = node.label;
       this.filterText = "";
-      this.$emit("input", this.inputText);
       this.$emit("treeNodeClick", data, node, com);
       if (this.closeOnClickTree) {
         this.showtree = false;
@@ -100,12 +103,16 @@ export default {
   watch: {
     filterText(val) {
       this.$refs.searchtree.filter(val);
+    },
+    value(n) {
+      this.$emit("input", n);
     }
   },
   mounted() {
     this.resetFunc = () => {
       this.showtree = false;
     };
+    this.inputText = this.value;
     document.addEventListener("click", this.resetFunc);
   },
   beforeDestroy() {
@@ -122,6 +129,7 @@ export default {
     min-height: 150px;
     max-height: 250px;
     margin-top: 10px;
+    z-index: 10;
     padding: 10px;
     border-radius: 6px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);

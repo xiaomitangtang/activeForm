@@ -923,6 +923,8 @@ function translateFormItem(item, tabIndex, tableIndex) {
     label: item.label || "",
     span: item.span || 12,
     exist: true,
+    // component: "el-select",
+    // component: "el-search-tree",
     component: item.controlType || "el-select",
     offset: 0,
     labelWidth: "",

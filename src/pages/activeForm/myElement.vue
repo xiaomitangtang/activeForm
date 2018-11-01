@@ -81,6 +81,9 @@ export default {
               case "el-table":
                 this.innerdata.settings["table-data"] = res.data;
                 break;
+              case "el-search-tree":
+                this.innerdata.settings["search-tree-data"] = res.data;
+                break;
             }
           } else {
             this.$notify.error({
