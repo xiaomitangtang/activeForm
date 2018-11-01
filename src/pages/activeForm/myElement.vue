@@ -45,10 +45,11 @@
           <span class="upload-tip">{{uploadFileName}}</span>
         </el-upload>
         <userimg v-else-if="innerdata.component==='el-image'" :src="formModel[innerdata.key]" @choosedimg="imageChoosed"  v-bind="innerdata.settings"></userimg>
-
         <el-table v-else-if="innerdata.component==='el-table'" :data="innerdata.settings['table-data']||[]" v-bind="innerdata.settings">
           <el-table-column v-for="item in innerdata.settings.tableColumns" v-bind="item" :key="item.label"></el-table-column>
         </el-table>
+        <searchTree v-else-if="innerdata.component==='el-search-tree'" v-model="formModel[innerdata.key]" :treeData="innerdata.settings['search-tree-data']||[]" v-bind="innerdata.settings"></searchTree>
+
       </div>
 </template>
 <script>
@@ -168,7 +169,8 @@ export default {
     }
   },
   components: {
-    userimg: () => import("./components/userimg.vue")
+    userimg: () => import("./components/userimg.vue"),
+    searchTree: () => import("./components/searchTree.vue")
   },
   computed: {
     edit: {
