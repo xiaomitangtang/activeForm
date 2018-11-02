@@ -5,7 +5,11 @@
     <!--<el-row class="active-form-page-head" style="border: 1px solid #000;"></el-row>-->
   <el-row  class="active-form-page-body" >
     <div class=" fullhight active-form-page-body-anka-main">
-        <div class="active-form-page-body-anka-main-head">{{currentAnka?currentAnka.header.name:'案卡详情'}}</div>
+        <div class="active-form-page-body-anka-main-head">{{currentAnka?currentAnka.header.name:'案卡详情'}}
+            <el-select style="float: right;" v-model="currentAnkaParam" :value-key="'akmbbh'">
+                <el-option v-for="(param,index) in ankaParamsList" :key="'ankaParam'+ index"  :value="param" :label="param.bmsah"></el-option>
+            </el-select>
+        </div>
         <div class="active-form-page-body-anka-main-body">
             <div class="fullhight active-form-page-body-anka-main-body-formlist">
                 <ankaformList :anka="currentAnka" :currenTable="currenShowTable" @ankaTableClick="ankaTableClick"
@@ -38,11 +42,14 @@
 </template>
 <script>
 import ankaStaticData from "@/pages/activeForm/ankaStaticData";
+import ankaParamsList from "./ankaParamsListData";
 export default {
   name: "activeForm",
   data() {
     return {
       // currentAnka: null,
+      ankaParamsList: ankaParamsList,
+      currentAnkaParam: ankaParamsList[1],
       currentAnka: ankaStaticData,
       tableList: [],
       formListDragData: null,
@@ -122,34 +129,39 @@ export default {
     },
     errorClick(data) {
       this.$refs.formdesigner.animateToError(data);
+    },
+    getAnKaByParams(params) {
+      this.$api.activeForm
+        .demoData({
+          params
+        })
+        .then(
+          res => {
+            console.log("shoudao");
+            console.log(res);
+            this.loading = false;
+            let tempCurrentAnka = res.data.child;
+            tempCurrentAnka.children.forEach((item, i) => {
+              item.pageData = res.data.pageData[i];
+            });
+            this.currentAnka = tempCurrentAnka;
+            // console.log(JSON.stringify(this.currentAnka));
+            this.currenShowTable = this.currentAnka.children[0].child.containers[0];
+          },
+          err => {
+            console.log(err);
+          }
+        );
+    }
+  },
+  watch: {
+    currentAnkaParam(n) {
+      this.getAnKaByParams(n);
     }
   },
   mounted() {
     this.currenShowTable = this.currentAnka.children[0].child.containers[0];
-    this.$api.activeForm
-      .demoData({
-        params: {
-          akmbbh: "100000231",
-          bmsah: "山东省院上诉受[2014]37000000004号"
-        }
-      })
-      .then(
-        res => {
-          console.log("shoudao");
-          console.log(res);
-          this.loading = false;
-          let tempCurrentAnka = res.data.child;
-          tempCurrentAnka.children.forEach((item, i) => {
-            item.pageData = res.data.pageData[i];
-          });
-          this.currentAnka = tempCurrentAnka;
-          // console.log(JSON.stringify(this.currentAnka));
-          this.currenShowTable = this.currentAnka.children[0].child.containers[0];
-        },
-        err => {
-          console.log(err);
-        }
-      );
+    this.getAnKaByParams(this.currentAnkaParam);
   },
   components: {
     ankaList: () => import("./ankalist"),
