@@ -942,13 +942,15 @@ export default {
         if (data) {
           tempTableData = this.setTableValue(
             table,
-            data.tabPageData[index][data.currentTablePages[index] - 1],
+            data.tabPageData[index]
+              ? data.tabPageData[index][data.currentTablePages[index] - 1]
+              : {},
             flag
           );
         } else {
           tempTableData = this.setTableValue(table);
         }
-        if (data) {
+        if (data && data.tabPageData[index]) {
           data.tabPageData[index].splice(
             data.currentTablePages[index] - 1,
             1,
@@ -1091,19 +1093,25 @@ export default {
     getPanelTotalPage(tab, tableIndex) {
       if (!tab.pageData) return 1;
       if (!tableIndex) {
-        return tab.pageData[tab.currentPage - 1].tabPageData[0].length;
+        return tab.pageData[tab.currentPage - 1].tabPageData[0]
+          ? tab.pageData[tab.currentPage - 1].tabPageData[0].length
+          : 1;
       } else {
         return tab.pageData[tab.currentPage - 1].tabPageData[tableIndex - 1]
-          .length;
+          ? tab.pageData[tab.currentPage - 1].tabPageData[tableIndex - 1].length
+          : 1;
       }
     },
     getPanelCurrentPage(tab, tableIndex) {
       if (!tab.pageData) return 1;
       if (!tableIndex) {
-        return tab.pageData[tab.currentPage - 1].tabPageData[0].length;
+        return tab.pageData[tab.currentPage - 1].tabPageData[0]
+          ? tab.pageData[tab.currentPage - 1].tabPageData[0].length
+          : 1;
       } else {
         return tab.pageData[tab.currentPage - 1].tabPageData[tableIndex - 1]
-          .length;
+          ? tab.pageData[tab.currentPage - 1].tabPageData[tableIndex - 1].length
+          : 1;
       }
     }
   },
