@@ -101,7 +101,7 @@ export default {
           });
         }
       );
-    },
+    }, //如果需要，用于获取远程数据的方法
     //  el-upload的方法
     handlePreview(file, fileList) {
       console.log("handlePreview", file, fileList);
