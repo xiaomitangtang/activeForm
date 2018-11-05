@@ -66,35 +66,35 @@ export default {
       this.currenShowTab = tab;
       this.currenShowTable = table;
       this.$refs.formdesigner.setCurrentTable(table, tab);
-    },
+    }, //左侧table列表的table项点击事件，用于设置当前显示的tab和table
     currentTableChange({ table, tab }) {
       this.currenShowTab = tab;
       this.currenShowTable = table;
-    },
+    }, //formDesigner中显示当前的table和tab滚动都按一定程度触发的事件，用于同步当前显示的tab和table
     ankaFormListDragItem(data) {
       this.formListDragData = data;
-    },
+    }, //左侧table或者tab拖拽start事件，用于记录拖拽的信息
     getOrignItem() {
       let dragdata = this.formListDragData;
       return dragdata.tab.child.containers.splice(
         dragdata.tab.child.containers.indexOf(dragdata.item),
         1
       )[0];
-    },
+    }, //提供的一个方法，用于获取拖拽的原始item，此方法会将目标item从原数组中取出，如不改变请自己放回去
     ankaFormListDropedOnTitle({ tab }) {
       tab.child.containers.push(this.getOrignItem());
       this.initTableScroll();
-    },
+    }, //左侧拖拽item放于tab上时触发的事件，
     ankaFormListDropedOnItem({ tab, itemIndex }) {
       tab.child.containers.splice(itemIndex, 0, this.getOrignItem());
       this.initTableScroll();
-    },
+    }, //左侧拖拽item放于table上时触发的事件，
     initTableScroll() {
       this.$refs.formdesigner.translateAnka();
       setTimeout(() => {
         this.$refs.formdesigner.animateToTab(this.currenShowTab);
       }, 400);
-    },
+    }, //当数据发生改变时，将服务端数据转化，并移动视图
     editName(data) {
       let oldname =
         data.type === "tab" ? data.tab.child.title : data.table.text;
@@ -113,44 +113,44 @@ export default {
           console.log(err);
         }
       );
-    },
+    }, //编辑左侧tab或者table的名字
     addError(data) {
       let errorsList = [...this.errorsList];
       if (!errorsList.indexOf(data) + 1) {
         errorsList.push(data);
       }
       this.errorsList = errorsList;
-    },
+    }, //当验证不通过时，将错误信息记录于一个数组中
     removeError(data) {
       this.errorsList = this.errorsList.filter(er => {
         return er.item.elId !== data.item.elId;
       });
-    },
+    }, //当验证通过时，移出errorslist当中的对应数据
     clearErrors() {
       this.errorsList = [];
-    },
+    }, //清空移出errorslist当中的对应数据
     errorClick(data) {
       this.$refs.formdesigner.animateToError(data);
-    },
+    }, //当用于点击错误条目时，页面滚动至对应的tab
     async getAnKaByParams(params) {
       let formData = await this.$api.activeForm.formData({
         params
       });
       let formValid = await this.$api.activeForm.formValid({ params });
-      window.ruleData = formValid.data;
+      window.ruleData = formValid.data; //将获取到的验证规则挂载到window上，方便其他地方获取
       this.loading = false;
       let tempCurrentAnka = formData.data.child;
       tempCurrentAnka.children.forEach((item, i) => {
         item.pageData = formData.data.pageData[i];
-      });
+      }); //对李小虎的接口数据进行处理，整合布局数据以及翻页纯数据
       this.currentAnka = tempCurrentAnka;
       this.currenShowTable = this.currentAnka.children[0].child.containers[0];
-    }
+    } //获取服务端的数据，以及验证规则，并转换后台数据
   },
   watch: {
     currentAnkaParam(n) {
       this.getAnKaByParams(n);
-    }
+    } //监控当前的案卡参数，及时根据当前的参数获取当前的案卡信息
   },
   mounted() {
     this.currenShowTable = this.currentAnka.children[0].child.containers[0];

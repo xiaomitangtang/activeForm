@@ -651,19 +651,17 @@ export default {
   },
   data() {
     return {
-      showtaps: false,
-      nowformPaneName: "first",
-      formModalData: { settings: {}, isRequire: false },
-      formItemSettingsValue: formDesignerStatic.formItemSettingsValue,
-      nowFormPane: null,
-      nowFormPaneDragItem: null,
-      dropToIndex: -1,
-      dialogFormVisible: false,
-      translatedAnKa: { header: { name: "" }, children: [] },
-      panels: [],
-      tableItems: [],
-      scrollTimer: null,
-      errors: []
+      // showtaps: false,
+      // nowformPaneName: "first",
+      formModalData: { settings: {}, isRequire: false }, //这是设置弹窗中的数据
+      formItemSettingsValue: formDesignerStatic.formItemSettingsValue, //页面中的一些静态的常量
+      nowFormPane: null, //当前的panel，拖拽元素时有用（设计器），
+      nowFormPaneDragItem: null, //当前拖拽的表单元素，设计器有用
+      // dropToIndex: -1,//拖拽元素到目标索引
+      dialogFormVisible: false, //设置参数的弹窗是否显示的变量
+      translatedAnKa: { header: { name: "" }, children: [] }, //用于渲染页面的案卡数据（根据服务端数据转化过后的数据，包含翻页数据）
+      panels: [], //记录当前页面中panel的数据
+      tableItems: [] //所有表单元素平铺之后的数据，方便验证
     };
   },
   provide() {
@@ -672,14 +670,14 @@ export default {
     };
   },
   methods: {
-    translateFormItem: formDesignerStatic.translateFormItem,
-    groupAddItem: formDesignerStatic.groupAddItem,
-    groupDelItem: formDesignerStatic.groupDelItem,
-    isSettingVisible: formDesignerStatic.isSettingVisible,
+    translateFormItem: formDesignerStatic.translateFormItem, //转化数据的方法，单位位每一个控件
+    groupAddItem: formDesignerStatic.groupAddItem, //设置元素弹窗中为RadioGroup等以组为单位的控件添加元素的方法，展示阶段无用
+    groupDelItem: formDesignerStatic.groupDelItem, //设置元素弹窗中为RadioGroup等以组为单位的控件删除元素的方法，展示阶段无用
+    isSettingVisible: formDesignerStatic.isSettingVisible, //用于判断设置弹窗中大部分控件是否显示的方法，根据formDesignerStatic中的userableSetting以及相对应的逻辑控制设置界面参数的显示
     saveFormStyle() {
       this.nowFormPane.saveFormStyle(this.formModalData);
       this.dialogFormVisible = false;
-    },
+    }, //这个是设置元素参数弹框的保存按钮点击事件。
     formDesignerpaneItemClick(pane, item) {
       this.nowFormPane = pane;
       this.formModalData = item;
@@ -888,7 +886,7 @@ export default {
         tableNum += tab.child.containers.length;
       });
       return this.getAllPanes().length === tableNum;
-    },
+    }, //判断是否所有的panel已经mounted的函数。
     setCurrentTable(table, tab) {
       this.translatedAnKa.children[
         this.data.children.indexOf(tab)
@@ -902,22 +900,22 @@ export default {
         tab,
         table
       });
-    }, //用户选中
+    }, //用户选中tab的某一项触发的事件，用以同步当前显示的tab和table
     tabsValueChange(tab, val) {
       tab.currentTableName = val;
       this.setSrollList();
-    },
+    }, //当tab的table发生改变时，同步当前显示的table的同时，更新当前各个tab的位置信息数组tablelistScrollList
     addError(data) {
       this.$emit("addError", data);
-    },
+    }, //将panel中emit出来的错误向上传递到index中
     removeError(data) {
       this.$emit("removeError", data);
-    },
+    }, //将panel中emit出来的错误向上传递到index中
     getTableByTableData(table) {
       return this.getAllPanes().filter(panel => {
         return panel.tableData === table;
       })[0];
-    },
+    }, //根据table数据获取对应的table所在panel实例的方法，利用引用传值进行匹配
     setTableValue(table, data, flag) {
       let tempTableData = {};
       table.container.children.forEach(row => {
@@ -935,7 +933,7 @@ export default {
         this.getTableByTableData(table).setFromModel();
       }
       return tempTableData;
-    },
+    }, //设置panel展示数据的方法，将会返回设置好的数据
     setTabValue(tab, data, flag) {
       let pagedata = tab.child.containers.map((table, index) => {
         let tempTableData = null;
@@ -965,14 +963,14 @@ export default {
         ? data.currentTablePages
         : tab.child.containers.map(() => 1);
       return { tabPageData: pagedata, currentTablePages };
-    },
+    }, //设置tab展示数据的方法，将会返回设置好的tab数据
     saveTabValue(tab, pageIndex, flag) {
       tab.pageData[pageIndex] = this.setTabValue(
         tab,
         tab.pageData[pageIndex],
         flag
       );
-    },
+    }, //保存tab数据的方法，将会修改pageData中相对应的数据
     saveTableValue(tab, tableIndex, tabpage, data) {
       let tempTableaData = this.setTableValue(
         data.table,
@@ -987,7 +985,7 @@ export default {
       tab.pageData[tabpage].tabPageData[tableIndex][
         tab.pageData[tabpage].currentTablePages[tableIndex] - 1
       ] = tempTableaData;
-    },
+    }, //保存table数据的方法，在翻页时使用，保存当前显式页面的数据，然后设置对应页面的数据
     initTabPageData() {
       clearTimeout(this.iniTabPageDataTimer);
       this.iniTabPageDataTimer = setInterval(() => {
@@ -1000,7 +998,7 @@ export default {
         });
         this.translatedAnKa = tempTranslatedAnka;
       }, 300);
-    },
+    }, //对translatedAnka页面数据进行翻页数据初始化的方法。
     pageMenuClick({ type, tab, tabIndex, tableIndex, data }) {
       let formValid = this.validateAllPanels();
       if (formValid) return;
@@ -1071,7 +1069,7 @@ export default {
       }
       this.translatedAnKa = Object.assign({}, this.translatedAnKa);
       this.$emit("clearErrors");
-    },
+    }, //翻页组件的点击事件。包括了tab的翻页以及table的翻页
     pageChange({ type, tab, tabIndex, tableIndex, data }) {
       let formValid = this.validateAllPanels();
       if (formValid) return;
@@ -1089,7 +1087,7 @@ export default {
       }
       this.translatedAnKa = Object.assign({}, this.translatedAnKa);
       this.$emit("clearErrors");
-    },
+    }, //翻页组件的翻页事件，包括了tab的翻页以及table的翻页
     getPanelTotalPage(tab, tableIndex) {
       if (!tab.pageData) return 1;
       if (!tableIndex) {
@@ -1101,7 +1099,7 @@ export default {
           ? tab.pageData[tab.currentPage - 1].tabPageData[tableIndex - 1].length
           : 1;
       }
-    },
+    }, //用于获取对应table的页数的方法，如果存在tableIndex，说明这个tab有多个table，传入的是遍历的索引，否则为tab只有一个table
     getPanelCurrentPage(tab, tableIndex) {
       if (!tab.pageData) return 1;
       if (!tableIndex) {
@@ -1113,7 +1111,7 @@ export default {
           ? tab.pageData[tab.currentPage - 1].tabPageData[tableIndex - 1].length
           : 1;
       }
-    }
+    } //用于获取对应table的当前页码的方法，如果存在tableIndex，说明这个tab有多个table，传入的是遍历的索引，否则为tab只有一个table
   },
   components: {
     myElement: () => import("./myElement.vue"),

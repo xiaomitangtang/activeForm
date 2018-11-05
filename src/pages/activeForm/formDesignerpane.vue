@@ -62,23 +62,23 @@ export default {
   },
   data() {
     return {
-      showformItem: false,
-      formData: {},
-      formModalData: { settings: {} },
-      nowFormItem: null,
-      formItemSettingsValue: formDesignerStatic.formItemSettingsValue,
-      dragedItem: null,
-      dropToIndex: -1,
-      formModel: {},
-      formRule: {},
-      translatedTableDate: {}
+      showformItem: false, //控制formItem是否显示的变量
+      // formData: {},//
+      // formModalData: { settings: {} },//
+      nowFormItem: null, //当前表单元素（设计器）
+      formItemSettingsValue: formDesignerStatic.formItemSettingsValue, //页面的一些静态数据常量
+      dragedItem: null, //当前拖拽的表单元素（设计器）
+      dropToIndex: -1, //拖拽至目标的索引（设计器）
+      formModel: {}, //当前表单的数据
+      formRule: {}, //当前表单的验证规则
+      translatedTableDate: {} //转化后的当前显示页面的数据（有了翻页之后貌似没用了，需要修改）
     };
   },
-  inject: ["formDedigner"],
+  inject: ["formDedigner"], //注入的formDesigner，可以通过注入此对象操作外部父实例的相关对象
   methods: {
-    getSettings: formDesignerStatic.getSettings,
-    getDefauleVal: formDesignerStatic.getDefauleVal,
-    getDefaultRule: formDesignerStatic.getDefaultRule,
+    getSettings: formDesignerStatic.getSettings, //根据表单元素数据获取默认或已有的setting参数，（element）
+    getDefauleVal: formDesignerStatic.getDefauleVal, //根据表单元素数据获取默认或者已有val
+    getDefaultRule: formDesignerStatic.getDefaultRule, //根据表单元素获取表单校验的规则
     /*    changeFormItemWidth(item, type) {
       if (type === "del") {
         if (item.span < 4) {
@@ -107,7 +107,7 @@ export default {
       Object.keys(formModalData).forEach(key => {
         this.nowFormItem[key] = formModalData[key];
       });
-    },
+    }, //提供给外部调用的方法
     formItemClick({ item }) {
       if (!this.edit) {
         return;
@@ -117,14 +117,14 @@ export default {
       this.nowFormItem = item;
       temp.settings = this.getSettings(item);
       this.$emit("formDesignerpaneItemClick", this, temp);
-    },
+    }, //双击表单控件的方法，打开设置参数弹窗的方法（设计器有效）
     formItemDragStart(item) {
       if (!this.edit) {
         return;
       }
       this.dragedItem = item;
       this.$emit("setNowFormPaneAndnowFormPaneDragItem", this, this.dragedItem);
-    },
+    }, //拖拽表单元素的start方法
     /* delDragItem() {
       let dragItemIndex = this.tableData.indexOf(this.dragedItem);
       this.tableData.splice(dragItemIndex, 1);
@@ -272,7 +272,7 @@ export default {
         });
       });
       return flag;
-    },
+    }, //表单校验的函数，校验的同时同步页面数据到模型中，并返回校验的结果
     /*    delFormItem(index) {
       this.tableData.splice(index, 1);
       this.dropToIndex = this.tableData.length - 1;
@@ -292,13 +292,13 @@ export default {
       this.$nextTick(() => {
         this.showformItem = true;
       });
-    },
+    }, //更新panel的表单的方法，将会重新获取form的数据
     pageMenuClick(data) {
       this.$emit("menuClick", data);
-    },
+    }, //将翻页组件的点击事件传递到formDesigner
     pageChange(data) {
       this.$emit("pageChange", data);
-    },
+    }, //将翻页组件的单页事件传递到formDesigner
     setFromModel() {
       // clearTimeout(this.setFormModelTimer);
       // this.setFormModelTimer = setTimeout(() => {
@@ -307,7 +307,7 @@ export default {
       //   }
       // }, 100);
       this.changemodel();
-    }
+    } //提供给外部进行设置formModel的方法，目前直接使用更新table的方法，后续可以加入自己的过滤逻辑
   },
   components: {
     myElement: () => import("./myElement.vue"),
