@@ -3,13 +3,6 @@
         <router-view />
     </div>
 </template>
-<script>
-export default {
-  data() {
-    return { lang: "" };
-  }
-};
-</script>
 <style lang="less">
 html,
 body,

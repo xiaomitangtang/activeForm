@@ -1,7 +1,7 @@
 import RuleParser from "./rulesParser/rulesParser";
-import ruleData from "./rulesParser/data.json";
 import ConditionMap from "./rulesParser/conditionMap";
 import * as Const from "./rulesParser/parseConst";
+
 const userableSetting = {
   "active-text": false,
   "inactive-text": false,
@@ -646,7 +646,7 @@ function getDefauleVal(item) {
 } //根据不同的表单元素进行判断并返回默认值
 function formValid(item, rule, value, callback) {
   let formData = this.formDedigner.getAllTableItem();
-  let parser = new RuleParser(ruleData, formData);
+  let parser = new RuleParser(window.ruleData, formData);
   let containers = this.formDedigner.getAllPanes();
   let constanlyData = parser.getEntitys(containers);
   let rules = parser.rules();

@@ -43,6 +43,8 @@
 <script>
 import ankaStaticData from "@/pages/activeForm/ankaStaticData";
 import ankaParamsList from "./ankaParamsListData";
+import ruleData from "./rulesParser/data.json";
+window.ruleData = ruleData;
 export default {
   name: "activeForm",
   data() {
@@ -130,28 +132,19 @@ export default {
     errorClick(data) {
       this.$refs.formdesigner.animateToError(data);
     },
-    getAnKaByParams(params) {
-      this.$api.activeForm
-        .demoData({
-          params
-        })
-        .then(
-          res => {
-            console.log("shoudao");
-            console.log(res);
-            this.loading = false;
-            let tempCurrentAnka = res.data.child;
-            tempCurrentAnka.children.forEach((item, i) => {
-              item.pageData = res.data.pageData[i];
-            });
-            this.currentAnka = tempCurrentAnka;
-            // console.log(JSON.stringify(this.currentAnka));
-            this.currenShowTable = this.currentAnka.children[0].child.containers[0];
-          },
-          err => {
-            console.log(err);
-          }
-        );
+    async getAnKaByParams(params) {
+      let formData = await this.$api.activeForm.formData({
+        params
+      });
+      let formValid = await this.$api.activeForm.formValid({ params });
+      window.ruleData = formValid.data;
+      this.loading = false;
+      let tempCurrentAnka = formData.data.child;
+      tempCurrentAnka.children.forEach((item, i) => {
+        item.pageData = formData.data.pageData[i];
+      });
+      this.currentAnka = tempCurrentAnka;
+      this.currenShowTable = this.currentAnka.children[0].child.containers[0];
     }
   },
   watch: {
