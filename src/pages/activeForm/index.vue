@@ -133,18 +133,23 @@ export default {
       this.$refs.formdesigner.animateToError(data);
     }, //当用于点击错误条目时，页面滚动至对应的tab
     async getAnKaByParams(params) {
-      let formData = await this.$api.activeForm.formData({
-        params
-      });
-      let formValid = await this.$api.activeForm.formValid({ params });
-      window.ruleData = formValid.data; //将获取到的验证规则挂载到window上，方便其他地方获取
-      this.loading = false;
-      let tempCurrentAnka = formData.data.child;
-      tempCurrentAnka.children.forEach((item, i) => {
-        item.pageData = formData.data.pageData[i];
-      }); //对李小虎的接口数据进行处理，整合布局数据以及翻页纯数据
-      this.currentAnka = tempCurrentAnka;
-      this.currenShowTable = this.currentAnka.children[0].child.containers[0];
+      try {
+        let formData = await this.$api.activeForm.formData({
+          params
+        });
+        let formValid = await this.$api.activeForm.formValid({ params });
+        window.ruleData = formValid.data; //将获取到的验证规则挂载到window上，方便其他地方获取
+        this.loading = false;
+        let tempCurrentAnka = formData.data.child;
+        tempCurrentAnka.children.forEach((item, i) => {
+          item.pageData = formData.data.pageData[i];
+        }); //对李小虎的接口数据进行处理，整合布局数据以及翻页纯数据
+        this.currentAnka = tempCurrentAnka;
+        this.currenShowTable = this.currentAnka.children[0].child.containers[0];
+      } catch (e) {
+        console.log("请求数据出现了问题");
+        console.log(e);
+      }
     } //获取服务端的数据，以及验证规则，并转换后台数据
   },
   watch: {

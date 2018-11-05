@@ -49,7 +49,6 @@
           <el-table-column v-for="item in innerdata.settings.tableColumns" v-bind="item" :key="item.label"></el-table-column>
         </el-table>
         <searchTree v-else-if="innerdata.component==='el-search-tree'" v-model="formModel[innerdata.key]" :treeData="innerdata.settings['search-tree-data']||[]" v-bind="innerdata.settings"></searchTree>
-
       </div>
 </template>
 <script>
