@@ -51,9 +51,7 @@ export default {
   props: {
     tableData: {
       type: Object,
-      default: () => {
-        false;
-      }
+      default: () => ({})
     },
     panelName: { type: String },
     panelID: { type: String },

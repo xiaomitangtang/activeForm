@@ -759,6 +759,7 @@ export default {
     }, //panel的卸载事件，当panel卸载时，移除
     tableBoxScroll(e) {
       if (this.changing) return;
+      if (!this.tablelistScrollList) return;
       this.scrollCount = this.scrollCount ? this.scrollCount + 1 : 1;
       if (this.scrollCount % 3 !== 0) return;
       let scrollTop = e.target.scrollTop;
@@ -1002,7 +1003,8 @@ export default {
     }, //对translatedAnka页面数据进行翻页数据初始化的方法。
     pageMenuClick({ type, tab, tableIndex, data }) {
       let formValid = this.validateAllPanels();
-      if (!formValid) return;
+      // if (!formValid) return;
+      console.log(formValid);
       if (type === "tab") {
         if (data === "add") {
           if (!tab.pageData) {
@@ -1072,7 +1074,8 @@ export default {
     }, //翻页组件的点击事件。包括了tab的翻页以及table的翻页
     pageChange({ type, tab, tableIndex, data }) {
       let formValid = this.validateAllPanels();
-      if (!formValid) return;
+      // if (!formValid) return;
+      console.log(formValid);
       if (type === "tab") {
         this.saveTabValue(tab, tab.currentPage - 1);
         this.setTabValue(tab, tab.pageData[data - 1]);
