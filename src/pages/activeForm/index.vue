@@ -237,10 +237,9 @@ export default {
     }, //当用于点击错误条目时，页面滚动至对应的tab
     async getAnKaByParams(params) {
       try {
-        let formData = await this.$api.activeForm.formData({
-          params
-        });
+        let formData = await this.$api.activeForm.formData({ params });
         let formValid = await this.$api.activeForm.formValid({ params });
+        // console.log(formValid);
         window.ruleData = formValid.data; //将获取到的验证规则挂载到window上，方便其他地方获取
         this.loading = false;
         let tempCurrentAnka = formData.data.child;
