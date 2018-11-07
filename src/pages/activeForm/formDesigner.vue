@@ -51,6 +51,7 @@
                                            @menuClick="pageMenuClick({type:'table',tab:tab,tabIndex,tableIndex,data:$event})"
                                            @pageChange="pageChange({type:'table',tab:tab,tabIndex,tableIndex,data:$event})"
                      ></formDesignerpane>
+
                    </el-tab-pane>
                  </el-tabs>
         </el-row>
@@ -999,9 +1000,9 @@ export default {
         this.translatedAnKa = tempTranslatedAnka;
       }, 300);
     }, //对translatedAnka页面数据进行翻页数据初始化的方法。
-    pageMenuClick({ type, tab, tabIndex, tableIndex, data }) {
+    pageMenuClick({ type, tab, tableIndex, data }) {
       let formValid = this.validateAllPanels();
-      if (formValid) return;
+      if (!formValid) return;
       if (type === "tab") {
         if (data === "add") {
           if (!tab.pageData) {
@@ -1025,7 +1026,6 @@ export default {
       } else if (type === "table") {
         let currentTable = tab.child.containers[tableIndex];
         if (data.data === "add") {
-          console.log(type, tab, tabIndex, tableIndex, data);
           tab.pageData[tab.currentPage - 1].tabPageData[tableIndex].splice(
             tab.pageData[tab.currentPage - 1].currentTablePages[tableIndex] - 1,
             1,
@@ -1070,16 +1070,13 @@ export default {
       this.translatedAnKa = Object.assign({}, this.translatedAnKa);
       this.$emit("clearErrors");
     }, //翻页组件的点击事件。包括了tab的翻页以及table的翻页
-    pageChange({ type, tab, tabIndex, tableIndex, data }) {
+    pageChange({ type, tab, tableIndex, data }) {
       let formValid = this.validateAllPanels();
-      if (formValid) return;
+      if (!formValid) return;
       if (type === "tab") {
         this.saveTabValue(tab, tab.currentPage - 1);
         this.setTabValue(tab, tab.pageData[data - 1]);
         tab.currentPage = data;
-        if (tabIndex) {
-          console.log("这句代码是为了让eslint通过,并不会执行");
-        }
       } else if (type === "table") {
         this.saveTableValue(tab, tableIndex, tab.currentPage - 1, data);
         tab.pageData[tab.currentPage - 1].currentTablePages[tableIndex] =
@@ -1103,13 +1100,11 @@ export default {
     getPanelCurrentPage(tab, tableIndex) {
       if (!tab.pageData) return 1;
       if (!tableIndex) {
-        return tab.pageData[tab.currentPage - 1].tabPageData[0]
-          ? tab.pageData[tab.currentPage - 1].tabPageData[0].length
-          : 1;
+        return tab.pageData[tab.currentPage - 1].currentTablePages[0];
       } else {
-        return tab.pageData[tab.currentPage - 1].tabPageData[tableIndex - 1]
-          ? tab.pageData[tab.currentPage - 1].tabPageData[tableIndex - 1].length
-          : 1;
+        return tab.pageData[tab.currentPage - 1].currentTablePages[
+          tableIndex - 1
+        ];
       }
     } //用于获取对应table的当前页码的方法，如果存在tableIndex，说明这个tab有多个table，传入的是遍历的索引，否则为tab只有一个table
   },
