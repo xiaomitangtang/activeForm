@@ -1,3 +1,5 @@
+import ConditionMap from "./conditionMap";
+import * as Const from "./parseConst";
 export default class RuleParser {
   /**
    * @param {规则集合} ruleData
@@ -39,7 +41,8 @@ export default class RuleParser {
   actionProcess(actionExpressions) {
     let pattrens = [
       [/(.+)=@MustBe{@(.+){}}/, 2],
-      [/(.+)=@MustBe{@([a-zA-Z]+){&(.+)}}/, 3]
+      [/(.+)=@MustBe{@([a-zA-Z]+){&(.+)}}/, 3],
+      [/(.+)=@(.+){}/, 4]
     ];
     let actions = [];
     pattrens.forEach(p => {
@@ -57,6 +60,10 @@ export default class RuleParser {
               other: RegExp.$3,
               expression: RegExp.$2
             };
+            actions.push(subAction);
+          }
+          if (p[1] === 4) {
+            let subAction = { key: RegExp.$1, expression: RegExp.$2 };
             actions.push(subAction);
           }
         }
@@ -92,5 +99,121 @@ export default class RuleParser {
       that.$emit("addError", { value, item });
       callback(new Error(""));
     }
+  }
+
+  /**获取规则表达式集合
+   * @param {规则标识} ruleKey
+   */
+  getExpressions(ruleKey) {
+    let expressions = this.rules().filter(r => r.condition.key === ruleKey);
+    return expressions.length > 0 ? expressions : null;
+  }
+
+  /**
+   *
+   * @param {值} value
+   * @param {所属集} sets
+   */
+  notInAssert(value, sets) {
+    return this.ConditionMap(Const.NotIn)(value, sets);
+  }
+
+  /**
+   *  @param {值} value
+   */
+  isNotNullAssert(value) {
+    return ConditionMap.get(Const.IsNotNull)(value);
+  }
+
+  /**
+   *  @param {值} value
+   */
+  isNullAssert(value) {
+    return ConditionMap.get(Const.IsNull)(value);
+  }
+
+  /**
+   *  @param {值1} first
+   *  @param {值2} second
+   */
+  greaterThanAssert(first, second) {
+    return ConditionMap.get(Const.GreaterThan)(first, second);
+  }
+
+  /**
+   *  @param {值1} first
+   *  @param {值2} second
+   */
+  greaterThanEqualAssert(first, second) {
+    return ConditionMap.get(Const.GreaterAndEqual)(first, second);
+  }
+
+  /**
+   *
+   * @param {数据源} formData
+   * @param {作用键} key
+   * @param {前置条件} perValid
+   */
+  disabledAssert(formData, key, perValid) {
+    ConditionMap.get(Const.Disabled)(formData, key, perValid);
+  }
+
+  /**
+   *
+   * @param {数据源} formData
+   * @param {作用键} key
+   * @param {前置条件} perValid
+   */
+  undisabledAssert(formData, key, perValid) {
+    ConditionMap.get(Const.Disabled)(formData, key, perValid);
+  }
+
+  /**
+   *
+   * @param {root} root
+   * @param {作用键} key
+   */
+  clearAssert(root, key) {
+    ConditionMap.get(Const.Clear)(root, key);
+  }
+
+  /**
+   *
+   * @param {条件} condition
+   * @param {元祖1} tuple1
+   * @param {元祖2} tuple2
+   */
+  executeValidator(condition, tuple1, tuple2) {
+    const map = new Map();
+    map.set(Const.NotIn, this.notInAssert);
+    map.set(Const.IsNull, this.isNullAssert);
+    map.set(Const.IsNotNull, this.isNotNullAssert);
+    map.set(Const.GreaterThan, this.greaterThanAssert);
+    map.set(Const.GreaterAndEqual, this.greaterThanEqualAssert);
+    map.set(Const.Disabled, this.disabledAssert);
+    map.set(Const.UnDisabled, this.undisabledAssert);
+    map.set(Const.Clear, this.clearAssert);
+    try {
+      return map.has(condition)
+        ? map.get(condition)(tuple1, tuple2)
+        : ConditionMap.get(condition)(tuple1);
+    } catch (error) {
+      console.error("表达式有误哦");
+    }
+  }
+
+  compulteProp1(expression, formData, entitys, key, panels) {
+    if ([Const.Disabled, Const.UnDisabled].includes(expression))
+      return formData;
+    if (expression === Const.Clear) return panels;
+    return entitys[key];
+  }
+
+  compulteProp2(expression, entitys, key, other) {
+    if (Const.Clear === expression) return key;
+    if ([Const.GreaterAndEqual, Const.GreaterThan].includes(expression))
+      return Const.NUMBER_EXPRESSION.test(other) ? other : entitys[other];
+    if ([Const.Disabled, Const.UnDisabled].includes) return key;
+    return entitys[key];
   }
 }

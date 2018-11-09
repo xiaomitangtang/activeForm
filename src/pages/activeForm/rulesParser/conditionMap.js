@@ -1,18 +1,19 @@
 import * as Const from "./parseConst";
+
+const NUMBER_EXPRESSION = /^[0-9]+\.?[0-9]*$/;
 const conditionMap = new Map();
 conditionMap.set(Const.IsNotNull, v => v !== null && v !== "");
 conditionMap.set(Const.IsNull, v => v === null || v === "");
 conditionMap.set(Const.GreaterThan, (a, b) => {
-  // debugger;
   if (
     typeof a === "undefined" ||
     typeof b === "undefined" ||
     a === "" ||
     b === ""
   )
-    return true;
-  if (/^[0-9]+\.?[0-9]*$/.test(a)) return a > b;
-  return a.toISOString() > b.toISOString();
+    return false;
+  if (NUMBER_EXPRESSION.test(a)) return a > b;
+  if (a instanceof Date) return Number(a) > Number(b);
 });
 conditionMap.set(Const.GreaterAndEqual, (a, b) => {
   if (
@@ -21,17 +22,20 @@ conditionMap.set(Const.GreaterAndEqual, (a, b) => {
     a === "" ||
     b === ""
   )
-    return true;
-  if (typeof a === "number") return a >= b;
-  return a.toISOString() >= b.toISOString();
+    return false;
+
+  if (NUMBER_EXPRESSION.test(a)) return a >= b;
+  if (a instanceof Date) return Number(a) >= Number(b);
 });
-conditionMap.set(Const.Disabled, (fromData, key, disabled) => {
+conditionMap.set(Const.Disabled, (fromData, key) => {
   let item = fromData.find(x => x.key === key);
-  item.settings.disabled = !disabled;
+  item.settings.disabled = true;
+  return true;
 });
-conditionMap.set(Const.UnDisabled, (fromData, key, disabled) => {
+conditionMap.set(Const.UnDisabled, (fromData, key) => {
   let item = fromData.find(x => x.key === key);
-  item.settings.disabled = disabled;
+  item.settings.disabled = false;
+  return true;
 });
 conditionMap.set(Const.Clear, (containers, key) => {
   containers.forEach(c => {
@@ -40,6 +44,8 @@ conditionMap.set(Const.Clear, (containers, key) => {
       return;
     }
   });
+  return true;
 });
 conditionMap.set(Const.NotIn, (v, collections) => !collections.includes(v));
+
 export default conditionMap;
