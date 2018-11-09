@@ -1,6 +1,4 @@
 import RuleParser from "./rulesParser/rulesParser";
-// import ConditionMap from "./rulesParser/conditionMap";
-import * as Const from "./rulesParser/parseConst";
 
 const userableSetting = {
   "active-text": false,
@@ -650,21 +648,31 @@ function formValid(item, rule, value, callback) {
   let panels = this.formDedigner.getAllPanes();
   let entitys = parser.getEntitys(panels);
   let expressions = parser.getExpressions(item.key);
-  if (!expressions) return;
-  expressions.forEach(expression => {
-    let tuple = parser.compulteProp2(
-      expression.condition.expression,
-      entitys,
-      item.key,
-      expression.condition.other
-    );
-    let preValidResult = parser.executeValidator(
-      expression.condition.expression,
-      entitys[item.key],
-      tuple
-    );
-    if (expression.condition.expression !== Const.IsNull)
+  if (!expressions) {
+    callback();
+  } else {
+    expressions.forEach(expression => {
+      let tuple1 = parser.compulteProp1(
+        expression.condition.expression,
+        formData,
+        entitys,
+        item.key,
+        panels
+      );
+      let tuple2 = parser.compulteProp2(
+        expression.condition.expression,
+        entitys,
+        item.key,
+        expression.condition.other
+      );
+      let preValidResult = parser.executeValidator(
+        expression.condition.expression,
+        tuple1,
+        tuple2
+      );
+      debugger;
       parser.effect(
+        expression.condition.expression,
         this,
         item,
         value,
@@ -672,27 +680,16 @@ function formValid(item, rule, value, callback) {
         expression.msg,
         callback
       );
-    expression.actions.forEach(action => {
-      let tuple1 = parser.compulteProp1(
-        action.expression,
-        formData,
-        entitys,
-        action.key,
-        panels
-      );
-      let tuple2 = parser.compulteProp2(
-        action.expression,
-        entitys,
-        action.key,
-        action.other
-      );
-      let afterValidReuslt = parser.executeValidator(
-        action.expression,
-        tuple1,
-        tuple2
-      );
-      if (action.expression !== Const.IsNull)
+      expression.actions.forEach(action => {
+        let afterValidReuslt = parser.executeAction(
+          action,
+          formData,
+          entitys,
+          panels,
+          preValidResult
+        );
         parser.effect(
+          expression.condition.expression,
           this,
           formData.find(d => d.key == action.key),
           value,
@@ -700,8 +697,9 @@ function formValid(item, rule, value, callback) {
           expression.msg,
           callback
         );
+      });
     });
-  });
+  }
 } //自定义校验方法
 function getDefaultRule(item, val) {
   let tempRule = [{ validator: formValid.bind(this, item), trigger: "change" }];

@@ -27,14 +27,14 @@ conditionMap.set(Const.GreaterAndEqual, (a, b) => {
   if (NUMBER_EXPRESSION.test(a)) return a >= b;
   if (a instanceof Date) return Number(a) >= Number(b);
 });
-conditionMap.set(Const.Disabled, (fromData, key) => {
+conditionMap.set(Const.Disabled, (fromData, key, perValid) => {
   let item = fromData.find(x => x.key === key);
-  item.settings.disabled = true;
+  if (perValid) item.settings.disabled = true;
   return true;
 });
-conditionMap.set(Const.UnDisabled, (fromData, key) => {
+conditionMap.set(Const.UnDisabled, (fromData, key, perValid) => {
   let item = fromData.find(x => x.key === key);
-  item.settings.disabled = false;
+  if (perValid) item.settings.disabled = false;
   return true;
 });
 conditionMap.set(Const.Clear, (containers, key) => {
