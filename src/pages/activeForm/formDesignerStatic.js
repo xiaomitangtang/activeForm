@@ -658,7 +658,7 @@ function formValid(item, rule, value, callback) {
       item.key,
       expression.condition.other
     );
-    let preValid = parser.executeValidator(
+    let preValidResult = parser.executeValidator(
       expression.condition.expression,
       entitys[item.key],
       tuple
@@ -668,8 +668,8 @@ function formValid(item, rule, value, callback) {
         this,
         item,
         value,
-        afterValidReuslt,
-        preValid.msg,
+        preValidResult,
+        expression.msg,
         callback
       );
     expression.actions.forEach(action => {
