@@ -47,12 +47,13 @@ export default class RuleParser {
     let actions = [];
     pattrens.forEach(p => {
       let expressions = actionExpressions.split(" ");
-      expressions.forEach(actionExpression => {
+      for (let actionExpression of expressions) {
         let match = p[0].test(actionExpression);
         if (match) {
           if (p[1] === 2) {
             let subAction = { key: RegExp.$1, expression: RegExp.$2 };
             actions.push(subAction);
+            return;
           }
           if (p[1] === 3) {
             let subAction = {
@@ -61,13 +62,15 @@ export default class RuleParser {
               expression: RegExp.$2
             };
             actions.push(subAction);
+            return;
           }
-          if (p[1] === 4) {
+          if (!actionExpressions.includes("MustBe") && p[1] === 4) {
             let subAction = { key: RegExp.$1, expression: RegExp.$2 };
             actions.push(subAction);
+            return;
           }
         }
-      });
+      }
     });
     return actions;
   }
@@ -90,14 +93,16 @@ export default class RuleParser {
    * @param {验证结果} valid
    * @param {回掉函数} callback
    */
-  effect(that, item, value, valid, errMsg, callback) {
-    if (valid) {
-      that.$emit("removeError", { value, item });
-      callback();
-    } else {
-      item.errMsg = errMsg;
-      that.$emit("addError", { value, item });
-      callback(new Error(""));
+  effect(expression, that, item, value, valid, errMsg, callback) {
+    if (Const.CANTIPOPTS.includes(expression)) {
+      if (this.assert(expression, valid)) {
+        item.errMsg = errMsg;
+        that.$emit("addError", { value, item });
+        callback(new Error(""));
+      } else {
+        that.$emit("removeError", { value, item });
+        callback();
+      }
     }
   }
 
@@ -155,7 +160,7 @@ export default class RuleParser {
    * @param {前置条件} perValid
    */
   disabledAssert(formData, key, perValid) {
-    ConditionMap.get(Const.Disabled)(formData, key, perValid);
+    return ConditionMap.get(Const.Disabled)(formData, key, perValid);
   }
 
   /**
@@ -165,7 +170,7 @@ export default class RuleParser {
    * @param {前置条件} perValid
    */
   undisabledAssert(formData, key, perValid) {
-    ConditionMap.get(Const.Disabled)(formData, key, perValid);
+    return ConditionMap.get(Const.UnDisabled)(formData, key, perValid);
   }
 
   /**
@@ -174,7 +179,7 @@ export default class RuleParser {
    * @param {作用键} key
    */
   clearAssert(root, key) {
-    ConditionMap.get(Const.Clear)(root, key);
+    return ConditionMap.get(Const.Clear)(root, key);
   }
 
   /**
@@ -182,8 +187,9 @@ export default class RuleParser {
    * @param {条件} condition
    * @param {元祖1} tuple1
    * @param {元祖2} tuple2
+   * @param {元祖3} tuple3
    */
-  executeValidator(condition, tuple1, tuple2) {
+  executeValidator(condition, tuple1, tuple2, tuple3) {
     const map = new Map();
     map.set(Const.NotIn, this.notInAssert);
     map.set(Const.IsNull, this.isNullAssert);
@@ -195,7 +201,7 @@ export default class RuleParser {
     map.set(Const.Clear, this.clearAssert);
     try {
       return map.has(condition)
-        ? map.get(condition)(tuple1, tuple2)
+        ? map.get(condition)(tuple1, tuple2, tuple3)
         : ConditionMap.get(condition)(tuple1);
     } catch (error) {
       console.error("表达式有误哦");
@@ -205,6 +211,8 @@ export default class RuleParser {
   compulteProp1(expression, formData, entitys, key, panels) {
     if ([Const.Disabled, Const.UnDisabled].includes(expression))
       return formData;
+    if ([Const.IsNotNull, Const.IsNull].includes(expression))
+      return entitys[key];
     if (expression === Const.Clear) return panels;
     return entitys[key];
   }
@@ -215,5 +223,44 @@ export default class RuleParser {
       return Const.NUMBER_EXPRESSION.test(other) ? other : entitys[other];
     if ([Const.Disabled, Const.UnDisabled].includes) return key;
     return entitys[key];
+  }
+
+  /**
+   * 断言
+   * @param {条件} condition
+   * @param {验证结果} isValid
+   */
+  assert(condition, isValid) {
+    if ([Const.IsNotNull] === condition) return !isValid;
+    return isValid;
+  }
+
+  /**
+   * 处理副作用
+   * @param {*} action
+   * @param {*} formData
+   * @param {*} entitys
+   * @param {*} panels
+   */
+  executeAction(action, formData, entitys, panels, preValidResult) {
+    let tuple1 = this.compulteProp1(
+      action.expression,
+      formData,
+      entitys,
+      action.key,
+      panels
+    );
+    let tuple2 = this.compulteProp2(
+      action.expression,
+      entitys,
+      action.key,
+      action.other
+    );
+    return this.executeValidator(
+      action.expression,
+      tuple1,
+      tuple2,
+      preValidResult
+    );
   }
 }
