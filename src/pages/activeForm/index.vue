@@ -45,8 +45,6 @@
 <script>
 import ankaStaticData from "@/pages/activeForm/ankaStaticData";
 import ankaParamsList from "./ankaParamsListData";
-import ruleData from "./rulesParser/data.json";
-window.ruleData = ruleData;
 export default {
   name: "activeForm",
   data() {

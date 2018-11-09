@@ -7,11 +7,12 @@
         @mousewheel="tableMouseWheel"
     >
       <div class="form-designer-main-tabs"  v-for="(tab , tabIndex) in  translatedAnKa.children  "  ref="tab" :key="'ankatable'+tabIndex">
-        <mypagenation v-if="tab.child.more" style="margin-bottom: 10px;margin-left: 10px;"
+        <mypagenation style="margin-bottom: 10px;margin-left: 10px;"
                       :elProps="{total:tab.pageData?tab.pageData.length : 1,'page-size':1,'current-page':tab.currentPage}"
                       @menuClick="pageMenuClick({type:'tab',tab:tab,tabIndex,data:$event})"
                       @pageChange="pageChange({type:'tab',tab:tab,tabIndex,data:$event})"
         ></mypagenation>
+        <!--v-if="tab.child.more"-->
         <el-row class="form-designer-pane" >
           <formDesignerpane v-if="tab.child.containers.length===1"  class="form-designer-pain-main"
                              ref="mainpain"
@@ -1001,7 +1002,7 @@ export default {
         this.translatedAnKa = tempTranslatedAnka;
       }, 300);
     }, //对translatedAnka页面数据进行翻页数据初始化的方法。
-    pageMenuClick({ type, tab, tableIndex, data }) {
+    async pageMenuClick({ type, tab, tableIndex, data }) {
       let formValid = this.validateAllPanels();
       // if (!formValid) return;
       console.log(formValid);
@@ -1015,6 +1016,9 @@ export default {
           }
           tab.currentPage = tab.pageData.length;
         } else if (data === "del") {
+          let deleteData = tab.pageData[tab.currentPage - 1];
+          let flag = await this.deleteTableOrTab("tab", deleteData); //调用后台接口删除
+          if (!flag) return; //如果后台删除失败，页面不执行删除逻辑
           if (tab.pageData.length === 1) {
             this.setTabValue(tab);
             tab.pageData = [this.setTabValue(tab)];
@@ -1039,6 +1043,15 @@ export default {
           tab.pageData[tab.currentPage - 1].currentTablePages[tableIndex] =
             tab.pageData[tab.currentPage - 1].tabPageData[tableIndex].length;
         } else if (data.data === "del") {
+          // console.log(tab.currentPage);
+          // console.log(type, tab, tableIndex, data);
+          let deleteData =
+            tab.pageData[tab.currentPage - 1].tabPageData[tableIndex][
+              tab.pageData[tab.currentPage - 1].currentTablePages[tableIndex] -
+                1
+            ];
+          let flag = await this.deleteTableOrTab("table", deleteData); //调用后台接口删除
+          if (!flag) return; //如果后台删除失败，页面不执行删除逻辑
           this.setTableValue(currentTable);
           if (
             tab.pageData[tab.currentPage - 1].tabPageData[tableIndex].length ===
@@ -1109,7 +1122,35 @@ export default {
           tableIndex - 1
         ];
       }
-    } //用于获取对应table的当前页码的方法，如果存在tableIndex，说明这个tab有多个table，传入的是遍历的索引，否则为tab只有一个table
+    }, //用于获取对应table的当前页码的方法，如果存在tableIndex，说明这个tab有多个table，传入的是遍历的索引，否则为tab只有一个table
+    deleteTableOrTab(type, data) {
+      let p = new Promise(sucess => {
+        if (type === "tab") {
+          this.$api.activeForm.deleteTab(data).then(
+            res => {
+              console.log(res);
+              sucess(true);
+            },
+            err => {
+              console.log(err);
+              sucess(false);
+            }
+          );
+        } else {
+          this.$api.activeForm.deleteTable(data).then(
+            res => {
+              console.log(res);
+              sucess(true);
+            },
+            err => {
+              console.log(err);
+              sucess(false);
+            }
+          );
+        }
+      });
+      return p;
+    }
   },
   components: {
     myElement: () => import("./myElement.vue"),
