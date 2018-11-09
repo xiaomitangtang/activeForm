@@ -1,5 +1,4 @@
 import RuleParser from "./rulesParser/rulesParser";
-
 const userableSetting = {
   "active-text": false,
   "inactive-text": false,
@@ -670,8 +669,7 @@ function formValid(item, rule, value, callback) {
         tuple1,
         tuple2
       );
-      debugger;
-      parser.effect(
+      parser.beforeEffect(
         expression.condition.expression,
         this,
         item,
@@ -688,10 +686,10 @@ function formValid(item, rule, value, callback) {
           panels,
           preValidResult
         );
-        parser.effect(
+        parser.afterEffect(
           expression.condition.expression,
           this,
-          formData.find(d => d.key == action.key),
+          item,
           value,
           afterValidReuslt,
           expression.msg,

@@ -93,9 +93,9 @@ export default class RuleParser {
    * @param {验证结果} valid
    * @param {回掉函数} callback
    */
-  effect(expression, that, item, value, valid, errMsg, callback) {
-    if (Const.CANTIPOPTS.includes(expression)) {
-      if (this.assert(expression, valid)) {
+  afterEffect(expression, that, item, value, valid, errMsg, callback) {
+    if (!Const.CANTIPOPTS.includes(expression)) {
+      if (!valid) {
         item.errMsg = errMsg;
         that.$emit("addError", { value, item });
         callback(new Error(""));
@@ -103,6 +103,32 @@ export default class RuleParser {
         that.$emit("removeError", { value, item });
         callback();
       }
+    } else {
+      callback();
+    }
+  }
+
+  /**
+   * 显示效果
+   * @param {vue实例对象} that
+   * @param {当前项} item
+   * @param {验证结果} valid
+   * @param {回掉函数} callback
+   */
+  beforeEffect(expression, that, item, value, valid, errMsg, callback) {
+    item.errMsg = errMsg;
+    if (!Const.CANTIPOPTS.includes(expression)) {
+      that.$emit(valid ? "removeError" : "addError", {
+        value,
+        item
+      });
+      !valid ? callback(new Error()) : callback();
+    } else {
+      that.$emit(!valid ? "removeError" : "addError", {
+        value,
+        item
+      });
+      valid ? callback(new Error()) : callback();
     }
   }
 
@@ -223,16 +249,6 @@ export default class RuleParser {
       return Const.NUMBER_EXPRESSION.test(other) ? other : entitys[other];
     if ([Const.Disabled, Const.UnDisabled].includes) return key;
     return entitys[key];
-  }
-
-  /**
-   * 断言
-   * @param {条件} condition
-   * @param {验证结果} isValid
-   */
-  assert(condition, isValid) {
-    if ([Const.IsNotNull] === condition) return !isValid;
-    return isValid;
   }
 
   /**
