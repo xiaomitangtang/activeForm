@@ -41,8 +41,5 @@ conditionMap.set(Const.Clear, (containers, key) => {
     }
   });
 });
-conditionMap.set(
-  Const.NotIn,
-  (v, collections) => collections.indexOf(v) === -1
-);
+conditionMap.set(Const.NotIn, (v, collections) => !collections.includes(v));
 export default conditionMap;

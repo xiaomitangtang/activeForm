@@ -48,12 +48,10 @@ export default class RuleParser {
         let match = p[0].test(actionExpression);
         if (match) {
           if (p[1] === 2) {
-            // 二元表达式
             let subAction = { key: RegExp.$1, expression: RegExp.$2 };
             actions.push(subAction);
           }
           if (p[1] === 3) {
-            // 三元表达式 有返回值
             let subAction = {
               key: RegExp.$1,
               other: RegExp.$3,
