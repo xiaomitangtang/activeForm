@@ -25,7 +25,8 @@
         <el-select v-else-if="innerdata.component==='el-select'" v-model="formModel[innerdata.key]" v-bind="innerdata.settings"
         :filterable="innerdata.settings['select-data'].length>10"
         >
-          <el-option v-for="item in innerdata.settings['select-data']" :key="item.label"    :label="item.mc" :value="item.mc+'---'+item.dm"></el-option>
+          <!--item.mc+'-&#45;&#45;'+-->
+          <el-option v-for="item in innerdata.settings['select-data']" :key="item.label"    :label="item.mc" :value="item.dm"></el-option>
         </el-select>
         <el-cascader v-else-if="innerdata.component==='el-cascader'" v-model="formModel[innerdata.key]" v-bind="innerdata.settings"  :options="innerdata.settings['cascader-data']||[]"></el-cascader>
         <el-upload style="height: 30px;" ref="upload" v-else-if="innerdata.component==='el-upload'" v-bind="innerdata.settings"  :action="innerdata.settings.uploadUrl ||'http://'"   :file-list="fileList"
