@@ -1,10 +1,7 @@
 <template>
 
 <div class="active-form-page">
-    <!--<tree-table :data="data" :columns="columns" border/>-->
 
-    <loading v-if="loading"></loading>
-    <!--<el-row class="active-form-page-head" style="border: 1px solid #000;"></el-row>-->
   <el-row  class="active-form-page-body" >
     <div class=" fullhight active-form-page-body-anka-main">
         <div class="active-form-page-body-anka-main-head">{{currentAnka?currentAnka.header.name:'案卡详情'}}
@@ -33,20 +30,17 @@
                 <errorsList :errors="errorsList" @errorClick="errorClick"></errorsList>
             </div>
         </div>
-<!--      <el-col class="fullhight" :span="4" ><dragmenu></dragmenu></el-col>
-      <el-col class="fullhight"  :span="20" > <formDesigner></formDesigner></el-col>-->
     </div>
-
-
   </el-row>
 </div>
 
 </template>
 <script>
-import ankaStaticData from "@/pages/activeForm/ankaStaticData";
-import ankaParamsList from "./ankaParamsListData";
-import ruleData from "./rulesParser/data.json";
-window.ruleData = ruleData;
+import ankaStaticData from "@/pages/activeForm/ankaStaticData"; //这是一个静态的案卡数据
+import ankaParamsList from "./ankaParamsListData"; //这个是案卡参数下拉框列表的数据
+import ruleData from "./rulesParser/data.json"; //这是默认的案卡规则
+window.ruleData = ruleData; //将默认的案卡规则进行赋值
+
 export default {
   name: "activeForm",
   data() {
@@ -60,7 +54,6 @@ export default {
       currenShowTable: null,
       currenShowTab: null,
       errorsList: [],
-      loading: false,
       columns: [
         {
           text: "事件",
@@ -241,7 +234,6 @@ export default {
         let formValid = await this.$api.activeForm.formValid({ params });
         // console.log(formValid);
         window.ruleData = formValid.data; //将获取到的验证规则挂载到window上，方便其他地方获取
-        this.loading = false;
         let tempCurrentAnka = formData.data.child;
         tempCurrentAnka.children.forEach((item, i) => {
           item.pageData = formData.data.pageData[i];
@@ -252,7 +244,10 @@ export default {
         console.log("请求数据出现了问题");
         console.log(e);
       }
-    } //获取服务端的数据，以及验证规则，并转换后台数据
+    }, //获取服务端的数据，以及验证规则，并转换后台数据
+    watchUrl() {
+      this.getAnKaByParams(this.$route.query);
+    }
   },
   watch: {
     currentAnkaParam(n) {
@@ -262,17 +257,16 @@ export default {
     } //监控当前的案卡参数，及时根据当前的参数获取当前的案卡信息
   },
   mounted() {
-    this.currenShowTable = this.currentAnka.children[0].child.containers[0];
     this.getAnKaByParams(this.$route.query);
+    window.addEventListener("popstate", this.watchUrl); //添加用户对url的手动更改的监听，如果用户更改了url的参数，重新发送请求
+  },
+  beforeDestroy() {
+    window.removeEventListener("popstate", this.watchUrl); //组件卸载时，移除本组件对用户修改url的监听事件
   },
   components: {
-    ankaList: () => import("./ankalist"),
     ankaformList: () => import("./anka-form-list.vue"),
-    dragmenu: () => import("./dragMenu.vue"),
     formDesigner: () => import("./formDesigner.vue"),
-    loading: () => import("./components/loading.vue"),
-    errorsList: () => import("./error-list.vue"),
-    treeTable: () => import("./components/treetable.vue")
+    errorsList: () => import("./error-list.vue")
   }
 };
 </script>
