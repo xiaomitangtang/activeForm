@@ -24,7 +24,7 @@ class DemoApiController extends BaseApiController {
     return this.put(this.activeForm.deleteTab, params).then(res => res.data);
   };
   saveAnKa = params => {
-    return this.post(this.activeForm.save, params).then(res => res.data);
+    return this.put(this.activeForm.save, params).then(res => res.data);
   };
 }
 export default new DemoApiController();
