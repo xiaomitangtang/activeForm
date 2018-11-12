@@ -712,6 +712,18 @@ export default {
       console.log("DataData");
       console.log(Data);
       console.log(JSON.stringify(Data));
+      this.$api.activeForm.saveAnKa(Data).then(
+        res => {
+          this.$notify({
+            title: "温馨提示",
+            message: res.success ? "保存成功" : res.message,
+            type: res.success ? "success" : "error"
+          });
+        },
+        err => {
+          console.log(err);
+        }
+      );
     }, //点击保存按钮向后台提交数据的方法
     getAllTableItem() {
       return this.tableItems;

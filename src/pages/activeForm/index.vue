@@ -12,10 +12,6 @@
         <div class="active-form-page-body-anka-main-body">
             <div class="fullhight active-form-page-body-anka-main-body-formlist">
                 <ankaformList :anka="currentAnka" :currenTable="currenShowTable" @ankaTableClick="ankaTableClick"
-                    @dragItem="ankaFormListDragItem"
-                    @dropedOnTitle="ankaFormListDropedOnTitle"
-                    @dropedOnItem="ankaFormListDropedOnItem"
-                              @editName="editName"
                 ></ankaformList>
             </div>
             <div class=" fullhight active-form-page-body-anka-main-body-form">
@@ -44,12 +40,10 @@ export default {
   name: "activeForm",
   data() {
     return {
-      // currentAnka: null,
-      ankaParamsList: ankaParamsList,
-      currentAnkaParam: ankaParamsList[1],
-      currentAnka: ankaStaticData,
-      tableList: [],
-      formListDragData: null,
+      ankaParamsList: ankaParamsList, //案卡参数下拉框的数据
+      currentAnkaParam: ankaParamsList[1], //当前展示的案卡
+      currentAnka: ankaStaticData, //当前展示的案卡数据，（经过formDesigner转换之前的数据）
+      // formListDragData: null,
       currenShowTable: null,
       currenShowTab: null,
       errorsList: [],
@@ -166,49 +160,6 @@ export default {
       this.currenShowTab = tab;
       this.currenShowTable = table;
     }, //formDesigner中显示当前的table和tab滚动都按一定程度触发的事件，用于同步当前显示的tab和table
-    ankaFormListDragItem(data) {
-      this.formListDragData = data;
-    }, //左侧table或者tab拖拽start事件，用于记录拖拽的信息
-    getOrignItem() {
-      let dragdata = this.formListDragData;
-      return dragdata.tab.child.containers.splice(
-        dragdata.tab.child.containers.indexOf(dragdata.item),
-        1
-      )[0];
-    }, //提供的一个方法，用于获取拖拽的原始item，此方法会将目标item从原数组中取出，如不改变请自己放回去
-    ankaFormListDropedOnTitle({ tab }) {
-      tab.child.containers.push(this.getOrignItem());
-      this.initTableScroll();
-    }, //左侧拖拽item放于tab上时触发的事件，
-    ankaFormListDropedOnItem({ tab, itemIndex }) {
-      tab.child.containers.splice(itemIndex, 0, this.getOrignItem());
-      this.initTableScroll();
-    }, //左侧拖拽item放于table上时触发的事件，
-    initTableScroll() {
-      this.$refs.formdesigner.translateAnka();
-      setTimeout(() => {
-        this.$refs.formdesigner.animateToTab(this.currenShowTab);
-      }, 400);
-    }, //当数据发生改变时，将服务端数据转化，并移动视图
-    editName(data) {
-      let oldname =
-        data.type === "tab" ? data.tab.child.title : data.table.text;
-      let title = data.type === "tab" ? "修改tab名" : "修改表名";
-      this.$prompt("", { title: title, inputValue: oldname }).then(
-        res => {
-          if (res.action === "confirm") {
-            if (data.type === "tab") {
-              data.tab.child.title = res.value;
-            } else {
-              data.table.text = res.value;
-            }
-          }
-        },
-        err => {
-          console.log(err);
-        }
-      );
-    }, //编辑左侧tab或者table的名字
     addError(data) {
       let errorsList = [...this.errorsList];
       if (!errorsList.indexOf(data) + 1) {
@@ -263,9 +214,9 @@ export default {
     window.removeEventListener("popstate", this.watchUrl); //组件卸载时，移除本组件对用户修改url的监听事件
   },
   components: {
-    ankaformList: () => import("./anka-form-list.vue"),
-    formDesigner: () => import("./formDesigner.vue"),
-    errorsList: () => import("./error-list.vue")
+    ankaformList: () => import("./anka-form-list.vue"), //这个组件是界面左侧的案卡tab和table的展示列表
+    formDesigner: () => import("./formDesigner.vue"), //这个是案卡展示的主界面位于中间
+    errorsList: () => import("./error-list.vue") //这个是案卡错误信息的展示列表
   }
 };
 </script>
