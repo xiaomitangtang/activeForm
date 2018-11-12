@@ -1,7 +1,9 @@
 import * as Const from "./parseConst";
 
 const NUMBER_EXPRESSION = /^[0-9]+\.?[0-9]*$/;
+
 const conditionMap = new Map();
+
 conditionMap.set(Const.IsNotNull, v => v !== null && v !== "");
 
 conditionMap.set(Const.IsNull, v => v === null || v === "");
@@ -71,11 +73,48 @@ conditionMap.set(Const.Between, (v, collections) => {
 });
 
 conditionMap.set(Const.BetweenEqual, (v, collections) => {
+  debugger;
   let value = Number(v);
   let range = collections.split(",");
   let mix = Number(range[0]);
   let max = Number(range[1]);
   return value >= mix && value <= max;
 });
+
+conditionMap.set(Const.LessThan, (v, collections) => {
+  let value = Number(v);
+  let range = collections.split(",");
+  let mix = Number(range[0]);
+  let max = Number(range[1]);
+  return value >= mix && value <= max;
+});
+
+conditionMap.set(Const.LessThanEqual, (a, b) => {
+  if (
+    typeof a === "undefined" ||
+    typeof b === "undefined" ||
+    a === "" ||
+    b === ""
+  )
+    return false;
+
+  if (NUMBER_EXPRESSION.test(a)) return a <= b;
+  if (a instanceof Date) return Number(a) <= Number(b);
+});
+
+conditionMap.set(Const.LessThan, (a, b) => {
+  if (
+    typeof a === "undefined" ||
+    typeof b === "undefined" ||
+    a === "" ||
+    b === ""
+  )
+    return false;
+
+  if (NUMBER_EXPRESSION.test(a)) return a < b;
+  if (a instanceof Date) return Number(a) < Number(b);
+});
+
+conditionMap.set();
 
 export default conditionMap;

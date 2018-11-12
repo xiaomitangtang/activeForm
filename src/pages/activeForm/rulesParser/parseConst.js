@@ -9,13 +9,18 @@ export const In = "ValueIs";
 export const NotIn = "ValueNotIs";
 export const Between = "BetweenEqual";
 export const BetweenEqual = "BetweenEqual";
+export const LessThan = "SmallerThan";
+export const LessThanEqual = "SmallerAndEqual";
 export const NumberExpression = /^[0-9]+\.?[0-9]*$/;
 export const HasTipOpts = [
   In,
   NotIn,
   Between,
+  BetweenEqual,
   GreaterThan,
+  GreaterAndEqual,
   IsNotNull,
   BetweenEqual,
-  GreaterAndEqual
+  LessThan,
+  LessThanEqual
 ];

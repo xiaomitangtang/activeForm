@@ -40,8 +40,9 @@ export default class RuleParser {
    */
   actionProcess(actionExpressions) {
     let pattrens = [
-      [/(.+)=@MustBe{@(.+){}}/, 2],
-      [/(.+)=@MustBe{@([a-zA-Z]+){&(.+)}}/, 3],
+      [/(.+)=@MustBe{@(.+){}}/, 1],
+      [/(.+)=@MustBe{@([a-zA-Z]+){&(.+)}}/, 2],
+      [/(.+)=@MustBe{@(.+){(.+)}/, 3],
       [/(.+)=@(.+){}/, 4]
     ];
     let actions = [];
@@ -50,16 +51,25 @@ export default class RuleParser {
       for (let actionExpression of expressions) {
         let match = p[0].test(actionExpression);
         if (match) {
-          if (p[1] === 2) {
+          if (p[1] === 1) {
             let subAction = { key: RegExp.$1, expression: RegExp.$2 };
+            actions.push(subAction);
+            return;
+          }
+          if (p[1] === 2) {
+            let subAction = {
+              key: RegExp.$1,
+              expression: RegExp.$2,
+              other: RegExp.$3
+            };
             actions.push(subAction);
             return;
           }
           if (p[1] === 3) {
             let subAction = {
               key: RegExp.$1,
-              other: RegExp.$3,
-              expression: RegExp.$2
+              expression: RegExp.$2,
+              other: RegExp.$3
             };
             actions.push(subAction);
             return;
@@ -84,28 +94,6 @@ export default class RuleParser {
     containers.forEach(c => objs.push(c.formModel));
     let res = Object.assign({}, ...objs);
     return res;
-  }
-
-  /**
-   * 显示效果
-   * @param {vue实例对象} that
-   * @param {当前项} item
-   * @param {验证结果} valid
-   * @param {回掉函数} callback
-   */
-  afterEffect(that, expression, item, value, valid, errMsg, callback) {
-    if (!Const.hasTipOpts.includes(expression)) {
-      if (!valid) {
-        item.errMsg = errMsg;
-        that.$emit("addError", { value, item });
-        callback(new Error(""));
-      } else {
-        that.$emit("removeError", { value, item });
-        callback();
-      }
-    } else {
-      callback();
-    }
   }
 
   /**获取规则表达式集合
@@ -143,6 +131,22 @@ export default class RuleParser {
    *  @param {值2} second
    */
   greaterThanEqualAssert(first, second) {
+    return ConditionMap.get(Const.GreaterAndEqual)(first, second);
+  }
+
+  /**
+   *  @param {值1} first
+   *  @param {值2} second
+   */
+  lessThanAssert(first, second) {
+    return ConditionMap.get(Const.GreaterThan)(first, second);
+  }
+
+  /**
+   *  @param {值1} first
+   *  @param {值2} second
+   */
+  lessThanEqualAssert(first, second) {
     return ConditionMap.get(Const.GreaterAndEqual)(first, second);
   }
 
@@ -227,6 +231,8 @@ export default class RuleParser {
     map.set(Const.IsNotNull, this.isNotNullAssert);
     map.set(Const.GreaterThan, this.greaterThanAssert);
     map.set(Const.GreaterAndEqual, this.greaterThanEqualAssert);
+    map.set(Const.LessThan, this.lessThanAssert);
+    map.set(Const.LessThanEqual, this.lessThanEqualAssert);
     map.set(Const.Disabled, this.disabledAssert);
     map.set(Const.UnDisabled, this.undisabledAssert);
     map.set(Const.Between, this.betweenAssert);
@@ -251,7 +257,12 @@ export default class RuleParser {
 
   compulteProp2(expression, entitys, key, other) {
     if (Const.Clear === expression) return key;
-    if ([Const.In, Const.NotIn].includes(expression)) return other;
+    if (
+      [Const.In, Const.NotIn, Const.Between, Const.BetweenEqual].includes(
+        expression
+      )
+    )
+      return other;
     if ([Const.GreaterAndEqual, Const.GreaterThan].includes(expression))
       return Const.NumberExpression.test(other) ? other : entitys[other];
     if ([Const.Disabled, Const.UnDisabled].includes) return key;
