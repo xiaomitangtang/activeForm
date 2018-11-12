@@ -76,17 +76,17 @@ conditionMap.set(Const.BetweenEqual, (v, collections) => {
   debugger;
   let value = Number(v);
   let range = collections.split(",");
-  let mix = Number(range[0]);
+  let min = Number(range[0]);
   let max = Number(range[1]);
-  return value >= mix && value <= max;
+  return value >= min && value <= max;
 });
 
 conditionMap.set(Const.LessThan, (v, collections) => {
   let value = Number(v);
   let range = collections.split(",");
-  let mix = Number(range[0]);
+  let min = Number(range[0]);
   let max = Number(range[1]);
-  return value >= mix && value <= max;
+  return value >= min && value <= max;
 });
 
 conditionMap.set(Const.LessThanEqual, (a, b) => {
