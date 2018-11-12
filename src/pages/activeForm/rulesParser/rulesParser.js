@@ -93,29 +93,7 @@ export default class RuleParser {
    * @param {验证结果} valid
    * @param {回掉函数} callback
    */
-  afterEffect(expression, that, item, value, valid, errMsg, callback) {
-    if (!Const.CANTIPOPTS.includes(expression)) {
-      if (!valid) {
-        item.errMsg = errMsg;
-        that.$emit("addError", { value, item });
-        callback(new Error(""));
-      } else {
-        that.$emit("removeError", { value, item });
-        callback();
-      }
-    } else {
-      callback();
-    }
-  }
-
-  /**
-   * 显示效果
-   * @param {vue实例对象} that
-   * @param {当前项} item
-   * @param {验证结果} valid
-   * @param {回掉函数} callback
-   */
-  beforeEffect(expression, that, item, value, valid, errMsg, callback) {
+  beforeEffect(that, expression, item, value, valid, errMsg, callback) {
     item.errMsg = errMsg;
     if (!Const.CANTIPOPTS.includes(expression)) {
       that.$emit(valid ? "removeError" : "addError", {
@@ -132,21 +110,34 @@ export default class RuleParser {
     }
   }
 
+  /**
+   * 显示效果
+   * @param {vue实例对象} that
+   * @param {当前项} item
+   * @param {验证结果} valid
+   * @param {回掉函数} callback
+   */
+  afterEffect(that, expression, item, value, valid, errMsg, callback) {
+    if (!Const.CANTIPOPTS.includes(expression)) {
+      if (!valid) {
+        item.errMsg = errMsg;
+        that.$emit("addError", { value, item });
+        callback(new Error(""));
+      } else {
+        that.$emit("removeError", { value, item });
+        callback();
+      }
+    } else {
+      callback();
+    }
+  }
+
   /**获取规则表达式集合
    * @param {规则标识} ruleKey
    */
   getExpressions(ruleKey) {
     let expressions = this.rules().filter(r => r.condition.key === ruleKey);
     return expressions.length > 0 ? expressions : null;
-  }
-
-  /**
-   *
-   * @param {值} value
-   * @param {所属集} sets
-   */
-  notInAssert(value, sets) {
-    return this.ConditionMap(Const.NotIn)(value, sets);
   }
 
   /**
@@ -210,6 +201,24 @@ export default class RuleParser {
 
   /**
    *
+   * @param {值} value
+   * @param {集} collection
+   */
+  inAssert(value, collection) {
+    return ConditionMap.get(Const.In)(value, collection);
+  }
+
+  /**
+   *
+   * @param {值} value
+   * @param {集} collection
+   */
+  notInAssert(value, collection) {
+    return ConditionMap.get(Const.NotIn)(value, collection);
+  }
+
+  /**
+   *
    * @param {条件} condition
    * @param {元祖1} tuple1
    * @param {元祖2} tuple2
@@ -217,13 +226,14 @@ export default class RuleParser {
    */
   executeCondition(condition, tuple1, tuple2, tuple3) {
     const map = new Map();
-    map.set(Const.NotIn, this.notInAssert);
     map.set(Const.IsNull, this.isNullAssert);
     map.set(Const.IsNotNull, this.isNotNullAssert);
     map.set(Const.GreaterThan, this.greaterThanAssert);
     map.set(Const.GreaterAndEqual, this.greaterThanEqualAssert);
     map.set(Const.Disabled, this.disabledAssert);
     map.set(Const.UnDisabled, this.undisabledAssert);
+    map.set(Const.In, this.inAssert);
+    map.set(Const.NotIn, this.notInAssert);
     map.set(Const.Clear, this.clearAssert);
     try {
       return map.has(condition)
@@ -245,6 +255,7 @@ export default class RuleParser {
 
   compulteProp2(expression, entitys, key, other) {
     if (Const.Clear === expression) return key;
+    if ([Const.In, Const.NotIn].includes(expression)) return other;
     if ([Const.GreaterAndEqual, Const.GreaterThan].includes(expression))
       return Const.NUMBER_EXPRESSION.test(other) ? other : entitys[other];
     if ([Const.Disabled, Const.UnDisabled].includes) return key;
@@ -312,8 +323,8 @@ export default class RuleParser {
           tuple2
         );
         this.beforeEffect(
-          expression.condition.expression,
           that,
+          expression.condition.expression,
           item,
           value,
           preValidResult,
@@ -329,8 +340,8 @@ export default class RuleParser {
             preValidResult
           );
           this.afterEffect(
-            expression.condition.expression,
             that,
+            expression.condition.expression,
             item,
             value,
             afterValidReuslt,
