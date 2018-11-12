@@ -261,7 +261,7 @@ export default {
   },
   mounted() {
     this.currenShowTable = this.currentAnka.children[0].child.containers[0];
-    this.getAnKaByParams(this.currentAnkaParam);
+    this.getAnKaByParams(this.$route.query);
   },
   components: {
     ankaList: () => import("./ankalist"),

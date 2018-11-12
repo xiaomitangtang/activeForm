@@ -64,7 +64,7 @@ export default {
   },
   methods: {
     getRemoteData() {
-      console.log(this.innerdata.requestItems);
+      // console.log(this.innerdata.requestItems);
       let reqOption = this.innerdata.requestItems;
       if (!reqOption) {
         alert("没有设置远程地址");
@@ -81,8 +81,8 @@ export default {
         param
       ).then(
         res => {
-          console.log("resresresresres");
-          console.log(res.data);
+          // console.log("resresresresres");
+          // console.log(res.data);
           if (res.data.success) {
             switch (this.innerdata.component) {
               case "el-select":
