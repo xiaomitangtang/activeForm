@@ -7,5 +7,15 @@ export const UnDisabled = "Show";
 export const Clear = "ClearIt";
 export const In = "ValueIs";
 export const NotIn = "ValueNotIs";
-export const NUMBER_EXPRESSION = /^[0-9]+\.?[0-9]*$/;
-export const CANTIPOPTS = [IsNull, Clear, Disabled, UnDisabled];
+export const Between = "BetweenEqual";
+export const BetweenEqual = "BetweenEqual";
+export const NumberExpression = /^[0-9]+\.?[0-9]*$/;
+export const HasTipOpts = [
+  In,
+  NotIn,
+  Between,
+  GreaterThan,
+  IsNotNull,
+  BetweenEqual,
+  GreaterAndEqual
+];

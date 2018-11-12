@@ -93,32 +93,8 @@ export default class RuleParser {
    * @param {验证结果} valid
    * @param {回掉函数} callback
    */
-  beforeEffect(that, expression, item, value, valid, errMsg, callback) {
-    item.errMsg = errMsg;
-    if (!Const.CANTIPOPTS.includes(expression)) {
-      that.$emit(valid ? "removeError" : "addError", {
-        value,
-        item
-      });
-      !valid ? callback(new Error()) : callback();
-    } else {
-      that.$emit(!valid ? "removeError" : "addError", {
-        value,
-        item
-      });
-      valid ? callback(new Error()) : callback();
-    }
-  }
-
-  /**
-   * 显示效果
-   * @param {vue实例对象} that
-   * @param {当前项} item
-   * @param {验证结果} valid
-   * @param {回掉函数} callback
-   */
   afterEffect(that, expression, item, value, valid, errMsg, callback) {
-    if (!Const.CANTIPOPTS.includes(expression)) {
+    if (!Const.hasTipOpts.includes(expression)) {
       if (!valid) {
         item.errMsg = errMsg;
         that.$emit("addError", { value, item });
@@ -219,6 +195,24 @@ export default class RuleParser {
 
   /**
    *
+   * @param {值} value
+   * @param {集} collection
+   */
+  betweenAssert(value, collection) {
+    return ConditionMap.get(Const.Between)(value, collection);
+  }
+
+  /**
+   *
+   * @param {值} value
+   * @param {集} collection
+   */
+  betweenEqualAssert(value, collection) {
+    return ConditionMap.get(Const.BetweenEqual)(value, collection);
+  }
+
+  /**
+   *
    * @param {条件} condition
    * @param {元祖1} tuple1
    * @param {元祖2} tuple2
@@ -226,15 +220,17 @@ export default class RuleParser {
    */
   executeCondition(condition, tuple1, tuple2, tuple3) {
     const map = new Map();
+    map.set(Const.In, this.inAssert);
+    map.set(Const.NotIn, this.notInAssert);
+    map.set(Const.Clear, this.clearAssert);
     map.set(Const.IsNull, this.isNullAssert);
     map.set(Const.IsNotNull, this.isNotNullAssert);
     map.set(Const.GreaterThan, this.greaterThanAssert);
     map.set(Const.GreaterAndEqual, this.greaterThanEqualAssert);
     map.set(Const.Disabled, this.disabledAssert);
     map.set(Const.UnDisabled, this.undisabledAssert);
-    map.set(Const.In, this.inAssert);
-    map.set(Const.NotIn, this.notInAssert);
-    map.set(Const.Clear, this.clearAssert);
+    map.set(Const.Between, this.betweenAssert);
+    map.set(Const.BetweenEqual, this.betweenEqualAssert);
     try {
       return map.has(condition)
         ? map.get(condition)(tuple1, tuple2, tuple3)
@@ -257,7 +253,7 @@ export default class RuleParser {
     if (Const.Clear === expression) return key;
     if ([Const.In, Const.NotIn].includes(expression)) return other;
     if ([Const.GreaterAndEqual, Const.GreaterThan].includes(expression))
-      return Const.NUMBER_EXPRESSION.test(other) ? other : entitys[other];
+      return Const.NumberExpression.test(other) ? other : entitys[other];
     if ([Const.Disabled, Const.UnDisabled].includes) return key;
     return entitys[key];
   }
@@ -303,53 +299,52 @@ export default class RuleParser {
     if (!expressions) {
       callback();
     } else {
+      let validResult;
       expressions.forEach(expression => {
+        const condition = expression.condition.expression;
         let tuple1 = this.compulteProp1(
-          expression.condition.expression,
+          condition,
           formData,
           entitys,
           item.key,
           panels
         );
         let tuple2 = this.compulteProp2(
-          expression.condition.expression,
+          condition,
           entitys,
           item.key,
           expression.condition.other
         );
-        let preValidResult = this.executeCondition(
-          expression.condition.expression,
+        let beforeValidResult = this.executeCondition(
+          condition,
           tuple1,
           tuple2
         );
-        this.beforeEffect(
-          that,
-          expression.condition.expression,
-          item,
-          value,
-          preValidResult,
-          expression.msg,
-          callback
-        );
+        validResult = beforeValidResult;
+        that.$emit("removeError", { value, item });
+        if (Const.HasTipOpts.includes(condition) && !beforeValidResult) {
+          that.$emit("addError", { value, item });
+          return;
+        }
         expression.actions.forEach(action => {
-          let afterValidReuslt = this.executeAction(
+          let afterValidResult = this.executeAction(
             action,
             formData,
             entitys,
             panels,
-            preValidResult
+            beforeValidResult
           );
-          this.afterEffect(
-            that,
-            expression.condition.expression,
-            item,
-            value,
-            afterValidReuslt,
-            expression.msg,
-            callback
-          );
+          validResult = validResult && afterValidResult;
+          if (!afterValidResult) {
+            that.$emit("addError", { value, item });
+          }
         });
       });
+      if (validResult) {
+        callback();
+      } else {
+        callback(new Error(""));
+      }
     }
   }
 }

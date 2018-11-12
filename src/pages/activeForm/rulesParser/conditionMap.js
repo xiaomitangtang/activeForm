@@ -62,4 +62,20 @@ conditionMap.set(
   (v, collections) => !collections.split(",").includes(v)
 );
 
+conditionMap.set(Const.Between, (v, collections) => {
+  let value = Number(v);
+  let range = collections.split(",");
+  let mix = Number(range[0]);
+  let max = Number(range[1]);
+  return value > mix && value < max;
+});
+
+conditionMap.set(Const.BetweenEqual, (v, collections) => {
+  let value = Number(v);
+  let range = collections.split(",");
+  let mix = Number(range[0]);
+  let max = Number(range[1]);
+  return value >= mix && value <= max;
+});
+
 export default conditionMap;
