@@ -257,6 +257,8 @@ export default {
   watch: {
     currentAnkaParam(n) {
       this.getAnKaByParams(n);
+      let newUrl = `#/activeForm?akmbbh=${n.akmbbh}&bmsah=${n.bmsah}`;
+      window.history.pushState("", "", newUrl);
     } //监控当前的案卡参数，及时根据当前的参数获取当前的案卡信息
   },
   mounted() {
