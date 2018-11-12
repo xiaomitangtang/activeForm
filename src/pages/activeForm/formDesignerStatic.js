@@ -643,61 +643,9 @@ function getDefauleVal(item) {
 } //根据不同的表单元素进行判断并返回默认值
 function formValid(item, rule, value, callback) {
   let formData = this.formDedigner.getAllTableItem();
-  let parser = new RuleParser(window.ruleData, formData);
   let panels = this.formDedigner.getAllPanes();
-  let entitys = parser.getEntitys(panels);
-  let expressions = parser.getExpressions(item.key);
-  if (!expressions) {
-    callback();
-  } else {
-    expressions.forEach(expression => {
-      let tuple1 = parser.compulteProp1(
-        expression.condition.expression,
-        formData,
-        entitys,
-        item.key,
-        panels
-      );
-      let tuple2 = parser.compulteProp2(
-        expression.condition.expression,
-        entitys,
-        item.key,
-        expression.condition.other
-      );
-      let preValidResult = parser.executeValidator(
-        expression.condition.expression,
-        tuple1,
-        tuple2
-      );
-      parser.beforeEffect(
-        expression.condition.expression,
-        this,
-        item,
-        value,
-        preValidResult,
-        expression.msg,
-        callback
-      );
-      expression.actions.forEach(action => {
-        let afterValidReuslt = parser.executeAction(
-          action,
-          formData,
-          entitys,
-          panels,
-          preValidResult
-        );
-        parser.afterEffect(
-          expression.condition.expression,
-          this,
-          item,
-          value,
-          afterValidReuslt,
-          expression.msg,
-          callback
-        );
-      });
-    });
-  }
+  let parser = new RuleParser(window.ruleData, formData);
+  parser.execute(this, panels, formData, item, value, callback);
 } //自定义校验方法
 function getDefaultRule(item, val) {
   let tempRule = [{ validator: formValid.bind(this, item), trigger: "change" }];

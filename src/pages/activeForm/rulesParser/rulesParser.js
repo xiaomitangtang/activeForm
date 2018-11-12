@@ -215,7 +215,7 @@ export default class RuleParser {
    * @param {元祖2} tuple2
    * @param {元祖3} tuple3
    */
-  executeValidator(condition, tuple1, tuple2, tuple3) {
+  executeCondition(condition, tuple1, tuple2, tuple3) {
     const map = new Map();
     map.set(Const.NotIn, this.notInAssert);
     map.set(Const.IsNull, this.isNullAssert);
@@ -272,11 +272,73 @@ export default class RuleParser {
       action.key,
       action.other
     );
-    return this.executeValidator(
+    return this.executeCondition(
       action.expression,
       tuple1,
       tuple2,
       preValidResult
     );
+  }
+
+  /**
+   * 验证入口
+   * @param {panel集合} panels
+   * @param {当前验证项} item
+   * @param {回调} callback
+   */
+  execute(that, panels, formData, item, value, callback) {
+    let entitys = this.getEntitys(panels);
+    let expressions = this.getExpressions(item.key);
+    if (!expressions) {
+      callback();
+    } else {
+      expressions.forEach(expression => {
+        let tuple1 = this.compulteProp1(
+          expression.condition.expression,
+          formData,
+          entitys,
+          item.key,
+          panels
+        );
+        let tuple2 = this.compulteProp2(
+          expression.condition.expression,
+          entitys,
+          item.key,
+          expression.condition.other
+        );
+        let preValidResult = this.executeCondition(
+          expression.condition.expression,
+          tuple1,
+          tuple2
+        );
+        this.beforeEffect(
+          expression.condition.expression,
+          that,
+          item,
+          value,
+          preValidResult,
+          expression.msg,
+          callback
+        );
+        expression.actions.forEach(action => {
+          let afterValidReuslt = this.executeAction(
+            action,
+            formData,
+            entitys,
+            panels,
+            preValidResult
+          );
+          this.afterEffect(
+            expression.condition.expression,
+            that,
+            item,
+            value,
+            afterValidReuslt,
+            expression.msg,
+            callback
+          );
+        });
+      });
+    }
   }
 }
