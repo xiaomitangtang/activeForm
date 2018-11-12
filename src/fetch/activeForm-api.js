@@ -18,10 +18,10 @@ class DemoApiController extends BaseApiController {
     return this.get(this.activeForm.formvalid, params).then(res => res.data);
   };
   deleteTable = params => {
-    return this.post(this.activeForm.deleteTable, params).then(res => res.data);
+    return this.put(this.activeForm.deleteTable, params).then(res => res.data);
   };
   deleteTab = params => {
-    return this.post(this.activeForm.deleteTab, params).then(res => res.data);
+    return this.put(this.activeForm.deleteTab, params).then(res => res.data);
   };
   saveAnKa = params => {
     return this.post(this.activeForm.save, params).then(res => res.data);

@@ -4,8 +4,7 @@
       <span class="form-designer-main-header-text">{{translatedAnKa.header.name}}</span>
     </el-row>
     <div class="form-desgner-tables" ref="tablebox" id="tablebox" @scroll.passive="tableBoxScroll"
-        @mousewheel="tableMouseWheel"
-    >
+        @mousewheel="tableMouseWheel">
       <div class="form-designer-main-tabs"  v-for="(tab , tabIndex) in  translatedAnKa.children  "  ref="tab" :key="'ankatable'+tabIndex">
         <mypagenation style="margin-bottom: 10px;margin-left: 10px;"
                       :elProps="{total:tab.pageData?tab.pageData.length : 1,'page-size':1,'current-page':tab.currentPage}"
@@ -1124,6 +1123,8 @@ export default {
       }
     }, //用于获取对应table的当前页码的方法，如果存在tableIndex，说明这个tab有多个table，传入的是遍历的索引，否则为tab只有一个table
     deleteTableOrTab(type, data) {
+      console.log("deleteTableOrTab");
+      console.log(data);
       let p = new Promise(sucess => {
         if (type === "tab") {
           this.$api.activeForm.deleteTab(data).then(

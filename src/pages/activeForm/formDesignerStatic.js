@@ -969,10 +969,10 @@ function translateFormItem(item, tabIndex, tableIndex) {
   tempItem.val = item.value;
   tempItem.init = !tempItem.val;
 
-  /*  if (item.sjygl) {
-      tempItem.settings.remote = true;
-      tempItem.settings.remoteUrl = "/getSJYByProcedure?P_LBBM=" + item.sjygl;
-    }*/
+  if (item.request) {
+    tempItem.settings.remote = true;
+    tempItem.requestItems = item.requestItems;
+  }
   return tempItem;
 } //此方法用于将原来案卡的数据，进行一次转换，转成本表单容器所能接受的形式
 export default {

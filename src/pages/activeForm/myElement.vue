@@ -64,13 +64,26 @@ export default {
   },
   methods: {
     getRemoteData() {
-      if (!this.innerdata.settings.remoteUrl) {
+      console.log(this.innerdata.requestItems);
+      let reqOption = this.innerdata.requestItems;
+      if (!reqOption) {
         alert("没有设置远程地址");
         return;
       }
-      this.$http.get(this.innerdata.settings.remoteUrl).then(
+      let param = null;
+      if (reqOption.requestMethod === "GET") {
+        param = { params: { requestParameter: reqOption.requestParameter } };
+      } else {
+        param = { requestParameter: reqOption.requestParameter };
+      }
+      this.$http[reqOption.requestMethod.toLowerCase()](
+        reqOption.url,
+        param
+      ).then(
         res => {
-          if (res.data.status === "success") {
+          console.log("resresresresres");
+          console.log(res.data);
+          if (res.data.success) {
             switch (this.innerdata.component) {
               case "el-select":
                 this.innerdata.settings["select-data"] = res.data.data;
@@ -82,7 +95,7 @@ export default {
                 this.innerdata.settings["table-data"] = res.data;
                 break;
               case "el-search-tree":
-                this.innerdata.settings["search-tree-data"] = res.data;
+                this.innerdata.settings["search-tree-data"] = res.data.data;
                 break;
             }
           } else {
