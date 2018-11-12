@@ -1,7 +1,4 @@
 import RuleParser from "./rulesParser/rulesParser";
-import ConditionMap from "./rulesParser/conditionMap";
-import * as Const from "./rulesParser/parseConst";
-
 const userableSetting = {
   "active-text": false,
   "inactive-text": false,
@@ -646,106 +643,9 @@ function getDefauleVal(item) {
 } //根据不同的表单元素进行判断并返回默认值
 function formValid(item, rule, value, callback) {
   let formData = this.formDedigner.getAllTableItem();
+  let panels = this.formDedigner.getAllPanes();
   let parser = new RuleParser(window.ruleData, formData);
-  let containers = this.formDedigner.getAllPanes();
-  let constanlyData = parser.getEntitys(containers);
-  let rules = parser.rules();
-  let isPerIsValid = true;
-  let expression = rules.filter(r => r.condition.key === item.key)[0];
-  if (!expression) {
-    callback();
-    return;
-  }
-  switch (expression.condition.expression) {
-    case Const.NotIn: {
-      isPerIsValid = ConditionMap.get(expression.condition.expression)(
-        constanlyData[item.key],
-        expression.condition.other
-      );
-      if (value)
-        return parser.effect(
-          this,
-          item,
-          value,
-          isPerIsValid,
-          expression.msg,
-          callback
-        );
-      break;
-    }
-    case Const.IsNotNull: {
-      isPerIsValid = ConditionMap.get(expression.condition.expression)(
-        constanlyData[item.key],
-        expression.condition.other
-      );
-      parser.effect(this, item, value, isPerIsValid, expression.msg, callback);
-      break;
-    }
-    case Const.GreaterThan:
-    case Const.GreaterAndEqual: {
-      isPerIsValid = ConditionMap.get(expression.condition.expression)(
-        constanlyData[item.key],
-        /^[0-9]+\.?[0-9]*$/.test(expression.condition.other)
-          ? expression.condition.other
-          : constanlyData[expression.condition.other]
-      );
-      if (value)
-        return parser.effect(
-          this,
-          item,
-          value,
-          isPerIsValid,
-          expression.msg,
-          callback
-        );
-      break;
-    }
-    default: {
-      isPerIsValid = ConditionMap.get(expression.condition.expression)(
-        constanlyData[item.key]
-      );
-      if (value)
-        return parser.effect(
-          this,
-          item,
-          value,
-          isPerIsValid,
-          expression.msg,
-          callback
-        );
-      break;
-    }
-  }
-
-  expression.actions.forEach(a => {
-    switch (a.expression) {
-      case Const.Disabled:
-      case Const.UnDisabled: {
-        ConditionMap.get(a.expression)(formData, a.key, isPerIsValid);
-        callback();
-        break;
-      }
-      case Const.GreaterAndEqual:
-      case Const.GreaterThan: {
-        let isvalid = ConditionMap.get(a.expression)(
-          constanlyData[a.key],
-          /^[0-9]+\.?[0-9]*$/.test(a.other) ? a.other : constanlyData[a.other]
-        );
-        parser.effect(this, item, value, isvalid, expression.msg, callback);
-        break;
-      }
-      case Const.Clear:
-        ConditionMap.get(a.expression)(containers, a.key);
-        callback();
-        break;
-      default: {
-        let isvalid = ConditionMap.get(a.expression)(constanlyData[a.key]);
-        parser.effect(this, item, value, isvalid, expression.msg, callback);
-        break;
-      }
-    }
-  });
-  callback(Error(""));
+  parser.execute(this, panels, formData, item, value, callback);
 } //自定义校验方法
 function getDefaultRule(item, val) {
   let tempRule = [{ validator: formValid.bind(this, item), trigger: "change" }];
