@@ -40,8 +40,6 @@ import ankaStaticData from "@/pages/activeForm/ankaStaticData"; //这是一个�
 import ankaParamsList from "./ankaParamsListData"; //这个是案卡参数下拉框列表的数据
 // import ruleData from "./rulesParser/data.json"; //这是默认的案卡规则
 window.ruleData = []; //将默认的案卡规则进行赋值
-import ankaStaticData from "@/pages/activeForm/ankaStaticData";
-import ankaParamsList from "./ankaParamsListData";
 export default {
   name: "activeForm",
   data() {
