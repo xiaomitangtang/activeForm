@@ -32,7 +32,7 @@
 
           <el-tabs v-else   type="card"
                           class= "form-tabs swx-tabs swx-tabs-card"
-                          :editable="edit"   :value="tab.currentTableName" @input="tabsValueChange(tab,$event)"
+                   :value="tab.currentTableName" @input="tabsValueChange(tab,$event)"
                           @tab-click="tabPanelClick(tabIndex,$event)">
                    <el-tab-pane v-for="(table,tableIndex) in tab.child.containers" :label="table.text" :name="table.text" :key="table.text"
 
@@ -76,11 +76,7 @@ export default {
   },
   data() {
     return {
-      formModalData: { settings: {}, isRequire: false }, //这是设置弹窗中的数据
       formItemSettingsValue: formDesignerStatic.formItemSettingsValue, //页面中的一些静态的常量
-      nowFormPane: null, //当前的panel，拖拽元素时有用（设计器），
-      nowFormPaneDragItem: null, //当前拖拽的表单元素，设计器有用
-      dialogFormVisible: false, //设置参数的弹窗是否显示的变量
       translatedAnKa: { header: { name: "" }, children: [] }, //用于渲染页面的案卡数据（根据服务端数据转化过后的数据，包含翻页数据）
       panels: [], //记录当前页面中panel的数据
       tableItems: [] //所有表单元素平铺之后的数据，方便验证
@@ -93,22 +89,6 @@ export default {
   },
   methods: {
     translateFormItem: formDesignerStatic.translateFormItem, //转化数据的方法，单位位每一个控件
-    groupAddItem: formDesignerStatic.groupAddItem, //设置元素弹窗中为RadioGroup等以组为单位的控件添加元素的方法，展示阶段无用
-    groupDelItem: formDesignerStatic.groupDelItem, //设置元素弹窗中为RadioGroup等以组为单位的控件删除元素的方法，展示阶段无用
-    isSettingVisible: formDesignerStatic.isSettingVisible, //用于判断设置弹窗中大部分控件是否显示的方法，根据formDesignerStatic中的userableSetting以及相对应的逻辑控制设置界面参数的显示
-    saveFormStyle() {
-      this.nowFormPane.saveFormStyle(this.formModalData);
-      this.dialogFormVisible = false;
-    }, //这个是设置元素参数弹框的保存按钮点击事件。
-    formDesignerpaneItemClick(pane, item) {
-      this.nowFormPane = pane;
-      this.formModalData = item;
-      this.dialogFormVisible = true;
-    }, //名字有误，实际上是打开设置面板的方法
-    setNowFormPaneAndnowFormPaneDragItem(pane, dragItem) {
-      this.nowFormPane = pane;
-      this.nowFormPaneDragItem = dragItem;
-    }, //拖拽表单元素时，记录当前拖动的panel以及拖动的表单元素
     getAllPanes() {
       return this.panels;
     }, //获取当前设计器中所有panel的方法

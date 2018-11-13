@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/pages/activeForm/formDesigner.vue" line="998" />
+    <bookmark url="file://$PROJECT_DIR$/src/pages/activeForm/formDesigner.vue" line="420" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e83b734b-bb66-46f6-bf25-31573a9bb7ad" name="Default" comment="">
@@ -32,209 +32,41 @@
       <file leaf-file-name="formDesigner.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/activeForm/formDesigner.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-11924">
-              <caret line="639" column="50" selection-start-line="639" selection-start-column="50" selection-end-line="639" selection-end-column="50" />
+            <state relative-caret-position="-387">
+              <caret line="91" selection-start-line="91" selection-end-line="91" />
               <folding>
                 <element signature="n#style#0;n#mypagenation#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#el-tab-pane#0;n#el-tabs#0;n#el-row#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#formDesignerpane#0;n#el-tab-pane#0;n#el-tabs#0;n#el-row#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-button-group#0;n#div#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#0;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#1;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#2;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#3;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-select#0;n#el-form-item#3;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-option#0;n#el-select#0;n#el-form-item#3;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#4;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#5;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#6;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#7;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#8;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#9;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#10;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#11;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#12;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#13;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#14;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#15;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#16;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#17;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#18;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#19;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#20;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#21;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-input#0;n#el-form-item#21;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#22;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#23;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-input#0;n#el-form-item#23;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#24;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-input#0;n#el-form-item#24;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#25;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#26;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#27;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#28;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#29;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#30;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#31;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#32;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#33;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#34;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#35;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#0;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#1;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#2;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#3;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#4;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#5;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#6;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#7;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#8;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#9;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#10;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#11;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-input-number#0;n#el-form-item#11;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#12;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#0;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-select#0;n#el-form-item#0;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-option#0;n#el-select#0;n#el-form-item#0;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#1;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-select#0;n#el-form-item#1;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#2;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-select#0;n#el-form-item#2;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#3;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-select#0;n#el-form-item#3;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-option#0;n#el-select#0;n#el-form-item#3;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#4;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-select#0;n#el-form-item#4;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-option#0;n#el-select#0;n#el-form-item#4;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#5;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-select#0;n#el-form-item#5;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-option#0;n#el-select#0;n#el-form-item#5;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#6;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-select#0;n#el-form-item#6;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-option#0;n#el-select#0;n#el-form-item#6;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#7;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-select#0;n#el-form-item#7;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-option#0;n#el-select#0;n#el-form-item#7;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#8;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-select#0;n#el-form-item#8;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#9;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-select#0;n#el-form-item#9;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-option#0;n#el-select#0;n#el-form-item#9;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#10;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-select#0;n#el-form-item#10;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-option#0;n#el-select#0;n#el-form-item#10;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#11;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-select#0;n#el-form-item#11;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-option#0;n#el-select#0;n#el-form-item#11;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#12;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-select#0;n#el-form-item#12;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-option#0;n#el-select#0;n#el-form-item#12;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#13;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-select#0;n#el-form-item#13;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-option#0;n#el-select#0;n#el-form-item#13;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#14;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-select#0;n#el-form-item#14;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-option#0;n#el-select#0;n#el-form-item#14;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#15;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-select#0;n#el-form-item#15;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-option#0;n#el-select#0;n#el-form-item#15;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#16;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-select#0;n#el-form-item#16;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-option#0;n#el-select#0;n#el-form-item#16;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#17;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-select#0;n#el-form-item#17;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-option#0;n#el-select#0;n#el-form-item#17;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#18;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-select#0;n#el-form-item#18;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-option#0;n#el-select#0;n#el-form-item#18;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#19;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-select#0;n#el-form-item#19;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-option#0;n#el-select#0;n#el-form-item#19;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#20;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-select#0;n#el-form-item#20;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#0;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#1;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#2;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#3;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#4;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#5;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#6;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#7;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#8;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#9;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#10;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#11;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#12;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#13;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#14;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#15;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#16;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#17;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#18;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#19;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#20;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#21;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#22;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#23;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#24;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#25;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#26;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#27;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#28;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#29;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#30;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#31;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#32;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#33;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#34;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#35;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#36;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#37;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#38;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#39;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#40;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-row#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#0;n#el-row#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#1;n#el-row#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#2;n#el-row#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#3;n#el-row#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#4;n#el-row#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#5;n#el-row#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#6;n#el-row#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#7;n#el-row#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#8;n#el-row#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-row#0;n#el-form-item#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-button#0;n#el-row#0;n#el-form-item#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-button#1;n#el-row#0;n#el-form-item#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-row#0;n#el-form-item#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-button#0;n#el-row#0;n#el-form-item#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-button#1;n#el-row#0;n#el-form-item#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-row#0;n#el-form-item#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-button#0;n#el-row#0;n#el-form-item#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-button#1;n#el-row#0;n#el-form-item#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-input#0;n#el-form-item#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#5;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-row#0;n#el-form-item#5;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-select#0;n#el-row#0;n#el-form-item#5;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-option#0;n#el-select#0;n#el-row#0;n#el-form-item#5;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-select#1;n#el-row#0;n#el-form-item#5;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-option#0;n#el-select#1;n#el-row#0;n#el-form-item#5;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-button#0;n#el-row#0;n#el-form-item#5;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-button#1;n#el-row#0;n#el-form-item#5;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#style#0;n#el-button-group#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="formDesignerpane.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/activeForm/formDesignerpane.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="50" column="10" lean-forward="true" selection-start-line="50" selection-start-column="10" selection-end-line="50" selection-end-column="10" />
+              <folding>
+                <element signature="n#el-form#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#el-row#0;n#el-form#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#el-col#0;n#el-row#0;n#el-form#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#el-form-item#0;n#el-col#0;n#el-row#0;n#el-form#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="e#1630#1924#0" />
+                <element signature="e#1959#3420#0" />
+                <element signature="e#4582#4859#0" />
+                <element signature="e#4893#5399#0" />
+                <element signature="e#5442#5731#0" />
+                <element signature="e#5792#5958#0" />
+                <element signature="e#5981#10396#0" />
+                <element signature="e#10414#11203#0" />
+                <element signature="e#11244#11370#0" />
+                <element signature="e#11389#11874#0" />
+                <element signature="e#11930#11974#0" />
               </folding>
             </state>
           </provider>
@@ -510,7 +342,7 @@
       <workItem from="1541638151024" duration="7179000" />
       <workItem from="1541725279253" duration="14858000" />
       <workItem from="1541985610106" duration="11591000" />
-      <workItem from="1542070844341" duration="1064000" />
+      <workItem from="1542070844341" duration="1599000" />
     </task>
     <task id="LOCAL-00001" summary="分离旧的动态表单为一个单独的项目--前端">
       <created>1539311343134</created>
@@ -785,11 +617,25 @@
       <option name="project" value="LOCAL" />
       <updated>1542071638338</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="清formDesigner中注释掉与展示无关代码。准备清理多余业务逻辑代码">
+      <created>1542071975416</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1542071975416</updated>
+    </task>
+    <task id="LOCAL-00041" summary="删除（配置项）弹框，以及设计器的配置器">
+      <created>1542072264100</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1542072264100</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="261339000" />
+    <option name="totallyTimeSpent" value="261874000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="113" y="0" width="1359" height="752" extended-state="0" />
@@ -821,8 +667,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="添加tolltip" />
-    <MESSAGE value="测试验证次数，只验证一次" />
     <MESSAGE value="调试服务端分页，" />
     <MESSAGE value="给表单元素的配置项item添加exist属性，用于控制页面是否存在此控件，使用v-if指令控制" />
     <MESSAGE value="针对李小虎数据接口的demo版本" />
@@ -846,7 +690,9 @@
     <MESSAGE value="调试保存案卡的接口（江山）" />
     <MESSAGE value="2018-11-13早上版本" />
     <MESSAGE value="清除anka-form-list中拖拽代码。" />
-    <option name="LAST_COMMIT_MESSAGE" value="清除anka-form-list中拖拽代码。" />
+    <MESSAGE value="清formDesigner中注释掉与展示无关代码。准备清理多余业务逻辑代码" />
+    <MESSAGE value="删除（配置项）弹框，以及设计器的配置器" />
+    <option name="LAST_COMMIT_MESSAGE" value="删除（配置项）弹框，以及设计器的配置器" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -869,202 +715,8 @@
             <element signature="n#style#0;n#mypagenation#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#el-tab-pane#0;n#el-tabs#0;n#el-row#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
             <element signature="n#formDesignerpane#0;n#el-tab-pane#0;n#el-tabs#0;n#el-row#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-button-group#0;n#div#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#0;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#1;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#2;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#3;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#3;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#3;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#4;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#5;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#6;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#7;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#8;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#9;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#10;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#11;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#12;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#13;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#14;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#15;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#16;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#17;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#18;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#19;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#20;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#21;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-input#0;n#el-form-item#21;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#22;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#23;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-input#0;n#el-form-item#23;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#24;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-input#0;n#el-form-item#24;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#25;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#26;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#27;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#28;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#29;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#30;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#31;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#32;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#33;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#34;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#35;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#0;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#1;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#2;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#3;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#4;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#5;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#6;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#7;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#8;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#9;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#10;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#11;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-input-number#0;n#el-form-item#11;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#12;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#0;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#0;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#0;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#1;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#1;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#2;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#2;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#3;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#3;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#3;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#4;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#4;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#4;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#5;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#5;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#5;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#6;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#6;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#6;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#7;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#7;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#7;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#8;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#8;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#9;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#9;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#9;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#10;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#10;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#10;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#11;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#11;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#11;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#12;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#12;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#12;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#13;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#13;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#13;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#14;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#14;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#14;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#15;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#15;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#15;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#16;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#16;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#16;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#17;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#17;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#17;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#18;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#18;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#18;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#19;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#19;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#19;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#20;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#20;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#0;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#1;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#2;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#3;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#4;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#5;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#6;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#7;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#8;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#9;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#10;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#11;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#12;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#13;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#14;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#15;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#16;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#17;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#18;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#19;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#20;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#21;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#22;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#23;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#24;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#25;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#26;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#27;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#28;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#29;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#30;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#31;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#32;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#33;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#34;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#35;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#36;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#37;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#38;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#39;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#40;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-row#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#0;n#el-row#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#1;n#el-row#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#2;n#el-row#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#3;n#el-row#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#4;n#el-row#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#5;n#el-row#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#6;n#el-row#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#7;n#el-row#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#8;n#el-row#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-row#0;n#el-form-item#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-button#0;n#el-row#0;n#el-form-item#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-button#1;n#el-row#0;n#el-form-item#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-row#0;n#el-form-item#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-button#0;n#el-row#0;n#el-form-item#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-button#1;n#el-row#0;n#el-form-item#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-row#0;n#el-form-item#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-button#0;n#el-row#0;n#el-form-item#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-button#1;n#el-row#0;n#el-form-item#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-input#0;n#el-form-item#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#5;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-row#0;n#el-form-item#5;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-row#0;n#el-form-item#5;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-row#0;n#el-form-item#5;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#1;n#el-row#0;n#el-form-item#5;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#1;n#el-row#0;n#el-form-item#5;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-button#0;n#el-row#0;n#el-form-item#5;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-button#1;n#el-row#0;n#el-form-item#5;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#div#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#style#0;n#el-button-group#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#!!top" />
           </folding>
         </state>
@@ -1507,30 +1159,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/activeForm/formDesignerpane.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="63" selection-start-line="63" selection-end-line="64" selection-end-column="43" />
-          <folding>
-            <element signature="n#el-form#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-row#0;n#el-form#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-col#0;n#el-row#0;n#el-form#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#0;n#el-col#0;n#el-row#0;n#el-form#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="e#1630#1924#0" />
-            <element signature="e#1959#3420#0" />
-            <element signature="e#4582#4859#0" />
-            <element signature="e#4893#5399#0" />
-            <element signature="e#5442#5731#0" />
-            <element signature="e#5792#5958#0" />
-            <element signature="e#5981#10396#0" />
-            <element signature="e#10414#11203#0" />
-            <element signature="e#11244#11370#0" />
-            <element signature="e#11389#11874#0" />
-            <element signature="e#11930#11974#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="157">
@@ -1609,210 +1237,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/activeForm/formDesignerpane.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="50" column="10" lean-forward="true" selection-start-line="50" selection-start-column="10" selection-end-line="50" selection-end-column="10" />
+          <folding>
+            <element signature="n#el-form#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#el-row#0;n#el-form#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#el-col#0;n#el-row#0;n#el-form#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#el-form-item#0;n#el-col#0;n#el-row#0;n#el-form#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="e#1630#1924#0" />
+            <element signature="e#1959#3420#0" />
+            <element signature="e#4582#4859#0" />
+            <element signature="e#4893#5399#0" />
+            <element signature="e#5442#5731#0" />
+            <element signature="e#5792#5958#0" />
+            <element signature="e#5981#10396#0" />
+            <element signature="e#10414#11203#0" />
+            <element signature="e#11244#11370#0" />
+            <element signature="e#11389#11874#0" />
+            <element signature="e#11930#11974#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/activeForm/formDesigner.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-11924">
-          <caret line="639" column="50" selection-start-line="639" selection-start-column="50" selection-end-line="639" selection-end-column="50" />
+        <state relative-caret-position="-387">
+          <caret line="91" selection-start-line="91" selection-end-line="91" />
           <folding>
             <element signature="n#style#0;n#mypagenation#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#el-tab-pane#0;n#el-tabs#0;n#el-row#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
             <element signature="n#formDesignerpane#0;n#el-tab-pane#0;n#el-tabs#0;n#el-row#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-button-group#0;n#div#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#0;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#1;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#2;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#3;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#3;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#3;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#4;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#5;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#6;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#7;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#8;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#9;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#10;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#11;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#12;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#13;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#14;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#15;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#16;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#17;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#18;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#19;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#20;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#21;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-input#0;n#el-form-item#21;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#22;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#23;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-input#0;n#el-form-item#23;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#24;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-input#0;n#el-form-item#24;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#25;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#26;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#27;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#28;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#29;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#30;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#31;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#32;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#33;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#34;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#35;n#el-row#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#0;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#1;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#2;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#3;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#4;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#5;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#6;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#7;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#8;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#9;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#10;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#11;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-input-number#0;n#el-form-item#11;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#12;n#el-row#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#0;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#0;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#0;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#1;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#1;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#2;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#2;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#3;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#3;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#3;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#4;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#4;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#4;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#5;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#5;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#5;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#6;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#6;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#6;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#7;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#7;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#7;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#8;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#8;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#9;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#9;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#9;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#10;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#10;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#10;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#11;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#11;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#11;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#12;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#12;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#12;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#13;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#13;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#13;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#14;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#14;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#14;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#15;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#15;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#15;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#16;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#16;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#16;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#17;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#17;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#17;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#18;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#18;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#18;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#19;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#19;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-form-item#19;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#20;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-form-item#20;n#el-row#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#0;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#1;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#2;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#3;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#4;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#5;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#6;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#7;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#8;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#9;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#10;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#11;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#12;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#13;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#14;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#15;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#16;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#17;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#18;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#19;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#20;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#21;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#22;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#23;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#24;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#25;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#26;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#27;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#28;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#29;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#30;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#31;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#32;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#33;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#34;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#35;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#36;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#37;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#38;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#39;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#40;n#el-row#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-row#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#0;n#el-row#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#1;n#el-row#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#2;n#el-row#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#3;n#el-row#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#4;n#el-row#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#5;n#el-row#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#6;n#el-row#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#7;n#el-row#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#8;n#el-row#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-row#0;n#el-form-item#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-button#0;n#el-row#0;n#el-form-item#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-button#1;n#el-row#0;n#el-form-item#0;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-row#0;n#el-form-item#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-button#0;n#el-row#0;n#el-form-item#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-button#1;n#el-row#0;n#el-form-item#1;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-row#0;n#el-form-item#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-button#0;n#el-row#0;n#el-form-item#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-button#1;n#el-row#0;n#el-form-item#2;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#3;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-input#0;n#el-form-item#4;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#5;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-row#0;n#el-form-item#5;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#0;n#el-row#0;n#el-form-item#5;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#0;n#el-row#0;n#el-form-item#5;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-select#1;n#el-row#0;n#el-form-item#5;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-option#0;n#el-select#1;n#el-row#0;n#el-form-item#5;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-button#0;n#el-row#0;n#el-form-item#5;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-button#1;n#el-row#0;n#el-form-item#5;n#el-form#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#div#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#style#0;n#el-button-group#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#!!top" />
           </folding>
         </state>
