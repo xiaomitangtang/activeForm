@@ -82,11 +82,6 @@ export default {
       tableItems: [] //所有表单元素平铺之后的数据，方便验证
     };
   },
-  provide() {
-    return {
-      formDedigner: this
-    };
-  },
   methods: {
     translateFormItem: formDesignerStatic.translateFormItem, //转化数据的方法，单位位每一个控件
     getAllPanes() {

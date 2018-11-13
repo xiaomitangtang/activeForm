@@ -61,18 +61,11 @@ export default {
   data() {
     return {
       showformItem: false, //控制formItem是否显示的变量
-      // formData: {},//
-      // formModalData: { settings: {} },//
-      nowFormItem: null, //当前表单元素（设计器）
-      formItemSettingsValue: formDesignerStatic.formItemSettingsValue, //页面的一些静态数据常量
-      dragedItem: null, //当前拖拽的表单元素（设计器）
-      dropToIndex: -1, //拖拽至目标的索引（设计器）
       formModel: {}, //当前表单的数据
       formRule: {}, //当前表单的验证规则
       translatedTableDate: {} //转化后的当前显示页面的数据（有了翻页之后貌似没用了，需要修改）
     };
   },
-  inject: ["formDedigner"], //注入的formDesigner，可以通过注入此对象操作外部父实例的相关对象
   methods: {
     getSettings: formDesignerStatic.getSettings, //根据表单元素数据获取默认或已有的setting参数，（element）
     getDefauleVal: formDesignerStatic.getDefauleVal, //根据表单元素数据获取默认或者已有val
