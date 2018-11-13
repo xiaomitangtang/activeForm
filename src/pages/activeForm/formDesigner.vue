@@ -71,6 +71,11 @@ export default {
     currenTab: { type: Object },
     currentTable: { type: Object }
   },
+  provide() {
+    return {
+      formDedigner: this
+    };
+  },
   data() {
     return {
       formItemSettingsValue: formDesignerStatic.formItemSettingsValue, //页面中的一些静态的常量

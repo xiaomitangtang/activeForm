@@ -24,6 +24,7 @@
 import formDesignerStatic from "./formDesignerStatic";
 export default {
   name: "formDesignerpane",
+  inject: ["formDedigner"],
   props: {
     tableData: {
       type: Object,
