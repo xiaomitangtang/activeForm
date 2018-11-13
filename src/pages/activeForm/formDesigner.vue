@@ -274,27 +274,8 @@ export default {
         });
       }
       this.translatedAnKa = tempAnka;
-      // this.initPanelsFormModal();
       this.initTabPageData();
     }, //将老版本的案卡系统的数据进行转化为本系统所需要的数据
-    initPanelsFormModal() {
-      clearInterval(this.initFormTimer);
-      let tableNum = 0;
-      this.translatedAnKa.children.forEach(tab => {
-        tableNum += tab.child.containers.length;
-      });
-      this.initFormTimer = setInterval(() => {
-        if (this.getAllPanes().length === tableNum) {
-          this.getAllPanes().forEach(item => item.changemodel());
-          this.setSrollList();
-          clearInterval(this.initFormTimer);
-          this.$emit("clearErrors");
-          console.log("数据加载完成");
-        } else {
-          console.log("数据正在加载");
-        }
-      }, 100);
-    }, //刷新panel的方法
     isAllPanelMounted() {
       let tableNum = 0;
       this.translatedAnKa.children.forEach(tab => {
@@ -536,8 +517,6 @@ export default {
       }
     }, //用于获取对应table的当前页码的方法，如果存在tableIndex，说明这个tab有多个table，传入的是遍历的索引，否则为tab只有一个table
     deleteTableOrTab(type, data) {
-      console.log("deleteTableOrTab");
-      console.log(data);
       let p = new Promise(sucess => {
         if (type === "tab") {
           this.$api.activeForm.deleteTab(data).then(
@@ -572,30 +551,6 @@ export default {
     mypagenation: () => import("./components/activeFormPagenation.vue")
   },
   computed: {
-    edit: {
-      get() {
-        return this.$store.state.formDesigner.edit;
-      }
-    },
-    editVal() {
-      return this.edit ? "关闭编辑" : "编辑";
-    },
-    showallSetting: {
-      get() {
-        return this.$store.state.formDesigner.allSettting;
-      },
-      set(val) {
-        this.$store.commit("formDesigner/setAllSettting", val);
-      }
-    },
-    openLayout: {
-      get() {
-        return this.$store.state.formDesigner.openLayout;
-      },
-      set(val) {
-        this.$store.commit("formDesigner/setOpenLayout", val);
-      }
-    },
     hasFile() {
       return this.getAllTableItem().some(i => {
         return ["el-upload", "el-image"].indexOf(i.component) > -1;

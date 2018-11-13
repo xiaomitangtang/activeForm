@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/pages/activeForm/formDesigner.vue" line="420" />
+    <bookmark url="file://$PROJECT_DIR$/src/pages/activeForm/formDesigner.vue" line="401" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e83b734b-bb66-46f6-bf25-31573a9bb7ad" name="Default" comment="">
@@ -32,14 +32,40 @@
       <file leaf-file-name="formDesigner.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/activeForm/formDesigner.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-387">
-              <caret line="91" selection-start-line="91" selection-end-line="91" />
+            <state relative-caret-position="88">
+              <caret line="58" column="10" lean-forward="true" selection-start-line="58" selection-start-column="10" selection-end-line="58" selection-end-column="10" />
               <folding>
                 <element signature="n#style#0;n#mypagenation#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#el-tab-pane#0;n#el-tabs#0;n#el-row#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#formDesignerpane#0;n#el-tab-pane#0;n#el-tabs#0;n#el-row#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#div#1;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#style#0;n#el-button-group#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="e#46676#47253#0" />
+                <element signature="e#47316#47383#0" />
+                <element signature="e#47440#47533#0" />
+                <element signature="e#47583#48327#0" />
+                <element signature="e#48384#48493#0" />
+                <element signature="e#48556#48714#0" />
+                <element signature="e#48770#49712#0" />
+                <element signature="e#49764#50614#0" />
+                <element signature="e#50657#51587#0" />
+                <element signature="e#52254#52449#0" />
+                <element signature="e#52511#52641#0" />
+                <element signature="e#52704#52915#0" />
+                <element signature="e#52985#53053#0" />
+                <element signature="e#53144#53187#0" />
+                <element signature="e#53241#53287#0" />
+                <element signature="e#53350#53462#0" />
+                <element signature="e#53546#54024#0" />
+                <element signature="e#54087#54995#0" />
+                <element signature="e#55065#55190#0" />
+                <element signature="e#55276#55757#0" />
+                <element signature="e#55827#56361#0" />
+                <element signature="e#56455#59820#0" />
+                <element signature="e#59902#60502#0" />
+                <element signature="e#60575#60985#0" />
+                <element signature="e#61105#61370#0" />
+                <element signature="e#61484#62194#0" />
                 <element signature="n#style#0;n#!!top" />
               </folding>
             </state>
@@ -111,9 +137,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>errors</find>
-      <find>saveFormStyle</find>
-      <find>translatedTableDate</find>
       <find>showformItem</find>
       <find>//将翻页组件的点击事件传递到formDesigner</find>
       <find>nowFormItem</find>
@@ -140,7 +163,10 @@
       <find>editName</find>
       <find>ankaFormListDragItem</find>
       <find>editable</find>
+      <find>initPanelsFormModal</find>
+      <find>initTabPageData</find>
       <find>edit</find>
+      <find>openLayout</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -342,7 +368,7 @@
       <workItem from="1541638151024" duration="7179000" />
       <workItem from="1541725279253" duration="14858000" />
       <workItem from="1541985610106" duration="11591000" />
-      <workItem from="1542070844341" duration="1599000" />
+      <workItem from="1542070844341" duration="1863000" />
     </task>
     <task id="LOCAL-00001" summary="分离旧的动态表单为一个单独的项目--前端">
       <created>1539311343134</created>
@@ -631,11 +657,18 @@
       <option name="project" value="LOCAL" />
       <updated>1542072264100</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="删除部分菜单配置弹窗的方法">
+      <created>1542072497469</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1542072497469</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="261874000" />
+    <option name="totallyTimeSpent" value="262138000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="113" y="0" width="1359" height="752" extended-state="0" />
@@ -667,7 +700,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="调试服务端分页，" />
     <MESSAGE value="给表单元素的配置项item添加exist属性，用于控制页面是否存在此控件，使用v-if指令控制" />
     <MESSAGE value="针对李小虎数据接口的demo版本" />
     <MESSAGE value="插入searchTree组件，目前仅支持单选。&#10;多选暂未支持。&#10;修复search-tree组件警告提示" />
@@ -692,11 +724,12 @@
     <MESSAGE value="清除anka-form-list中拖拽代码。" />
     <MESSAGE value="清formDesigner中注释掉与展示无关代码。准备清理多余业务逻辑代码" />
     <MESSAGE value="删除（配置项）弹框，以及设计器的配置器" />
-    <option name="LAST_COMMIT_MESSAGE" value="删除（配置项）弹框，以及设计器的配置器" />
+    <MESSAGE value="删除部分菜单配置弹窗的方法" />
+    <option name="LAST_COMMIT_MESSAGE" value="删除部分菜单配置弹窗的方法" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="18" />
+      <option name="time" value="19" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -717,6 +750,32 @@
             <element signature="n#formDesignerpane#0;n#el-tab-pane#0;n#el-tabs#0;n#el-row#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#style#0;n#el-button-group#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#46676#47253#0" />
+            <element signature="e#47316#47383#0" />
+            <element signature="e#47440#47533#0" />
+            <element signature="e#47583#48327#0" />
+            <element signature="e#48384#48493#0" />
+            <element signature="e#48556#48714#0" />
+            <element signature="e#48770#49712#0" />
+            <element signature="e#49764#50614#0" />
+            <element signature="e#50657#51587#0" />
+            <element signature="e#52254#52449#0" />
+            <element signature="e#52511#52641#0" />
+            <element signature="e#52704#52915#0" />
+            <element signature="e#52985#53053#0" />
+            <element signature="e#53144#53187#0" />
+            <element signature="e#53241#53287#0" />
+            <element signature="e#53350#53462#0" />
+            <element signature="e#53546#54024#0" />
+            <element signature="e#54087#54995#0" />
+            <element signature="e#55065#55190#0" />
+            <element signature="e#55276#55757#0" />
+            <element signature="e#55827#56361#0" />
+            <element signature="e#56455#59820#0" />
+            <element signature="e#59902#60502#0" />
+            <element signature="e#60575#60985#0" />
+            <element signature="e#61105#61370#0" />
+            <element signature="e#61484#62194#0" />
             <element signature="n#style#0;n#!!top" />
           </folding>
         </state>
@@ -1263,14 +1322,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/activeForm/formDesigner.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-387">
-          <caret line="91" selection-start-line="91" selection-end-line="91" />
+        <state relative-caret-position="88">
+          <caret line="58" column="10" lean-forward="true" selection-start-line="58" selection-start-column="10" selection-end-line="58" selection-end-column="10" />
           <folding>
             <element signature="n#style#0;n#mypagenation#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#el-tab-pane#0;n#el-tabs#0;n#el-row#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
             <element signature="n#formDesignerpane#0;n#el-tab-pane#0;n#el-tabs#0;n#el-row#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#style#0;n#el-button-group#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#46676#47253#0" />
+            <element signature="e#47316#47383#0" />
+            <element signature="e#47440#47533#0" />
+            <element signature="e#47583#48327#0" />
+            <element signature="e#48384#48493#0" />
+            <element signature="e#48556#48714#0" />
+            <element signature="e#48770#49712#0" />
+            <element signature="e#49764#50614#0" />
+            <element signature="e#50657#51587#0" />
+            <element signature="e#52254#52449#0" />
+            <element signature="e#52511#52641#0" />
+            <element signature="e#52704#52915#0" />
+            <element signature="e#52985#53053#0" />
+            <element signature="e#53144#53187#0" />
+            <element signature="e#53241#53287#0" />
+            <element signature="e#53350#53462#0" />
+            <element signature="e#53546#54024#0" />
+            <element signature="e#54087#54995#0" />
+            <element signature="e#55065#55190#0" />
+            <element signature="e#55276#55757#0" />
+            <element signature="e#55827#56361#0" />
+            <element signature="e#56455#59820#0" />
+            <element signature="e#59902#60502#0" />
+            <element signature="e#60575#60985#0" />
+            <element signature="e#61105#61370#0" />
+            <element signature="e#61484#62194#0" />
             <element signature="n#style#0;n#!!top" />
           </folding>
         </state>
