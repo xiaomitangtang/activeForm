@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e83b734b-bb66-46f6-bf25-31573a9bb7ad" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/activeForm/formDesigner.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/activeForm/formDesigner.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/activeForm/formDesignerpane.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/activeForm/formDesignerpane.vue" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -30,11 +28,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="formDesigner.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="formDesigner.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/activeForm/formDesigner.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="83" column="4" selection-start-line="83" selection-start-column="4" selection-end-line="83" selection-end-column="4" />
+            <state relative-caret-position="22">
+              <caret line="34" column="35" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="35" />
               <folding>
                 <element signature="n#style#0;n#mypagenation#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#el-tab-pane#0;n#el-tabs#0;n#el-row#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
@@ -72,27 +70,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="formDesignerpane.vue" pinned="false" current-in-tab="false">
+      <file leaf-file-name="formDesignerpane.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/activeForm/formDesignerpane.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="68" selection-start-line="68" selection-end-line="68" />
+            <state relative-caret-position="-506">
+              <caret line="41" column="34" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
               <folding>
                 <element signature="n#el-form#0;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#el-row#0;n#el-form#0;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#el-col#0;n#el-row#0;n#el-form#0;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#el-form-item#0;n#el-col#0;n#el-row#0;n#el-form#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="e#1630#1924#0" />
-                <element signature="e#1959#3420#0" />
-                <element signature="e#4582#4859#0" />
-                <element signature="e#4893#5399#0" />
-                <element signature="e#5442#5731#0" />
-                <element signature="e#5792#5958#0" />
-                <element signature="e#5981#10396#0" />
-                <element signature="e#10414#11203#0" />
-                <element signature="e#11244#11370#0" />
                 <element signature="e#11389#11874#0" />
                 <element signature="e#11930#11974#0" />
+                <element signature="e#12025#12070#0" />
+                <element signature="e#12119#12341#0" />
               </folding>
             </state>
           </provider>
@@ -137,10 +128,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>//将翻页组件的点击事件传递到formDesigner</find>
-      <find>nowFormItem</find>
-      <find>dropToIndex</find>
-      <find>eval</find>
       <find>tabIndex</find>
       <find>currentPage</find>
       <find>getPanelCurrentPage</find>
@@ -162,11 +149,15 @@
       <find>editable</find>
       <find>initPanelsFormModal</find>
       <find>initTabPageData</find>
-      <find>edit</find>
-      <find>openLayout</find>
       <find>formModalData</find>
       <find>formItemSettingsValue</find>
       <find>formDedigner</find>
+      <find>formItemDragStart</find>
+      <find>formItemClick</find>
+      <find>edit</find>
+      <find>openLayout</find>
+      <find>activeFormDragSrc</find>
+      <find>translatedTableDate</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -212,8 +203,8 @@
         <option value="$PROJECT_DIR$/src/fetch/activeForm-api.js" />
         <option value="$PROJECT_DIR$/src/pages/activeForm/index.vue" />
         <option value="$PROJECT_DIR$/src/pages/activeForm/anka-form-list.vue" />
-        <option value="$PROJECT_DIR$/src/pages/activeForm/formDesignerpane.vue" />
         <option value="$PROJECT_DIR$/src/pages/activeForm/formDesigner.vue" />
+        <option value="$PROJECT_DIR$/src/pages/activeForm/formDesignerpane.vue" />
       </list>
     </option>
   </component>
@@ -230,7 +221,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="141" />
-    <option name="width" value="1699" />
+    <option name="width" value="1787" />
     <option name="height" value="940" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -368,7 +359,7 @@
       <workItem from="1541638151024" duration="7179000" />
       <workItem from="1541725279253" duration="14858000" />
       <workItem from="1541985610106" duration="11591000" />
-      <workItem from="1542070844341" duration="2201000" />
+      <workItem from="1542070844341" duration="2645000" />
     </task>
     <task id="LOCAL-00001" summary="分离旧的动态表单为一个单独的项目--前端">
       <created>1539311343134</created>
@@ -671,17 +662,31 @@
       <option name="project" value="LOCAL" />
       <updated>1542072794648</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="删除formDesigner的provide以及formDesignerpane的inject依赖注入代码">
+      <created>1542073122822</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1542073122822</updated>
+    </task>
+    <task id="LOCAL-00045" summary="删除formDesignerpane的打开设置菜单的方法，删除其对edit等store的依赖">
+      <created>1542073431635</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1542073431635</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="262476000" />
+    <option name="totallyTimeSpent" value="262920000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="113" y="0" width="1359" height="752" extended-state="0" />
+    <frame x="113" y="0" width="1429" height="752" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2441421" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23187366" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5026455" side_tool="true" weight="0.43485618" />
@@ -707,8 +712,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="针对李小虎数据接口的demo版本" />
-    <MESSAGE value="插入searchTree组件，目前仅支持单选。&#10;多选暂未支持。&#10;修复search-tree组件警告提示" />
     <MESSAGE value="添加searchtree的setting，正在进行" />
     <MESSAGE value="添加切换案卡的选项" />
     <MESSAGE value="tabPageData内容不存在做undefined处理" />
@@ -732,11 +735,13 @@
     <MESSAGE value="删除（配置项）弹框，以及设计器的配置器" />
     <MESSAGE value="删除部分菜单配置弹窗的方法" />
     <MESSAGE value="清除formDesigner对store的依赖，edit，openLayout，等" />
-    <option name="LAST_COMMIT_MESSAGE" value="清除formDesigner对store的依赖，edit，openLayout，等" />
+    <MESSAGE value="删除formDesigner的provide以及formDesignerpane的inject依赖注入代码" />
+    <MESSAGE value="删除formDesignerpane的打开设置菜单的方法，删除其对edit等store的依赖" />
+    <option name="LAST_COMMIT_MESSAGE" value="删除formDesignerpane的打开设置菜单的方法，删除其对edit等store的依赖" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="19" />
+      <option name="time" value="21" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -1302,34 +1307,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/activeForm/formDesignerpane.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="68" selection-start-line="68" selection-end-line="68" />
-          <folding>
-            <element signature="n#el-form#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-row#0;n#el-form#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-col#0;n#el-row#0;n#el-form#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#0;n#el-col#0;n#el-row#0;n#el-form#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="e#1630#1924#0" />
-            <element signature="e#1959#3420#0" />
-            <element signature="e#4582#4859#0" />
-            <element signature="e#4893#5399#0" />
-            <element signature="e#5442#5731#0" />
-            <element signature="e#5792#5958#0" />
-            <element signature="e#5981#10396#0" />
-            <element signature="e#10414#11203#0" />
-            <element signature="e#11244#11370#0" />
-            <element signature="e#11389#11874#0" />
-            <element signature="e#11930#11974#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/activeForm/formDesigner.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="83" column="4" selection-start-line="83" selection-start-column="4" selection-end-line="83" selection-end-column="4" />
+        <state relative-caret-position="22">
+          <caret line="34" column="35" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="35" />
           <folding>
             <element signature="n#style#0;n#mypagenation#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#el-tab-pane#0;n#el-tabs#0;n#el-row#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
@@ -1362,6 +1343,23 @@
             <element signature="e#60575#60985#0" />
             <element signature="e#61105#61370#0" />
             <element signature="e#61484#62194#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/activeForm/formDesignerpane.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-506">
+          <caret line="41" column="34" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
+          <folding>
+            <element signature="n#el-form#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#el-row#0;n#el-form#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#el-col#0;n#el-row#0;n#el-form#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#el-form-item#0;n#el-col#0;n#el-row#0;n#el-form#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="e#11389#11874#0" />
+            <element signature="e#11930#11974#0" />
+            <element signature="e#12025#12070#0" />
+            <element signature="e#12119#12341#0" />
           </folding>
         </state>
       </provider>
