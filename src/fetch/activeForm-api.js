@@ -26,5 +26,8 @@ class DemoApiController extends BaseApiController {
   saveAnKa = params => {
     return this.put(this.activeForm.save, params).then(res => res.data);
   };
+  addNewAnKa = params => {
+    return this.post(this.activeForm.addnew, params).then(res => res.data);
+  };
 }
 export default new DemoApiController();

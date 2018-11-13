@@ -6,7 +6,8 @@
     <div class="form-desgner-tables" ref="tablebox" id="tablebox" @scroll.passive="tableBoxScroll"
         @mousewheel="tableMouseWheel">
       <div class="form-designer-main-tabs"  v-for="(tab , tabIndex) in  translatedAnKa.children  "  ref="tab" :key="'ankatable'+tabIndex">
-        <mypagenation style="margin-bottom: 10px;margin-left: 10px;"
+        <mypagenation v-if="tab.child.more"
+                style="margin-bottom: 10px;margin-left: 10px;"
                       :elProps="{total:tab.pageData?tab.pageData.length : 1,'page-size':1,'current-page':tab.currentPage}"
                       @menuClick="pageMenuClick({type:'tab',tab:tab,tabIndex,data:$event})"
                       @pageChange="pageChange({type:'tab',tab:tab,tabIndex,data:$event})"

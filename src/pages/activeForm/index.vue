@@ -44,7 +44,6 @@ export default {
       ankaParamsList: ankaParamsList, //案卡参数下拉框的数据
       currentAnkaParam: ankaParamsList[1], //当前展示的案卡
       currentAnka: ankaStaticData, //当前展示的案卡数据，（经过formDesigner转换之前的数据）
-      // formListDragData: null,
       currenShowTable: null,
       currenShowTab: null,
       errorsList: [],
