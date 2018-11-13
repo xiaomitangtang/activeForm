@@ -2,18 +2,11 @@
     <div class='anka-form'  >
         <div class="anka-form-part" v-for="(tab,index) in anka?anka.children:[]" :key="'form'+index">
             <div class="form-list-title"
-                 @drop="dropedOnTitle(tab,index)"
-                 @dragover.prevent.stop
-                 @dblclick="titleDbClick(tab)"
             >{{tab.child.title}}</div>
             <ul class="form-list-ul" >
                 <li class="form-list-item" :class="{'anka-form-active':currenTable===form}"
                     @click="formClick(form,tab)" v-for="(form,index2) in tab.child.containers"
                     :key="'form'+index+index2"
-                    draggable="true"
-                    @dblclick="itemDbClick(form)"
-                    @dragstart="dragStart(tab,form,index,index2)"
-                    @drop="dropedOnItem(tab,form,index,index2)" @dragover.prevent.stop
                 >{{form.text}}</li>
             </ul>
         </div>
@@ -28,42 +21,8 @@ export default {
   methods: {
     formClick(table, tab) {
       this.$emit("ankaTableClick", { table, tab });
-    },
-    dragStart(tab, item, index, index2) {
-      //
-      this.$emit("dragItem_", {
-        tab,
-        item,
-        tabIndex: index,
-        itemIndex: index2
-      });
-    }, //这三个方法均为展示阶段是用不到的方法，所以注释，去掉_既可以使用
-    dropedOnTitle(tab, index) {
-      this.$emit("dropedOnTitle_", { tab, tabIndex: index });
-    }, //这三个方法均为展示阶段是用不到的方法，所以注释，去掉_既可以使用
-    dropedOnItem(tab, item, index, index2) {
-      this.$emit("dropedOnItem_", {
-        tab,
-        item,
-        tabIndex: index,
-        itemIndex: index2
-      });
-    }, //这三个方法均为展示阶段是用不到的方法，所以注释，去掉_既可以使用
-    titleDbClick(tab) {
-      //去掉后面的_就可以修改名字，展示阶段不需要此功能所以去掉
-      this.$emit("editName_", { type: "tab", tab: tab });
-    },
-    itemDbClick(form) {
-      //去掉后面的_就可以修改名字，展示阶段不需要此功能所以去掉
-      this.$emit("editName_", { type: "table", table: form });
     }
   }
-  // mounted() {
-  //   console.log("anka");
-  //   console.log(this.anka);
-  //   console.log("currenTable");
-  //   console.log(this.currenTable);
-  // }
 };
 </script>
 <style lang="less">

@@ -1,7 +1,6 @@
 <template>
 
 <div class="active-form-page">
-
   <el-row  class="active-form-page-body" >
     <div class=" fullhight active-form-page-body-anka-main">
         <div class="active-form-page-body-anka-main-head">{{currentAnka?currentAnka.header.name:'案卡详情'}}
@@ -43,110 +42,9 @@ export default {
       ankaParamsList: ankaParamsList, //案卡参数下拉框的数据
       currentAnkaParam: ankaParamsList[1], //当前展示的案卡
       currentAnka: ankaStaticData, //当前展示的案卡数据，（经过formDesigner转换之前的数据）
-      currenShowTable: null,
-      currenShowTab: null,
-      errorsList: [],
-      columns: [
-        {
-          text: "事件",
-          value: "event",
-          width: 200
-        },
-        {
-          text: "ID",
-          value: "id"
-        },
-        {
-          text: "时间线",
-          value: "timeLine"
-        },
-        {
-          text: "备注",
-          value: "comment"
-        }
-      ],
-      data: [
-        {
-          id: 0,
-          event: "事件1",
-          timeLine: 50,
-          comment: "无"
-        },
-        {
-          id: 1,
-          event: "事件1",
-          timeLine: 100,
-          comment: "无",
-          children: [
-            {
-              id: 2,
-              event: "事件2",
-              timeLine: 10,
-              comment: "无"
-            },
-            {
-              id: 3,
-              event: "事件3",
-              timeLine: 90,
-              comment: "无",
-              children: [
-                {
-                  id: 4,
-                  event: "事件4",
-                  timeLine: 5,
-                  comment: "无"
-                },
-                {
-                  id: 5,
-                  event: "事件5",
-                  timeLine: 10,
-                  comment: "无"
-                },
-                {
-                  id: 6,
-                  event: "事件6",
-                  timeLine: 75,
-                  comment: "无",
-                  children: [
-                    {
-                      id: 7,
-                      event: "事件7",
-                      timeLine: 50,
-                      comment: "无",
-                      children: [
-                        {
-                          id: 71,
-                          event: "事件71",
-                          timeLine: 25,
-                          comment: "xx"
-                        },
-                        {
-                          id: 72,
-                          event: "事件72",
-                          timeLine: 5,
-                          comment: "xx"
-                        },
-                        {
-                          id: 73,
-                          event: "事件73",
-                          timeLine: 20,
-                          comment: "xx"
-                        }
-                      ]
-                    },
-                    {
-                      id: 8,
-                      event: "事件8",
-                      timeLine: 25,
-                      comment: "无"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
+      currenShowTable: null, //记录当前显示的table
+      currenShowTab: null, //记录当前显示的tab
+      errorsList: [] //错误列表
     };
   },
   methods: {
@@ -181,7 +79,6 @@ export default {
       try {
         let formData = await this.$api.activeForm.formData({ params });
         let formValid = await this.$api.activeForm.formValid({ params });
-        // console.log(formValid);
         window.ruleData = formValid.data; //将获取到的验证规则挂载到window上，方便其他地方获取
         let tempCurrentAnka = formData.data.child;
         tempCurrentAnka.children.forEach((item, i) => {
