@@ -17,7 +17,7 @@
                         class="swx-tree-arrow-style-two  swx-checkbox"
                         :data="treeData"
                         node-key="id"
-                        :check-on-click-node="true"
+                        :check-on-click-node="false"
                         :expand-on-click-node="true"
                         @node-click="nodeClick"
                         :filter-node-method="filterNode"
@@ -54,7 +54,7 @@ export default {
     },
     treeBind: {
       type: Object,
-      default: () => ({ "check-strictly": true })
+      default: () => ({})
     },
     inputBind: { type: Object },
     closeOnClickTree: { type: Boolean, default: false },
@@ -141,7 +141,7 @@ export default {
         if (!this.$refs.searchtree || !this.treeData.length) return;
         if (this.multiple) {
           this.$refs.searchtree.setCheckedKeys(this.value);
-          this.checkedNodeChange();
+          // this.checkedNodeChange();
         } else {
           this.$refs.searchtree.setCurrentKey(this.value, true);
           let currentNode = this.$refs.searchtree.getCurrentNode();

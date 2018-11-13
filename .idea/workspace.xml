@@ -215,8 +215,8 @@
       <file leaf-file-name="searchTree.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/activeForm/components/searchTree.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="143" column="33" selection-start-line="143" selection-start-column="33" selection-end-line="143" selection-end-column="33" />
+            <state relative-caret-position="88">
+              <caret line="19" column="51" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
               <folding>
                 <element signature="e#2895#3024#0" />
               </folding>
@@ -532,14 +532,7 @@
       <workItem from="1541985610106" duration="11591000" />
       <workItem from="1542070844341" duration="3076000" />
       <workItem from="1542075404622" duration="531000" />
-      <workItem from="1542075959048" duration="16318000" />
-    </task>
-    <task id="LOCAL-00005" summary="添加翻页，存在bug2">
-      <created>1539969213424</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1539969213424</updated>
+      <workItem from="1542075959048" duration="16564000" />
     </task>
     <task id="LOCAL-00006" summary="添加初始化tab的pageData方法，修正翻页多次出现数据错行的bug&#10;修改表单的样式&#10;添加保存按钮展示数据的方法">
       <created>1540043928592</created>
@@ -877,11 +870,18 @@
       <option name="project" value="LOCAL" />
       <updated>1542098604503</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="添加searchTree的默认属性，勾选父节点，不连带勾选所有子节点">
+      <created>1542100656543</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1542100656543</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="280900000" />
+    <option name="totallyTimeSpent" value="281146000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-20" y="10" width="1431" height="752" extended-state="0" />
@@ -932,7 +932,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="添加大量代码注释" />
     <MESSAGE value="添加代码注释" />
     <MESSAGE value="在index请求数据的async函数中添加捕获异常的代码" />
     <MESSAGE value="修改获取panel当前页码的函数" />
@@ -957,7 +956,8 @@
     <MESSAGE value="验证规则为null时，绑定空数组" />
     <MESSAGE value="调试searchTree的数据显示功能" />
     <MESSAGE value="将保存的数据进行转换，对时间控件数据进行标记。" />
-    <option name="LAST_COMMIT_MESSAGE" value="将保存的数据进行转换，对时间控件数据进行标记。" />
+    <MESSAGE value="添加searchTree的默认属性，勾选父节点，不连带勾选所有子节点" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加searchTree的默认属性，勾选父节点，不连带勾选所有子节点" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1492,8 +1492,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/activeForm/components/searchTree.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="143" column="33" selection-start-line="143" selection-start-column="33" selection-end-line="143" selection-end-column="33" />
+        <state relative-caret-position="88">
+          <caret line="19" column="51" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
           <folding>
             <element signature="e#2895#3024#0" />
           </folding>
