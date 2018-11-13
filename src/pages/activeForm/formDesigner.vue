@@ -81,7 +81,8 @@ export default {
       formItemSettingsValue: formDesignerStatic.formItemSettingsValue, //页面中的一些静态的常量
       translatedAnKa: { header: { name: "" }, children: [] }, //用于渲染页面的案卡数据（根据服务端数据转化过后的数据，包含翻页数据）
       panels: [], //记录当前页面中panel的数据
-      tableItems: [] //所有表单元素平铺之后的数据，方便验证
+      tableItems: [], //所有表单元素平铺之后的数据，方便验证
+      tableItemsObj: {}
     };
   },
   methods: {
@@ -95,6 +96,38 @@ export default {
         .map(item => item.validField())
         .every(i => i);
     }, //调用当前设计器中所有的table进行表单验证
+    translateTabPageDataToSubmit() {
+      let oldData = this.translatedAnKa.children.map(tab => {
+        this.saveTabValue(tab, tab.currentPage - 1, justSave);
+        return tab.pageData;
+      });
+      let newData = oldData.map(tab => {
+        return tab.map(tabpage => {
+          return {
+            currentTablePages: tabpage.currentTablePages,
+            tabPageData: tabpage.tabPageData.map(table => {
+              return table.map(tablepage => {
+                let temp = {};
+                Object.keys(tablepage).forEach(key => {
+                  if (
+                    this.tableItemsObj[key].component === "el-date-picker" &&
+                    tablepage[key]
+                  ) {
+                    temp[key] = window._.isDate(tablepage[key])
+                      ? "TypeIsDate=" + tablepage[key].getTime()
+                      : "TypeIsDate=" + tablepage[key];
+                  } else {
+                    temp[key] = tablepage[key];
+                  }
+                });
+                return temp;
+              });
+            })
+          };
+        });
+      });
+      return newData;
+    },
     mysubmit() {
       let formValid = this.validateAllPanels();
       this.$notify({
@@ -102,14 +135,7 @@ export default {
         message: formValid ? "通过" : "未通过",
         type: formValid ? "success" : "error"
       });
-      let Data = this.translatedAnKa.children.map(tab => {
-        this.saveTabValue(tab, tab.currentPage - 1, justSave);
-        return tab.pageData;
-      });
-      console.log(this.translatedAnKa);
-      console.log("DataData");
-      console.log(Data);
-      console.log(JSON.stringify(Data));
+      let Data = this.translateTabPageDataToSubmit();
       this.$api.activeForm.saveAnKa(Data).then(
         res => {
           this.$notify({
@@ -150,6 +176,7 @@ export default {
                   tableIndex
                 );
                 this.tableItems.push(tempItem);
+                this.tableItemsObj[tempItem.key] = tempItem;
                 return tempItem;
               })
             };
@@ -249,6 +276,7 @@ export default {
     translateAnka() {
       let tempAnka = {};
       this.tableItems = [];
+      this.tableItemsObj = {};
       if (this.data) {
         tempAnka.header = this.data.header;
         tempAnka.controlType = this.data.controlType;

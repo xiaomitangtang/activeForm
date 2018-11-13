@@ -39,8 +39,7 @@ export default {
     return {
       showformItem: false, //控制formItem是否显示的变量
       formModel: {}, //当前表单的数据
-      formRule: {}, //当前表单的验证规则
-      translatedTableDate: {} //转化后的当前显示页面的数据（有了翻页之后貌似没用了，需要修改）
+      formRule: {} //当前表单的验证规则
     };
   },
   methods: {
@@ -55,15 +54,6 @@ export default {
         // if (!flag) return;
         this.tableData.container.children.forEach(row => {
           row.children.forEach(item => {
-            if (item.component === "el-date-picker") {
-              this.translatedTableDate[item.key] = window._.isDate(
-                this.formModel[item.key]
-              )
-                ? "TypeIsDate=" + this.formModel[item.key].getTime()
-                : "TypeIsDate=" + this.formModel[item.key];
-            } else {
-              this.translatedTableDate[item.key] = this.formModel[item.key];
-            }
             item.val = this.formModel[item.key];
           });
         });
