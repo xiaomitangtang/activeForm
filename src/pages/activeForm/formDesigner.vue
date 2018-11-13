@@ -1,5 +1,5 @@
 <template>
-  <div class='form-designer-main' @drop.stop.prevent @dragover.prevent>
+  <div class='form-designer-main'>
     <el-row class="form-designer-main-header" >
       <span class="form-designer-main-header-text">{{translatedAnKa.header.name}}</span>
     </el-row>
@@ -12,7 +12,6 @@
                       @menuClick="pageMenuClick({type:'tab',tab:tab,tabIndex,data:$event})"
                       @pageChange="pageChange({type:'tab',tab:tab,tabIndex,data:$event})"
         ></mypagenation>
-        <!--v-if="tab.child.more"-->
         <el-row class="form-designer-pane" >
           <formDesignerpane v-if="tab.child.containers.length===1"  class="form-designer-pain-main"
                              ref="mainpain"
@@ -59,19 +58,6 @@
       </div>
     </div>
     <div class="form-designer-setting">
-      <!--      <el-col :span="24" style="text-align: right">
-               <el-select size="mini" v-if="edit" v-model="layout" style="margin-right: 10px;">
-                 <el-option v-for="item in formItemSettingsValue.layoutList" :label="item.text" :value="item.val"
-                            :key="item.val"></el-option>
-               </el-select>
-               &lt;!&ndash;<el-switch v-if="edit" v-model="openLayout" style="margin-right: 20px;" active-text="限制" inactive-text="不限制"></el-switch>&ndash;&gt;
-               <el-checkbox v-if="edit" v-model="openLayout">限制</el-checkbox>
-               <el-checkbox v-if="edit" v-model="showallSetting" style="margin-right: 20px;">全配置</el-checkbox>
-               <el-button size="mini" v-if="edit" @click="addpane">添加/修改pane</el-button>
-               <el-button size="mini" v-if="edit&&showtaps" @click="delpane">删除pane</el-button>
-               <el-button size="mini" type="primary" @click="changemodel">{{editVal}}</el-button>
-               <el-button size="mini" @click="mysubmit">查看/保存</el-button>
-             </el-col>-->
       <el-button-group  style=" float: right;" >
         <!--<el-button   size="mini" v-if="edit" @click="addpane">添加/修改pane</el-button>-->
         <!--<el-button  size="mini" v-if="edit&&showtaps" @click="delpane">删除pane</el-button>-->
@@ -79,11 +65,6 @@
         <el-button class="swx-btn-primary swx-btn-size-mini"  @click="mysubmit" >保存</el-button>
       </el-button-group>
       <el-checkbox  style=" float: right;margin-right: 10px;"  v-if="edit" v-model="showallSetting">全配置</el-checkbox>
-        <!--<el-checkbox  style=" float: right;margin-right: 10px;" v-if="edit" v-model="openLayout">限制</el-checkbox>
-        <el-select size="mini" v-if="edit" v-model="layout" style="float: right;">
-        <el-option v-for="item in formItemSettingsValue.layoutList" :label="item.text" :value="item.val"
-                   :key="item.val"></el-option>
-      </el-select>-->
     </div>
     <el-dialog class="designer-dialog" title="表单设置" :visible.sync="dialogFormVisible" width="1200px">
       <el-form :inline="true" label-width="120px">
@@ -653,13 +634,10 @@ export default {
   },
   data() {
     return {
-      // showtaps: false,
-      // nowformPaneName: "first",
       formModalData: { settings: {}, isRequire: false }, //这是设置弹窗中的数据
       formItemSettingsValue: formDesignerStatic.formItemSettingsValue, //页面中的一些静态的常量
       nowFormPane: null, //当前的panel，拖拽元素时有用（设计器），
       nowFormPaneDragItem: null, //当前拖拽的表单元素，设计器有用
-      // dropToIndex: -1,//拖拽元素到目标索引
       dialogFormVisible: false, //设置参数的弹窗是否显示的变量
       translatedAnKa: { header: { name: "" }, children: [] }, //用于渲染页面的案卡数据（根据服务端数据转化过后的数据，包含翻页数据）
       panels: [], //记录当前页面中panel的数据
