@@ -54,7 +54,7 @@ export default {
     },
     treeBind: {
       type: Object,
-      default: () => ({})
+      default: () => ({ "check-strictly": true })
     },
     inputBind: { type: Object },
     closeOnClickTree: { type: Boolean, default: false },
@@ -141,6 +141,7 @@ export default {
         if (!this.$refs.searchtree || !this.treeData.length) return;
         if (this.multiple) {
           this.$refs.searchtree.setCheckedKeys(this.value);
+          this.checkedNodeChange();
         } else {
           this.$refs.searchtree.setCurrentKey(this.value, true);
           let currentNode = this.$refs.searchtree.getCurrentNode();

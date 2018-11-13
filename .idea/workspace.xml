@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e83b734b-bb66-46f6-bf25-31573a9bb7ad" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/activeForm/formDesigner.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/activeForm/formDesigner.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/activeForm/formDesignerpane.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/activeForm/formDesignerpane.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/activeForm/components/searchTree.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/activeForm/components/searchTree.vue" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,11 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="formDesigner.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="formDesigner.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/activeForm/formDesigner.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="129" column="41" selection-start-line="129" selection-start-column="41" selection-end-line="129" selection-end-column="41" />
+            <state relative-caret-position="176">
+              <caret line="595" column="2" lean-forward="true" selection-start-line="595" selection-start-column="2" selection-end-line="595" selection-end-column="2" />
               <folding>
                 <element signature="n#template#0;n#!!top" />
                 <element signature="n#div#0;n#template#0;n#!!top" />
@@ -154,7 +153,6 @@
                 <element signature="e#21369#21475#0" />
                 <element signature="e#21235#21270#0" />
                 <element signature="e#21289#21324#0" />
-                <element signature="e#21342#21373#0" />
                 <element signature="n#style#0;n#!!top" />
                 <element signature="e#21427#22334#0" />
                 <element signature="e#21537#21900#0" />
@@ -214,11 +212,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="searchTree.vue" pinned="false" current-in-tab="false">
+      <file leaf-file-name="searchTree.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/activeForm/components/searchTree.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="131" column="6" lean-forward="true" selection-start-line="131" selection-start-column="6" selection-end-line="131" selection-end-column="6" />
+            <state relative-caret-position="198">
+              <caret line="143" column="33" selection-start-line="143" selection-start-column="33" selection-end-line="143" selection-end-column="33" />
               <folding>
                 <element signature="e#2895#3024#0" />
               </folding>
@@ -263,13 +261,14 @@
       <file leaf-file-name="myElement.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/activeForm/myElement.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-73">
-              <caret line="87" column="38" selection-start-line="87" selection-start-column="27" selection-end-line="87" selection-end-column="38" />
+            <state relative-caret-position="432">
+              <caret line="68" column="23" lean-forward="true" selection-start-line="68" selection-start-column="23" selection-end-line="68" selection-end-column="23" />
               <folding>
                 <element signature="n#el-radio-group#0;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#el-checkbox-group#0;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#el-upload#0;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#el-table#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="e#7573#8018#0" />
                 <element signature="n#style#0;n#!!top" />
               </folding>
             </state>
@@ -365,9 +364,9 @@
         <option value="$PROJECT_DIR$/src/pages/activeForm/index.vue" />
         <option value="$PROJECT_DIR$/src/pages/activeForm/ankaParamsListData.js" />
         <option value="$PROJECT_DIR$/src/pages/activeForm/myElement.vue" />
-        <option value="$PROJECT_DIR$/src/pages/activeForm/components/searchTree.vue" />
         <option value="$PROJECT_DIR$/src/pages/activeForm/formDesignerpane.vue" />
         <option value="$PROJECT_DIR$/src/pages/activeForm/formDesigner.vue" />
+        <option value="$PROJECT_DIR$/src/pages/activeForm/components/searchTree.vue" />
       </list>
     </option>
   </component>
@@ -533,14 +532,7 @@
       <workItem from="1541985610106" duration="11591000" />
       <workItem from="1542070844341" duration="3076000" />
       <workItem from="1542075404622" duration="531000" />
-      <workItem from="1542075959048" duration="15305000" />
-    </task>
-    <task id="LOCAL-00004" summary="添加翻页，存在bug">
-      <created>1539963816635</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1539963816635</updated>
+      <workItem from="1542075959048" duration="16318000" />
     </task>
     <task id="LOCAL-00005" summary="添加翻页，存在bug2">
       <created>1539969213424</created>
@@ -878,24 +870,31 @@
       <option name="project" value="LOCAL" />
       <updated>1542098182609</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="将保存的数据进行转换，对时间控件数据进行标记。">
+      <created>1542098604503</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1542098604503</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="279887000" />
+    <option name="totallyTimeSpent" value="280900000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-20" y="10" width="1431" height="752" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" x="665" y="107" width="323" height="537" id="Project" order="0" side_tool="true" visible="true" weight="0.17992832" />
+      <window_info content_ui="combo" x="665" y="107" width="323" height="537" id="Project" order="0" side_tool="true" visible="true" weight="0.17992832" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5026455" side_tool="true" weight="0.43485618" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49858758" weight="0.45777026" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" sideWeight="0.49858758" visible="true" weight="0.36097562" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24964131" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4973545" visible="true" weight="0.41951218" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4973545" weight="0.41951218" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" weight="0.32998565" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -1282,20 +1281,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/activeForm/myElement.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-73">
-          <caret line="87" column="38" selection-start-line="87" selection-start-column="27" selection-end-line="87" selection-end-column="38" />
-          <folding>
-            <element signature="n#el-radio-group#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-checkbox-group#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-upload#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-table#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#style#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/activeForm/formDesignerpane.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1064">
@@ -1303,20 +1288,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/activeForm/components/searchTree.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="131" column="6" lean-forward="true" selection-start-line="131" selection-start-column="6" selection-end-line="131" selection-end-column="6" />
-          <folding>
-            <element signature="e#2895#3024#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/activeForm/formDesigner.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="129" column="41" selection-start-line="129" selection-start-column="41" selection-end-line="129" selection-end-column="41" />
+        <state relative-caret-position="176">
+          <caret line="595" column="2" lean-forward="true" selection-start-line="595" selection-start-column="2" selection-end-line="595" selection-end-column="2" />
           <folding>
             <element signature="n#template#0;n#!!top" />
             <element signature="n#div#0;n#template#0;n#!!top" />
@@ -1442,7 +1417,6 @@
             <element signature="e#21369#21475#0" />
             <element signature="e#21235#21270#0" />
             <element signature="e#21289#21324#0" />
-            <element signature="e#21342#21373#0" />
             <element signature="n#style#0;n#!!top" />
             <element signature="e#21427#22334#0" />
             <element signature="e#21537#21900#0" />
@@ -1497,6 +1471,31 @@
             <element signature="e#25845#25875#0" />
             <element signature="e#25889#25993#0" />
             <element signature="e#25944#25991#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/activeForm/myElement.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="68" column="23" lean-forward="true" selection-start-line="68" selection-start-column="23" selection-end-line="68" selection-end-column="23" />
+          <folding>
+            <element signature="n#el-radio-group#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#el-checkbox-group#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#el-upload#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#el-table#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="e#7573#8018#0" />
+            <element signature="n#style#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/activeForm/components/searchTree.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="143" column="33" selection-start-line="143" selection-start-column="33" selection-end-line="143" selection-end-column="33" />
+          <folding>
+            <element signature="e#2895#3024#0" />
           </folding>
         </state>
       </provider>
