@@ -81,23 +81,27 @@ export default {
         param
       ).then(
         res => {
-          // console.log("resresresresres");
-          // console.log(res.data);
           if (res.data.success) {
+            let dataKey = "";
             switch (this.innerdata.component) {
               case "el-select":
-                this.innerdata.settings["select-data"] = res.data.data;
+                dataKey = "select-data";
                 break;
               case "el-cascader":
-                this.innerdata.settings["cascader-data"] = res.data;
+                dataKey = "cascader-data";
                 break;
               case "el-table":
-                this.innerdata.settings["table-data"] = res.data;
+                dataKey = "table-data";
                 break;
               case "el-search-tree":
-                this.innerdata.settings["search-tree-data"] = res.data.data;
+                dataKey = "search-tree-data";
                 break;
             }
+            this.innerdata.settings = Object.assign(
+              {},
+              this.innerdata.settings,
+              { [dataKey]: res.data.data }
+            );
           } else {
             this.$notify.error({
               title: this.innerdata.component,

@@ -6,20 +6,23 @@
         <div v-else class="tags-box" @click.stop="searchTreeInputClick" @click="$refs.searchInput.focus()">
             <span class="el-tag el-tag--info el-tag--small"
                   v-for="(item,index) in valArr" :key="'tag'+index"
-                  @click.stop="deleteTag(item)"
-            >{{item.label}}<i class="el-tag__close el-icon-close"></i></span>
+            >{{item.label}}<i class="el-tag__close el-icon-close" @click.stop="deleteTag(item)"></i></span>
             <input ref="searchInput" class="search-input" type="text" v-model="filterText" :style="searchInputStyle">
         </div>
         <transition name="searchTreeFade">
-            <div class="swx-search-tree-treebox"  v-if="showtree" @click.stop>
+            <div class="swx-search-tree-treebox"  v-show="showtree" @click.stop>
                 <el-tree
+                        :show-checkbox="multiple"
                         ref="searchtree"
                         class="swx-tree-arrow-style-two  swx-checkbox"
-                        :data="tempTreeData"
+                        :data="treeData"
+                        node-key="id"
+                        :check-on-click-node="true"
                         :expand-on-click-node="true"
                         @node-click="nodeClick"
                         :filter-node-method="filterNode"
                         :render-content="renderContent"
+                        @check-change="checkedNodeChange"
                         v-bind="treeBind"
                         :option="treeOptions"
                 >
@@ -36,10 +39,10 @@ export default {
   // mixins: [Popper],
   props: {
     value: {
-      type: [String, Array, Number],
+      type: [String, Array, Number, Object],
       default: ""
     },
-    treeData: { type: Array, default: () => [{ label: "111" }] },
+    treeData: { type: Array, default: () => [] },
     treeOptions: {
       type: Object,
       default: () => ({
@@ -50,7 +53,8 @@ export default {
       })
     },
     treeBind: {
-      type: Object
+      type: Object,
+      default: () => ({})
     },
     inputBind: { type: Object },
     closeOnClickTree: { type: Boolean, default: false },
@@ -86,6 +90,9 @@ export default {
       console.log("closeResize", e);
     },*/
     searchTreeInputClick() {
+      if (!this.showtree) {
+        this.setTreeSelect();
+      }
       this.showtree = true;
     },
     clear() {
@@ -101,18 +108,15 @@ export default {
         this.inputText = node.label;
         this.filterText = "";
         this.$emit("treeNodeClick", data, node, com);
-        if (this.closeOnClickTree) {
+        this.$emit("input", data.id);
+        if (this.closeOnClickTree && !this.multiple) {
           this.showtree = false;
         }
-      } else {
-        let temArr = [...this.valArr];
-        if (this.valArr.filter(i => i.label === node.label).length > 0) return;
-        temArr.push(node);
-        this.valArr = temArr;
       }
     },
     deleteTag(item) {
-      this.valArr = this.valArr.filter(i => i.label !== item.label);
+      this.$refs.searchtree.setChecked(item.id, false);
+      this.checkedNodeChange();
     },
     renderContent(h, { node }) {
       let temClass = "swx-icon-span swx-icon-span-" + node.level;
@@ -122,25 +126,45 @@ export default {
           {node.data.label}
         </span>
       );
+    },
+    resetFunc() {
+      this.showtree = false;
+    },
+    checkedNodeChange() {
+      let checkedNodes = this.$refs.searchtree.getCheckedNodes();
+      this.valArr = checkedNodes;
+    },
+    setTreeSelect() {
+      clearTimeout(this.setTreeCheckedTimer);
+      if (this.value.length === 0) return;
+      this.setTreeCheckedTimer = setInterval(() => {
+        if (!this.$refs.searchtree || !this.treeData.length) return;
+        if (this.multiple) {
+          this.$refs.searchtree.setCheckedKeys(this.value);
+        } else {
+          this.$refs.searchtree.setCurrentKey(this.value, true);
+          let currentNode = this.$refs.searchtree.getCurrentNode();
+          if (currentNode) {
+            this.inputText = currentNode.label;
+            this.$emit("input", currentNode.key);
+          }
+        }
+        clearTimeout(this.setTreeCheckedTimer);
+      }, 300);
     }
   },
   watch: {
     filterText(val) {
       this.$refs.searchtree.filter(val);
     },
-    value(n) {
-      this.$emit("input", n);
-    },
     valArr(n) {
-      this.$emit("input", n);
+      this.$emit("input", n.map(i => i.id));
     }
   },
 
   mounted() {
-    this.resetFunc = () => {
-      this.showtree = false;
-    };
     this.inputText = this.value;
+    this.setTreeSelect();
     document.addEventListener("click", this.resetFunc);
   },
   computed: {
@@ -149,6 +173,7 @@ export default {
     }
   },
   beforeDestroy() {
+    clearTimeout(this.setTreeCheckedTimer);
     document.removeEventListener("click", this.resetFunc);
   }
 };
@@ -160,7 +185,7 @@ export default {
     position: absolute;
     width: 100%;
     min-height: 150px;
-    max-height: 250px;
+    max-height: 150px;
     margin-top: 10px;
     z-index: 10;
     padding: 10px;
