@@ -79,7 +79,7 @@ export default {
       try {
         let formData = await this.$api.activeForm.formData({ params });
         let formValid = await this.$api.activeForm.formValid({ params });
-        window.ruleData = formValid.data; //将获取到的验证规则挂载到window上，方便其他地方获取
+        window.ruleData = formValid.data || []; //将获取到的验证规则挂载到window上，方便其他地方获取
         let tempCurrentAnka = formData.data.child;
         tempCurrentAnka.children.forEach((item, i) => {
           item.pageData = formData.data.pageData[i];
