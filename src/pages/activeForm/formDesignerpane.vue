@@ -48,10 +48,8 @@ export default {
     getDefaultRule: formDesignerStatic.getDefaultRule, //根据表单元素获取表单校验的规则
     validField() {
       let flag = false;
-      this.translatedTableDate = {};
       this.$refs.myform.validate(valid => {
         flag = valid;
-        // if (!flag) return;
         this.tableData.container.children.forEach(row => {
           row.children.forEach(item => {
             item.val = this.formModel[item.key];

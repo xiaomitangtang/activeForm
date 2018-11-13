@@ -127,7 +127,7 @@ export default {
         });
       });
       return newData;
-    },
+    }, //对tab的数据进行转换，转换为服务端需要的类型，比如时间戳加上标记
     mysubmit() {
       let formValid = this.validateAllPanels();
       this.$notify({
