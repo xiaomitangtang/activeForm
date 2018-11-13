@@ -260,7 +260,7 @@ function getSettings(item) {
       // settings = {minlength: 1, maxlength: 18, type: 'text', size: '', rows: 2, disabled: false, placeholder: '', 'prefix-icon': '', 'suffix-icon': '', 'auto-complete': 'off', max: '', min: '', step: '', resize: 'none', autofocus: false, tabindex: '', clearable: true}
       settings = {
         minlength: 1,
-        maxlength: 18,
+        maxlength: 999,
         type: "text",
         size: "",
         rows: 2,

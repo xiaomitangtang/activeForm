@@ -20,8 +20,6 @@
                              :tableData="tab.child.containers[0]"
                             :totalPage="getPanelTotalPage(tab)"
                             :currentPage="getPanelCurrentPage(tab)"
-                             @formDesignerpaneItemClick="formDesignerpaneItemClick"
-                             @setNowFormPaneAndnowFormPaneDragItem="setNowFormPaneAndnowFormPaneDragItem"
                              @PanelMounted="PanelMounted" @PanelDestory="PanelDestory"
                              @panelUpdated="panelUpdated"
                             @addError="addError"
@@ -37,13 +35,12 @@
                    <el-tab-pane v-for="(table,tableIndex) in tab.child.containers" :label="table.text" :name="table.text" :key="table.text"
 
                    >
-                     <formDesignerpane     @formDesignerpaneItemClick="formDesignerpaneItemClick"
+                     <formDesignerpane
                                            :tableData="table"
                                            :panelName="tab.child.title"
                                            :panelID="tab.child.id"
                                            :totalPage="getPanelTotalPage(tab,tableIndex+1)"
                                            :currentPage="getPanelCurrentPage(tab,tableIndex+1)"
-                                           @setNowFormPaneAndnowFormPaneDragItem="setNowFormPaneAndnowFormPaneDragItem"
                                            @PanelMounted="PanelMounted" @PanelDestory="PanelDestory"
                                            @panelUpdated="panelUpdated"
                                            @addError="addError"

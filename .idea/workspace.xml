@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/pages/activeForm/formDesigner.vue" line="396" />
+    <bookmark url="file://$PROJECT_DIR$/src/pages/activeForm/formDesigner.vue" line="393" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e83b734b-bb66-46f6-bf25-31573a9bb7ad" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/activeForm/formDesigner.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/activeForm/formDesigner.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/activeForm/formDesignerStatic.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/activeForm/formDesignerStatic.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/activeForm/formDesignerpane.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/activeForm/formDesignerpane.vue" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,15 +31,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="formDesigner.vue" pinned="false" current-in-tab="false">
+      <file leaf-file-name="formDesigner.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/activeForm/formDesigner.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="34" column="35" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="35" />
+            <state relative-caret-position="290">
+              <caret line="43" selection-start-line="43" selection-end-line="43" />
               <folding>
                 <element signature="n#style#0;n#mypagenation#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#el-tab-pane#0;n#el-tabs#0;n#el-row#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#formDesignerpane#0;n#el-tab-pane#0;n#el-tabs#0;n#el-row#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#div#1;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#style#0;n#el-button-group#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="e#46676#47253#0" />
@@ -70,20 +71,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="formDesignerpane.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="formDesignerpane.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/activeForm/formDesignerpane.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-506">
-              <caret line="41" column="34" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
+            <state relative-caret-position="246">
+              <caret line="19" column="14" lean-forward="true" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
               <folding>
-                <element signature="n#el-form#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-row#0;n#el-form#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-col#0;n#el-row#0;n#el-form#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-form-item#0;n#el-col#0;n#el-row#0;n#el-form#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#style#0;n#mypagenation#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="e#10414#11203#0" />
                 <element signature="e#11389#11874#0" />
                 <element signature="e#11930#11974#0" />
                 <element signature="e#12025#12070#0" />
                 <element signature="e#12119#12341#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="formDesignerStatic.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/activeForm/formDesignerStatic.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="177">
+              <caret line="262" column="22" selection-start-line="262" selection-start-column="22" selection-end-line="262" selection-end-column="22" />
+              <folding>
+                <element signature="n#!!block;n#getDefauleVal#0" />
+                <element signature="n#!!block;n#formValid#0" />
+                <element signature="n#!!block;n#getDefaultRule#0" />
+                <element signature="n#!!block;n#groupAddItem#0" />
+                <element signature="n#!!block;n#groupDelItem#0" />
+                <element signature="n#!!block;n#isSettingVisible#0" />
               </folding>
             </state>
           </provider>
@@ -128,8 +144,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>tabIndex</find>
-      <find>currentPage</find>
       <find>getPanelCurrentPage</find>
       <find>value</find>
       <find>tableData</find>
@@ -158,6 +172,8 @@
       <find>openLayout</find>
       <find>activeFormDragSrc</find>
       <find>translatedTableDate</find>
+      <find>formDesignerStatic</find>
+      <find>formDesignerpaneItemClick</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -195,7 +211,6 @@
         <option value="$PROJECT_DIR$/src/pages/activeForm/components/eval.js" />
         <option value="$PROJECT_DIR$/src/pages/activeForm/components/treetable.vue" />
         <option value="$PROJECT_DIR$/public/VueApp_config.json" />
-        <option value="$PROJECT_DIR$/src/pages/activeForm/formDesignerStatic.js" />
         <option value="$PROJECT_DIR$/src/pages/activeForm/components/searchTree.vue" />
         <option value="$PROJECT_DIR$/src/pages/activeForm/myElement.vue" />
         <option value="$PROJECT_DIR$/src/pages/activeForm/ankaParamsListData.js" />
@@ -203,8 +218,9 @@
         <option value="$PROJECT_DIR$/src/fetch/activeForm-api.js" />
         <option value="$PROJECT_DIR$/src/pages/activeForm/index.vue" />
         <option value="$PROJECT_DIR$/src/pages/activeForm/anka-form-list.vue" />
-        <option value="$PROJECT_DIR$/src/pages/activeForm/formDesigner.vue" />
+        <option value="$PROJECT_DIR$/src/pages/activeForm/formDesignerStatic.js" />
         <option value="$PROJECT_DIR$/src/pages/activeForm/formDesignerpane.vue" />
+        <option value="$PROJECT_DIR$/src/pages/activeForm/formDesigner.vue" />
       </list>
     </option>
   </component>
@@ -359,7 +375,7 @@
       <workItem from="1541638151024" duration="7179000" />
       <workItem from="1541725279253" duration="14858000" />
       <workItem from="1541985610106" duration="11591000" />
-      <workItem from="1542070844341" duration="2645000" />
+      <workItem from="1542070844341" duration="3076000" />
     </task>
     <task id="LOCAL-00001" summary="分离旧的动态表单为一个单独的项目--前端">
       <created>1539311343134</created>
@@ -676,11 +692,25 @@
       <option name="project" value="LOCAL" />
       <updated>1542073431635</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="删除formDesignerpane的打开设置菜单的方法，删除其对edit等store的依赖">
+      <created>1542073551455</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1542073551455</updated>
+    </task>
+    <task id="LOCAL-00047" summary="删除拖拽组件">
+      <created>1542073690482</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1542073690482</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="262920000" />
+    <option name="totallyTimeSpent" value="263351000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="113" y="0" width="1429" height="752" extended-state="0" />
@@ -712,7 +742,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="添加searchtree的setting，正在进行" />
     <MESSAGE value="添加切换案卡的选项" />
     <MESSAGE value="tabPageData内容不存在做undefined处理" />
     <MESSAGE value="测试多语言功能" />
@@ -737,7 +766,8 @@
     <MESSAGE value="清除formDesigner对store的依赖，edit，openLayout，等" />
     <MESSAGE value="删除formDesigner的provide以及formDesignerpane的inject依赖注入代码" />
     <MESSAGE value="删除formDesignerpane的打开设置菜单的方法，删除其对edit等store的依赖" />
-    <option name="LAST_COMMIT_MESSAGE" value="删除formDesignerpane的打开设置菜单的方法，删除其对edit等store的依赖" />
+    <MESSAGE value="删除拖拽组件" />
+    <option name="LAST_COMMIT_MESSAGE" value="删除拖拽组件" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -758,8 +788,6 @@
           <caret line="870" column="42" selection-start-line="870" selection-start-column="24" selection-end-line="870" selection-end-column="42" />
           <folding>
             <element signature="n#style#0;n#mypagenation#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#el-tab-pane#0;n#el-tabs#0;n#el-row#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#formDesignerpane#0;n#el-tab-pane#0;n#el-tabs#0;n#el-row#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#style#0;n#el-button-group#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="e#46676#47253#0" />
@@ -1141,94 +1169,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/activeForm/formDesignerStatic.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="973" column="25" selection-start-line="973" selection-start-column="13" selection-end-line="973" selection-end-column="25" />
-          <folding>
-            <element signature="e#183#2660#0" />
-            <element signature="e#2783#6558#0" />
-            <element signature="e#2859#3013#0" />
-            <element signature="e#3295#3415#0" />
-            <element signature="e#3654#5353#0" />
-            <element signature="e#5371#5835#0" />
-            <element signature="e#5850#6467#0" />
-            <element signature="n#!!block;n#getSettings#0" />
-            <element signature="e#6703#6945#0" />
-            <element signature="e#7270#7589#0" />
-            <element signature="e#7645#7938#0" />
-            <element signature="e#7997#8223#0" />
-            <element signature="e#8130#8215#0" />
-            <element signature="e#8324#8422#0" />
-            <element signature="e#8484#8864#0" />
-            <element signature="e#8651#8856#0" />
-            <element signature="e#8663#8846#0" />
-            <element signature="e#8920#9066#0" />
-            <element signature="e#9229#9681#0" />
-            <element signature="e#9915#10262#0" />
-            <element signature="e#10422#10745#0" />
-            <element signature="e#10799#10997#0" />
-            <element signature="e#11051#11375#0" />
-            <element signature="e#11434#11958#0" />
-            <element signature="e#11497#11633#0" />
-            <element signature="e#12017#12611#0" />
-            <element signature="e#12074#12163#0" />
-            <element signature="e#12659#13095#0" />
-            <element signature="e#13192#13710#0" />
-            <element signature="e#13764#14193#0" />
-            <element signature="e#14329#14989#0" />
-            <element signature="e#14498#14595#0" />
-            <element signature="e#15049#15183#0" />
-            <element signature="e#15236#16202#0" />
-            <element signature="e#15286#15667#0" />
-            <element signature="e#15298#15657#0" />
-            <element signature="n#!!block;n#getDefauleVal#0" />
-            <element signature="n#!!block;n#formValid#0" />
-            <element signature="e#17543#17576#0" />
-            <element signature="e#17579#19117#0" />
-            <element signature="e#19153#20017#0" />
-            <element signature="e#19159#20013#0" />
-            <element signature="n#!!block;n#getDefaultRule#0" />
-            <element signature="e#20196#20222#0" />
-            <element signature="e#20355#21069#0" />
-            <element signature="e#20470#20538#0" />
-            <element signature="e#20544#20582#0" />
-            <element signature="e#20843#20879#0" />
-            <element signature="e#20885#20954#0" />
-            <element signature="e#21088#21119#0" />
-            <element signature="e#21182#21222#0" />
-            <element signature="e#21228#21257#0" />
-            <element signature="e#21465#21562#0" />
-            <element signature="e#21626#21728#0" />
-            <element signature="e#21745#21846#0" />
-            <element signature="e#21874#22038#0" />
-            <element signature="e#21894#22032#0" />
-            <element signature="e#22064#22228#0" />
-            <element signature="e#22084#22222#0" />
-            <element signature="e#22336#22454#0" />
-            <element signature="e#22356#22448#0" />
-            <element signature="n#!!block;n#groupAddItem#0" />
-            <element signature="e#22578#23522#0" />
-            <element signature="e#22628#22753#0" />
-            <element signature="e#22806#22985#0" />
-            <element signature="e#23036#23139#0" />
-            <element signature="e#23196#23503#0" />
-            <element signature="n#!!block;n#groupDelItem#0" />
-            <element signature="e#23617#23649#0" />
-            <element signature="e#23655#24669#0" />
-            <element signature="e#23661#24665#0" />
-            <element signature="e#23727#23838#0" />
-            <element signature="e#23909#24078#0" />
-            <element signature="e#24147#24234#0" />
-            <element signature="e#24309#24642#0" />
-            <element signature="n#!!block;n#isSettingVisible#0" />
-            <element signature="e#24968#25326#0" />
-            <element signature="e#25084#25110#0" />
-            <element signature="e#25330#25410#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="157">
@@ -1307,14 +1247,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/activeForm/formDesignerStatic.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="262" column="22" selection-start-line="262" selection-start-column="22" selection-end-line="262" selection-end-column="22" />
+          <folding>
+            <element signature="n#!!block;n#getDefauleVal#0" />
+            <element signature="n#!!block;n#formValid#0" />
+            <element signature="n#!!block;n#getDefaultRule#0" />
+            <element signature="n#!!block;n#groupAddItem#0" />
+            <element signature="n#!!block;n#groupDelItem#0" />
+            <element signature="n#!!block;n#isSettingVisible#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/activeForm/formDesignerpane.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="19" column="14" lean-forward="true" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+          <folding>
+            <element signature="n#style#0;n#mypagenation#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#10414#11203#0" />
+            <element signature="e#11389#11874#0" />
+            <element signature="e#11930#11974#0" />
+            <element signature="e#12025#12070#0" />
+            <element signature="e#12119#12341#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/activeForm/formDesigner.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="34" column="35" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="35" />
+        <state relative-caret-position="290">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
           <folding>
             <element signature="n#style#0;n#mypagenation#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#el-tab-pane#0;n#el-tabs#0;n#el-row#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#formDesignerpane#0;n#el-tab-pane#0;n#el-tabs#0;n#el-row#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#style#0;n#el-button-group#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="e#46676#47253#0" />
@@ -1343,23 +1311,6 @@
             <element signature="e#60575#60985#0" />
             <element signature="e#61105#61370#0" />
             <element signature="e#61484#62194#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/activeForm/formDesignerpane.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-506">
-          <caret line="41" column="34" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
-          <folding>
-            <element signature="n#el-form#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-row#0;n#el-form#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-col#0;n#el-row#0;n#el-form#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#0;n#el-col#0;n#el-row#0;n#el-form#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="e#11389#11874#0" />
-            <element signature="e#11930#11974#0" />
-            <element signature="e#12025#12070#0" />
-            <element signature="e#12119#12341#0" />
           </folding>
         </state>
       </provider>

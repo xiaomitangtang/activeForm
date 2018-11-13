@@ -13,7 +13,7 @@
                 :key="'item'+rowIndex+colIndex" :span="item.span" :offset="item.offset"
                >
           <el-form-item    :label="item.label"  :id="item.elId" :label-width="item.labelWidth?(item.labelWidth+'px'):'1px'"  :prop="item.key">
-            <myElement    :draggable="edit"   :formModel="formModel" :innerdata="item"></myElement>
+            <myElement       :formModel="formModel" :innerdata="item"></myElement>
           </el-form-item>
         </el-col>
       </el-row>
