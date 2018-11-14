@@ -1,16 +1,16 @@
 <template>
-    <div class='swx-search-tree'>
+    <div class='swx-search-tree' @click="searchTreeClick" ref="treeBox">
         <el-input v-if="!multiple" size="mini" :value="inputText" @input="selfInput"
                   :readOnly="readonly"
-                  class="swx-input swx-input-mini" @click.native.stop="searchTreeInputClick" :clearable="true" @clear="clear" v-bind="inputBind"></el-input>
-        <div v-else class="tags-box" @click.stop="searchTreeInputClick" @click="$refs.searchInput.focus()">
+                  class="swx-input swx-input-mini" @click.native="searchTreeInputClick" :clearable="true" @clear="clear" v-bind="inputBind"></el-input>
+        <div v-else class="tags-box" @click="searchTreeInputClick">
             <span class="el-tag el-tag--info el-tag--small"
                   v-for="(item,index) in valArr" :key="'tag'+index"
             >{{item.label}}<i class="el-tag__close el-icon-close" @click.stop="deleteTag(item)"></i></span>
             <input ref="searchInput" class="search-input" type="text" v-model="filterText" :style="searchInputStyle">
         </div>
         <transition name="searchTreeFade">
-            <div class="swx-search-tree-treebox"  v-show="showtree" @click.stop>
+            <div class="swx-search-tree-treebox" :style="treeboxStyle"  v-show="showtree" @click.stop>
                 <el-tree
                         :show-checkbox="multiple"
                         ref="searchtree"
@@ -27,16 +27,13 @@
                         :option="treeOptions"
                 >
                 </el-tree>
-                <!--<div class="resizeBar"  @mousedown.stop="openResize" @mouseup.stop="closeResize"></div>-->
             </div>
         </transition>
     </div>
 </template>
 <script>
-// import Popper from "element-ui/src/utils/vue-popper";
 export default {
   name: "swx-search-tree",
-  // mixins: [Popper],
   props: {
     value: {
       type: [String, Array, Number, Object],
@@ -73,27 +70,36 @@ export default {
   },
   data() {
     return {
+      focus: false,
       showtree: false,
       inputText: "",
       filterText: "",
       valArr: [],
+      treeboxStyle: {},
       tempTreeData: [
         { label: "111", children: [{ label: "1-1-1" }, { label: "1-1-2" }] }
       ]
     };
   },
   methods: {
-    /*  openResize(e) {
-      console.log("openResize", e);
-    },
-    closeResize(e) {
-      console.log("closeResize", e);
-    },*/
-    searchTreeInputClick() {
+    searchTreeInputClick(e) {
+      if (this.multiple) {
+        this.$refs.searchInput.focus();
+      }
       if (!this.showtree) {
         this.setTreeSelect();
       }
+      let x = e.clientX - e.layerX;
+      let y = e.clientY - e.layerY;
+      this.treeboxStyle = {
+        width: this.$refs.treeBox.offsetWidth + "px",
+        left: x + "px",
+        top: y + 30 + "px"
+      };
       this.showtree = true;
+    },
+    searchTreeClick() {
+      this.focus = true;
     },
     clear() {
       this.inputText = "";
@@ -128,7 +134,10 @@ export default {
       );
     },
     resetFunc() {
-      this.showtree = false;
+      if (!this.focus) {
+        this.showtree = false;
+      }
+      this.focus = false;
     },
     checkedNodeChange() {
       let checkedNodes = this.$refs.searchtree.getCheckedNodes();
@@ -151,7 +160,7 @@ export default {
           }
         }
         clearTimeout(this.setTreeCheckedTimer);
-      }, 300);
+      }, 60);
     }
   },
   watch: {
@@ -170,6 +179,9 @@ export default {
     this.inputText = this.value;
     // this.setTreeSelect();
     document.addEventListener("click", this.resetFunc);
+    document
+      .getElementById("tablebox")
+      .addEventListener("scroll", this.resetFunc);
   },
   computed: {
     searchInputStyle() {
@@ -179,6 +191,9 @@ export default {
   beforeDestroy() {
     clearTimeout(this.setTreeCheckedTimer);
     document.removeEventListener("click", this.resetFunc);
+    document
+      .getElementById("tablebox")
+      .removeEventListener("scroll", this.resetFunc);
   }
 };
 </script>
@@ -186,7 +201,7 @@ export default {
 .swx-search-tree {
   position: relative;
   .swx-search-tree-treebox {
-    position: absolute;
+    position: fixed;
     width: 100%;
     min-height: 150px;
     max-height: 150px;
