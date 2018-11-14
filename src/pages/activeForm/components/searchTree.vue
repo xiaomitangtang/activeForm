@@ -160,12 +160,15 @@ export default {
     },
     valArr(n) {
       this.$emit("input", n.map(i => i.id));
+    },
+    treeData() {
+      this.setTreeSelect();
     }
   },
 
   mounted() {
     this.inputText = this.value;
-    this.setTreeSelect();
+    // this.setTreeSelect();
     document.addEventListener("click", this.resetFunc);
   },
   computed: {
