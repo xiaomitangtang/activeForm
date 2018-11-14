@@ -244,13 +244,13 @@ function getSettings(item) {
     case "el-input-number":
       settings = {
         min: 1,
-        max: 10,
+        max: 99999999999999999,
         step: 1,
         precision: 0,
         size: "",
         disabled: false,
         controls: true,
-        "controls-position": "",
+        "controls-position": "right",
         name: "",
         label: "",
         placeholder: ""
@@ -260,10 +260,10 @@ function getSettings(item) {
       // settings = {minlength: 1, maxlength: 18, type: 'text', size: '', rows: 2, disabled: false, placeholder: '', 'prefix-icon': '', 'suffix-icon': '', 'auto-complete': 'off', max: '', min: '', step: '', resize: 'none', autofocus: false, tabindex: '', clearable: true}
       settings = {
         minlength: 1,
-        maxlength: 999,
+        maxlength: 9999,
         type: "text",
         size: "",
-        rows: 2,
+        rows: 5,
         disabled: false,
         placeholder: "",
         "prefix-icon": "",
@@ -277,7 +277,7 @@ function getSettings(item) {
     case "el-textarea":
       settings = {
         minlength: 1,
-        maxlength: 18,
+        maxlength: 9999999,
         type: "textarea",
         size: "",
         rows: 5,
@@ -313,7 +313,7 @@ function getSettings(item) {
       settings = {
         size: "",
         min: 1,
-        max: 10,
+        max: 99999,
         "text-color": "#ffffff",
         fill: "#409EFF",
         checkbutton: false,
@@ -371,7 +371,7 @@ function getSettings(item) {
         readonly: false,
         inputBind: {
           minlength: 1,
-          maxlength: 18,
+          maxlength: 999999,
           type: "text",
           size: "",
           rows: 2,

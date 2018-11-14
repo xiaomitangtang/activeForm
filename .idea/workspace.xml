@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e83b734b-bb66-46f6-bf25-31573a9bb7ad" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/activeForm/components/searchTree.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/activeForm/components/searchTree.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/activeForm/formDesignerStatic.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/activeForm/formDesignerStatic.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,11 +23,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="searchTree.vue" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/pages/activeForm/components/searchTree.vue">
+      <file leaf-file-name="error-list.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/activeForm/error-list.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="73">
-              <caret line="168" column="13" lean-forward="true" selection-start-line="168" selection-start-column="13" selection-end-line="168" selection-end-column="13" />
+            <state relative-caret-position="176">
+              <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="formDesignerStatic.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/pages/activeForm/formDesignerStatic.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3938">
+              <caret line="422" column="16" selection-start-line="422" selection-start-column="13" selection-end-line="422" selection-end-column="16" />
+              <folding>
+                <element signature="n#!!block;n#getDefauleVal#0" />
+                <element signature="n#!!block;n#formValid#0" />
+                <element signature="n#!!block;n#getDefaultRule#0" />
+                <element signature="n#!!block;n#groupAddItem#0" />
+                <element signature="n#!!block;n#groupDelItem#0" />
+                <element signature="n#!!block;n#isSettingVisible#0" />
+                <element signature="n#!!block;n#translateFormItem#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -112,18 +130,18 @@
         <option value="$PROJECT_DIR$/src/App.vue" />
         <option value="$PROJECT_DIR$/src/pages/activeForm/components/eval.js" />
         <option value="$PROJECT_DIR$/src/pages/activeForm/components/treetable.vue" />
-        <option value="$PROJECT_DIR$/public/VueApp_config.json" />
         <option value="$PROJECT_DIR$/src/config/api/api.conf.js" />
         <option value="$PROJECT_DIR$/src/fetch/activeForm-api.js" />
         <option value="$PROJECT_DIR$/src/pages/activeForm/anka-form-list.vue" />
         <option value="$PROJECT_DIR$/src/pages/activeForm/rulesParser/rulesParser.js" />
-        <option value="$PROJECT_DIR$/src/pages/activeForm/formDesignerStatic.js" />
         <option value="$PROJECT_DIR$/src/pages/activeForm/index.vue" />
         <option value="$PROJECT_DIR$/src/pages/activeForm/ankaParamsListData.js" />
         <option value="$PROJECT_DIR$/src/pages/activeForm/myElement.vue" />
         <option value="$PROJECT_DIR$/src/pages/activeForm/formDesignerpane.vue" />
         <option value="$PROJECT_DIR$/src/pages/activeForm/formDesigner.vue" />
         <option value="$PROJECT_DIR$/src/pages/activeForm/components/searchTree.vue" />
+        <option value="$PROJECT_DIR$/public/VueApp_config.json" />
+        <option value="$PROJECT_DIR$/src/pages/activeForm/formDesignerStatic.js" />
       </list>
     </option>
   </component>
@@ -139,8 +157,8 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="121" />
-    <option name="y" value="145" />
+    <option name="x" value="401" />
+    <option name="y" value="148" />
     <option name="width" value="1585" />
     <option name="height" value="880" />
   </component>
@@ -175,25 +193,6 @@
               <item name="activeForm" type="b2602c69:ProjectViewProjectNode" />
               <item name="activeForm" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="activeForm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="activeForm" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="activeForm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="activeForm" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="fetch" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="activeForm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="activeForm" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -220,7 +219,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../zhgs" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="G:\work\activeForm\node_modules\eslint" />
@@ -290,21 +289,7 @@
       <workItem from="1542070844341" duration="3076000" />
       <workItem from="1542075404622" duration="531000" />
       <workItem from="1542075959048" duration="17598000" />
-      <workItem from="1542157118003" duration="737000" />
-    </task>
-    <task id="LOCAL-00007" summary="解决保存时出现bug">
-      <created>1540173014243</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1540173014244</updated>
-    </task>
-    <task id="LOCAL-00008" summary="解决提交按钮表单不验证效果不显示的bug">
-      <created>1540176444723</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1540176444723</updated>
+      <workItem from="1542157118003" duration="3676000" />
     </task>
     <task id="LOCAL-00009" summary="加入font">
       <created>1540281388701</created>
@@ -635,23 +620,38 @@
       <option name="project" value="LOCAL" />
       <updated>1542100885714</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="调整searchtree">
+      <created>1542158462344</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1542158462344</updated>
+    </task>
+    <task id="LOCAL-00057" summary="修改江山的ip">
+      <created>1542161919432</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1542161919432</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="282917000" />
+    <option name="totallyTimeSpent" value="285856000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="97" y="116" width="1268" height="704" extended-state="0" />
+    <frame x="321" y="119" width="1268" height="704" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" x="665" y="107" width="323" height="537" id="Project" order="0" side_tool="true" visible="true" weight="0.20373377" />
+      <window_info active="true" content_ui="combo" x="665" y="107" width="323" height="537" id="Project" order="0" side_tool="true" visible="true" weight="0.20373377" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5026455" side_tool="true" weight="0.43485618" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49858758" weight="0.31179774" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24964131" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.4973545" visible="true" weight="0.12522046" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4973545" visible="true" weight="0.12522046" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" weight="0.32998565" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -689,8 +689,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="在index请求数据的async函数中添加捕获异常的代码" />
-    <MESSAGE value="修改获取panel当前页码的函数" />
     <MESSAGE value="给searchTree添加多选样式" />
     <MESSAGE value="添加删除接口请求" />
     <MESSAGE value="修改下拉菜单select中value的组织方式，只设置dm，不再使用---连接mc和dm" />
@@ -714,7 +712,9 @@
     <MESSAGE value="将保存的数据进行转换，对时间控件数据进行标记。" />
     <MESSAGE value="添加searchTree的默认属性，勾选父节点，不连带勾选所有子节点" />
     <MESSAGE value="添加searchTree的默认属性，勾选父节点，连带勾选所有子节点" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加searchTree的默认属性，勾选父节点，连带勾选所有子节点" />
+    <MESSAGE value="调整searchtree" />
+    <MESSAGE value="修改江山的ip" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改江山的ip" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -726,6 +726,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19030">
           <caret line="865" column="22" selection-start-line="865" selection-start-column="21" selection-end-line="865" selection-end-column="22" />
+          <folding>
+            <element signature="n#!!block;n#getDefauleVal#0" />
+            <element signature="n#!!block;n#formValid#0" />
+            <element signature="n#!!block;n#getDefaultRule#0" />
+            <element signature="n#!!block;n#groupAddItem#0" />
+            <element signature="n#!!block;n#groupDelItem#0" />
+            <element signature="n#!!block;n#isSettingVisible#0" />
+            <element signature="n#!!block;n#translateFormItem#0" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -913,13 +922,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/VueApp_config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="38" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/config/api/baseapi.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
@@ -981,13 +983,6 @@
             <element signature="n#div#2;n#div#1;n#div#0;n#el-row#0;n#div#0;n#template#0;n#!!top" />
             <element signature="n#style#0;n#!!top" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/activeForm/formDesignerStatic.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="646" column="45" selection-start-line="646" selection-start-column="30" selection-end-line="646" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -1058,17 +1053,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/activeForm/error-list.vue">
+    <entry file="file://$PROJECT_DIR$/public/VueApp_config.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        <state relative-caret-position="44">
+          <caret line="2" column="14" lean-forward="true" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/activeForm/components/searchTree.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="168" column="13" lean-forward="true" selection-start-line="168" selection-start-column="13" selection-end-line="168" selection-end-column="13" />
+        <state relative-caret-position="711">
+          <caret line="212" column="22" selection-start-line="212" selection-start-column="22" selection-end-line="212" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/activeForm/error-list.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/activeForm/formDesignerStatic.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3938">
+          <caret line="422" column="16" selection-start-line="422" selection-start-column="13" selection-end-line="422" selection-end-column="16" />
+          <folding>
+            <element signature="n#!!block;n#getDefauleVal#0" />
+            <element signature="n#!!block;n#formValid#0" />
+            <element signature="n#!!block;n#getDefaultRule#0" />
+            <element signature="n#!!block;n#groupAddItem#0" />
+            <element signature="n#!!block;n#groupDelItem#0" />
+            <element signature="n#!!block;n#isSettingVisible#0" />
+            <element signature="n#!!block;n#translateFormItem#0" />
+          </folding>
         </state>
       </provider>
     </entry>
